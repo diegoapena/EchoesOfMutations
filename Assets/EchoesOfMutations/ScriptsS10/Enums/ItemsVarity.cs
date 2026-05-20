@@ -1,6 +1,7 @@
-using UnityEngine;
-
-public class ItemsVarity
+public enum ItemsVarity
 {
-    
+    None,
+    Interactable,
+    Craftable,
+    Material,
 }

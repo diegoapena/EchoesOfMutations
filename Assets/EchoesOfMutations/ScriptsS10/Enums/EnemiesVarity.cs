@@ -1,6 +1,8 @@
-using UnityEngine;
-
-public class EnemiesVarity
+public enum EnemiesVarity
 {
-    
+    None,
+    Small,
+    Normal,
+    Strong,
+    Boss
 }
