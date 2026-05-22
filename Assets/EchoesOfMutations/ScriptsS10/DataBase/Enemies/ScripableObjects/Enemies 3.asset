@@ -12,9 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ff1a671d9545a7a4292bc762d4b512ad, type: 3}
   m_Name: Enemies 3
   m_EditorClassIdentifier: Assembly-CSharp::BaseEnemiesData
-  id: 0
+  id: 1234
   enemyName: 
-  damageQuantity: 0
+  damageQuantity: 20
   enemyPrefab: {fileID: 0}
   enemyIcon: {fileID: 0}
   enemyDescription: 

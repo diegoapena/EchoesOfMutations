@@ -12,9 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ff1a671d9545a7a4292bc762d4b512ad, type: 3}
   m_Name: Enemies
   m_EditorClassIdentifier: Assembly-CSharp::BaseEnemiesData
-  id: 0
-  enemyName: 
-  damageQuantity: 0
+  id: 299
+  enemyName: raccon mutant
+  damageQuantity: 2
   enemyPrefab: {fileID: 0}
   enemyIcon: {fileID: 0}
-  enemyDescription: 
+  enemyDescription: Deals a small damage to the player , It  only 1 shot to defeat
+    him. This enemy can climb onto rooftop and make it's way into the Factory

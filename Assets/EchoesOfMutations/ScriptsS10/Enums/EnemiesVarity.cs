@@ -4,5 +4,6 @@ public enum EnemiesVarity
     Small,
     Normal,
     Strong,
-    Boss
+    Boss,
+    AllEnemies
 }

@@ -4,4 +4,5 @@ public enum ItemsVarity
     Interactable,
     Craftable,
     Material,
+    AllItems
 }

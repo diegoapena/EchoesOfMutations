@@ -12,9 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ff1a671d9545a7a4292bc762d4b512ad, type: 3}
   m_Name: Enemies 1
   m_EditorClassIdentifier: Assembly-CSharp::BaseEnemiesData
-  id: 0
-  enemyName: 
-  damageQuantity: 0
+  id: 2711
+  enemyName: deer mutant
+  damageQuantity: 4
   enemyPrefab: {fileID: 0}
   enemyIcon: {fileID: 0}
-  enemyDescription: 
+  enemyDescription: A standard enemy with no special attacks or movements abilities
+    , It has normal durability and  takes 3 shots to knockdown. This enemy can break
+    window barricades.

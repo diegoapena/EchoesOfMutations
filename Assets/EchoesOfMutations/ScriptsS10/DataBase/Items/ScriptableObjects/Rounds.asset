@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 652945745d013ca4ba3f01852cad1899, type: 3}
   m_Name: Rounds
   m_EditorClassIdentifier: Assembly-CSharp::BaseItemsData
-  id: 0
-  itemName: 
+  id: 29
+  itemName: Rounds
   itemPrefab: {fileID: 0}
   itemIcon: {fileID: 0}
   itemDescription: 
