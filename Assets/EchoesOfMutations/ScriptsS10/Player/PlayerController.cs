@@ -2,26 +2,40 @@ using System;
 using System.Threading;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using Sirenix.OdinInspector;
 
 public class PlayerController : MonoBehaviour
 {
-
-    public InputSystem_Actions inputs;
-    public float moveSpeed = 10f;
-    public float rotationSpeed = 200f;
+    [FoldoutGroup("References")]
     private CharacterController controller;
+    [FoldoutGroup("References")]
+    public InputSystem_Actions inputs;
+    [FoldoutGroup("Movement Settings")]
+    public float moveSpeed = 10f;
+    [FoldoutGroup("Movement Settings")]
+    public float rotationSpeed = 200f;
+    
     [SerializeField] private Vector2 moveInput;
     //public float gravity = -9.81f;
+    [FoldoutGroup("Jump")]
     public float verticalVelocity = 0f;
+    [FoldoutGroup("Jump")]
     public float JumpForce = 5f;
+
     public float pushForce = 2f;
+    [FoldoutGroup("Dash")]
     public bool IsDashing = false;
+    [FoldoutGroup("Dash")]
     public float dashForce = 20f;
+    [FoldoutGroup("Dash")]
     public float dashDuration = 0.5f;
+    [FoldoutGroup("Dash")]
     private float dashTimer = 0f;
     private bool isSprinting = false;
     private float baseMoveSpeed;
 
+    [FoldoutGroup("Interact")]
+    public Action OnInteractEvent;
 
 
     private void Awake()
@@ -42,8 +56,11 @@ public class PlayerController : MonoBehaviour
        
         inputs.Player.Sprint.performed += OnSprint;
         inputs.Player.Sprint.canceled += OnSprintCanceled;
+
+        inputs.Player.Interact.performed += OnInteract;
     }
 
+    
 
     void Start()
     {
@@ -131,5 +148,12 @@ public class PlayerController : MonoBehaviour
 
         // Dibujar el rayo desde la posición del objeto hacia adelante
         Gizmos.DrawRay(start, direction * 5f); // El 5f es la longitud del rayo
+    }
+    private void OnInteract(InputAction.CallbackContext context)
+    {
+        if(context.performed)
+        {
+            OnInteractEvent?.Invoke();
+        }
     }
 }

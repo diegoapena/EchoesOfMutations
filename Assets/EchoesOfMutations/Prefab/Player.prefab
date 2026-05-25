@@ -1,5 +1,36 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &3273688514325687673
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2395972265547344217}
+  m_Layer: 0
+  m_Name: IntemContainer
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2395972265547344217
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3273688514325687673}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.553, y: 0, z: 0.292}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 8816475528842848093}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &3626518026547318560
 GameObject:
   m_ObjectHideFlags: 0
@@ -214,7 +245,9 @@ GameObject:
   - component: {fileID: 2849645554381798568}
   - component: {fileID: 3859464893360892924}
   - component: {fileID: 4603273887809843614}
+  - component: {fileID: 5122219181573196673}
   - component: {fileID: 9181930328376627942}
+  - component: {fileID: 4229285413848986913}
   - component: {fileID: 8674775751049969734}
   m_Layer: 0
   m_Name: Player
@@ -238,6 +271,7 @@ Transform:
   m_Children:
   - {fileID: 4043815886287188458}
   - {fileID: 4263514979729669299}
+  - {fileID: 2395972265547344217}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &2849645554381798568
@@ -320,6 +354,22 @@ CapsuleCollider:
   m_Height: 2
   m_Direction: 1
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &5122219181573196673
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8083547267981267730}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 35b9931aece71554da1862ecd18c6729, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PlayerManager
+  entityName: 
+  description: 
+  playerController: {fileID: 9181930328376627942}
+  playerMechanics: {fileID: 4229285413848986913}
 --- !u!114 &9181930328376627942
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -341,6 +391,19 @@ MonoBehaviour:
   IsDashing: 0
   dashForce: 20
   dashDuration: 0.5
+--- !u!114 &4229285413848986913
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8083547267981267730}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 91f487cffbf53ee4086859e2feb3bcfe, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PlayerMechanics
+  ItemContainer: {fileID: 2395972265547344217}
 --- !u!143 &8674775751049969734
 CharacterController:
   m_ObjectHideFlags: 0
