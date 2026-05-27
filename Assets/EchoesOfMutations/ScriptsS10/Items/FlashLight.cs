@@ -1,41 +1,73 @@
 using UnityEngine;
+using UnityEngine.InputSystem;
 
-public class FlashLight : MonoBehaviour , IInteractable
+public class FlashLight : MonoBehaviour, IInteractable
 {
-    //This scrip is still in test
+    private bool isInInventory = false; 
+    private bool isOn = false; 
+    
+    private Light flashlightLight; 
+    public InputSystem_Actions inputs;
+
+    private void Awake()
+    {
+        inputs = new();
+        flashlightLight = GetComponent<Light>();
+        flashlightLight.enabled = false; 
+      
+    }
 
     private void OnEnable()
     {
         GameManager.Instance.playerManager.playerController.OnInteractEvent += DetectPosition;
+        GameManager.Instance.playerManager.playerController.inputs.Player.FlashLight.performed += OnFlashLightAction;
     }
+
     private void OnDisable()
     {
         GameManager.Instance.playerManager.playerController.OnInteractEvent -= DetectPosition;
-    }
-    void Start()
-    {
-        
+        GameManager.Instance.playerManager.playerController.inputs.Player.FlashLight.performed -= OnFlashLightAction;
     }
 
-    
     void Update()
     {
-        
-    }
+       
     
+    }
+
     public void Interact(Transform interactor)
-    {       
-        interactor = GameManager.Instance.playerManager.playerMechanics.ItemContainer.transform;
-        transform.position = interactor.position;      
+    {
+        if (isInInventory)
+        {
+            ToggleFlashlight(); 
+        }
     }
-    
-    
 
     public void DetectPosition()
     {
-        if(Vector3.Distance(transform.position, GameManager.Instance.playerManager.transform.position) < 1.5f)
+        if (Vector3.Distance(transform.position, GameManager.Instance.playerManager.transform.position) < 1.5f)
         {
             GameManager.Instance.playerManager.playerMechanics.PickUp(gameObject);
+            isInInventory = true; 
+           
+        }
+    }
+
+    private void OnFlashLightAction(InputAction.CallbackContext context)
+    {
+        if (isInInventory)
+        {
+            ToggleFlashlight(); 
+        }
+    }
+
+    private void ToggleFlashlight()
+    {
+        if (flashlightLight != null)
+        {
+            isOn = !isOn;
+            flashlightLight.enabled = isOn; 
         }
     }
 }
+    
