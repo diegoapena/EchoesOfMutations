@@ -16,8 +16,7 @@ public class DataBaseCraftableObjts : SerializedScriptableObject
         }
         else
         {
-            // still in coding
-            return null; 
+            throw new System.Exception("Crafable type not found in database: " + itemName);           
         }
     }
     
