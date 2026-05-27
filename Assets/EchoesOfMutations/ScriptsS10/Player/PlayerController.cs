@@ -16,7 +16,6 @@ public class PlayerController : MonoBehaviour
     public float rotationSpeed = 200f;
     
     [SerializeField] private Vector2 moveInput;
-    //public float gravity = -9.81f;
     [FoldoutGroup("Jump")]
     public float verticalVelocity = 0f;
     [FoldoutGroup("Jump")]
@@ -70,8 +69,7 @@ public class PlayerController : MonoBehaviour
 
     void Update()
     {
-        Movement();
-        //OnSimpleMovement();
+        Movement();       
     }
 
 
@@ -103,18 +101,6 @@ public class PlayerController : MonoBehaviour
         controller.Move(moveDir * Time.deltaTime);
 
     }
-    /* 
-    public void OnSimpleMovement()
-    {
-        transform.Rotate(Vector3.up * moveInput.x * rotationSpeed * Time.deltaTime);
-        
-
-        Vector3 moveDir = transform.forward * moveSpeed * moveInput.y;
-        controller.SimpleMove(moveDir);
-    }
-    */
-
-
     private void Jump_performed(InputAction.CallbackContext context)
     {
         if (!controller.isGrounded) return;
