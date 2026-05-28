@@ -5,14 +5,14 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "DataBaseCraftableObjts", menuName = "EchoesOfMutations/DataBaseCraftableObjts")]
 public class DataBaseCraftableObjts : SerializedScriptableObject
 {
-    public Dictionary<int, List<BaseCraftableObjtsData>> itemcraftableData = new();
+    public Dictionary<string, List<BaseCraftableObjtsData>> itemcraftableData = new();
 
-    public BaseCraftableObjtsData GetCraftableObjt(int itemCost , string itemName)
+    public BaseCraftableObjtsData GetCraftableObjt(int woodCost , int metalCost , string itemName)
     {
-        if(itemcraftableData.TryGetValue(itemCost , out List<BaseCraftableObjtsData> itemcrafable))
+        if(itemcraftableData.TryGetValue(itemName, out List<BaseCraftableObjtsData> itemcrafable))
         { 
             
-            return itemcrafable.Find(itemCraftable =>  itemCraftable.ItemCost == itemCost);
+            return itemcrafable.Find(itemCraftable =>  itemCraftable.WoodCost == woodCost && itemCraftable.MetalCost == metalCost);
         }
         else
         {

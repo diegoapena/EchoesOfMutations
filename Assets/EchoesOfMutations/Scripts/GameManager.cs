@@ -1,3 +1,4 @@
+using Sirenix.OdinInspector;
 using UnityEngine;
 
 public class GameManager : MonoBehaviour
@@ -8,6 +9,13 @@ public class GameManager : MonoBehaviour
     //          IN TEST
     public FlashLight flashLight;
     //
+
+    [FoldoutGroup("Cinematic")]
+    public Car car;
+    [FoldoutGroup("Cinematic")]
+    public TestCinematicMutant mutantCinematic;
+    [FoldoutGroup("Cinematic")]
+    public Collition collition;
     private void Awake()
     {
         if (Instance == null)

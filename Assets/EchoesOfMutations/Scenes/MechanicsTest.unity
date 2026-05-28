@@ -359,6 +359,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::GameManager
   playerManager: {fileID: 1846421747}
   flashLight: {fileID: 1111570774}
+  car: {fileID: 309894779}
+  mutantCinematic: {fileID: 96724544}
+  collition: {fileID: 250020133}
 --- !u!4 &28112468
 Transform:
   m_ObjectHideFlags: 0
@@ -1546,8 +1549,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7baa2adeae8907f4fb9153f38af89103, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Collition
-  mutant: {fileID: 96724544}
-  car: {fileID: 309894779}
 --- !u!54 &250020134
 Rigidbody:
   m_ObjectHideFlags: 0

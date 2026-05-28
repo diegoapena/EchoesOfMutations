@@ -9,13 +9,13 @@ public class BaseCraftableObjtsData : ScriptableObject
     [FoldoutGroup("Settings")]
     [SerializeField] private string itemName;
     [FoldoutGroup("Settings")]
-    [SerializeField] private int itemCost;
+    [SerializeField] private int woodCost;
     [FoldoutGroup("Settings")]
-    [SerializeField] private int itemAmount;
+    [SerializeField] private int metalCost;
 
     public int ID => id;
     public string ItemName => itemName;
-    public int ItemCost => itemCost;
-    public int ItemAmount => itemAmount;
+    public int WoodCost => woodCost;
+    public int MetalCost => metalCost;
 
 }
