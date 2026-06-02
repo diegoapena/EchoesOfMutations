@@ -24,12 +24,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3273688514325687673}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.553, y: 0, z: 0.292}
+  m_LocalRotation: {x: -0.011689276, y: 0.012901158, z: 0.00015078486, w: -0.9998485}
+  m_LocalPosition: {x: 0.54769254, y: -0.32451713, z: 0.14400174}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 8816475528842848093}
+  m_Father: {fileID: 4263514979729669299}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &3626518026547318560
 GameObject:
@@ -173,7 +173,8 @@ Transform:
   m_LocalPosition: {x: 0.0015809505, y: 0.32106185, z: 0.15463257}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 2395972265547344217}
   m_Father: {fileID: 8816475528842848093}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &5227898547689134980
@@ -271,7 +272,6 @@ Transform:
   m_Children:
   - {fileID: 4043815886287188458}
   - {fileID: 4263514979729669299}
-  - {fileID: 2395972265547344217}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &2849645554381798568
@@ -404,6 +404,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerMechanics
   ItemContainer: {fileID: 2395972265547344217}
+  FrontCamera: {fileID: 0}
 --- !u!143 &8674775751049969734
 CharacterController:
   m_ObjectHideFlags: 0

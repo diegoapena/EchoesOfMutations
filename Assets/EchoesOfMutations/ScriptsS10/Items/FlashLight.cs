@@ -7,11 +7,11 @@ public class FlashLight : MonoBehaviour, IInteractable
     private bool isOn = false; 
     
     private Light flashlightLight; 
-    public InputSystem_Actions inputs;
+    
 
     private void Awake()
     {
-        inputs = new();
+       
         flashlightLight = GetComponent<Light>();
         flashlightLight.enabled = false; 
       
