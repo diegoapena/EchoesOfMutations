@@ -45,7 +45,7 @@ public class FlashLight : MonoBehaviour, IInteractable
 
     public void DetectPosition()
     {
-        if (Vector3.Distance(transform.position, GameManager.Instance.playerManager.transform.position) < 1.5f)
+        if (Vector3.Distance(transform.position, GameManager.Instance.playerManager.transform.position) < 2.5f)
         {
             GameManager.Instance.playerManager.playerMechanics.PickUp(gameObject);
             isInInventory = true; 
