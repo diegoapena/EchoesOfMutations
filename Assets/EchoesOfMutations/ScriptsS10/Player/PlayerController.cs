@@ -70,7 +70,7 @@ public class PlayerController : MonoBehaviour
     public void Movement()
     {
       
-        float currentSpeed = isSprinting ? baseMoveSpeed * 1 : baseMoveSpeed;
+        float currentSpeed = isSprinting ? baseMoveSpeed * 2 : baseMoveSpeed;
 
         Vector3 moveDir = (transform.forward * moveInput.y + transform.right * moveInput.x) * currentSpeed;
 
