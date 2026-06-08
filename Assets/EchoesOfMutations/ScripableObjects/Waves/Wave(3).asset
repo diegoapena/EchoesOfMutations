@@ -9,11 +9,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 652945745d013ca4ba3f01852cad1899, type: 3}
-  m_Name: Barricade
-  m_EditorClassIdentifier: Assembly-CSharp::BaseItemsData
-  id: 32
-  itemName: Barricade
-  itemPrefab: {fileID: 0}
-  itemIcon: {fileID: 0}
-  itemDescription: 
+  m_Script: {fileID: 11500000, guid: 8b1c99d1d73f63a4fb4e6b01718359ef, type: 3}
+  m_Name: Wave(3)
+  m_EditorClassIdentifier: Assembly-CSharp::BaseWaveData
+  enemies: {fileID: 0}
+  enemyCount: 0
+  waveNumber: 0
