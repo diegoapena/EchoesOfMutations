@@ -9,7 +9,7 @@ public class AgentSimpleController : MonoBehaviour
     {
         agent = GetComponent<NavMeshAgent>();
 
-        // Asignar automáticamente el Target al Transform del jugador
+        // Asignar automï¿½ticamente el Target al Transform del jugador
         if (Target == null)
         {
             GameObject playerObject = GameObject.FindWithTag("Player");
@@ -19,7 +19,7 @@ public class AgentSimpleController : MonoBehaviour
             }
             else
             {
-                Debug.LogError("No se encontró un objeto con la etiqueta 'Player'. Asegúrate de que el jugador tenga la etiqueta correcta.");
+                Debug.LogError("No se encontrï¿½ un objeto con la etiqueta 'Player'. Asegï¿½rate de que el jugador tenga la etiqueta correcta.");
             }
         }
     }
