@@ -12,8 +12,7 @@ public class PlayerController : MonoBehaviour
     public InputSystem_Actions inputs;
     [FoldoutGroup("Movement Settings")]
     public float moveSpeed = 10f;
-    [FoldoutGroup("Movement Settings")]
-    public float rotationSpeed = 200f;
+    
     
     [SerializeField] private Vector2 moveInput;
     [FoldoutGroup("Jump")]
@@ -22,14 +21,7 @@ public class PlayerController : MonoBehaviour
     public float JumpForce = 5f;
 
     public float pushForce = 2f;
-    [FoldoutGroup("Dash")]
-    public bool IsDashing = false;
-    [FoldoutGroup("Dash")]
-    public float dashForce = 20f;
-    [FoldoutGroup("Dash")]
-    public float dashDuration = 0.5f;
-    [FoldoutGroup("Dash")]
-    private float dashTimer = 0f;
+    
     private bool isSprinting = false;
     private float baseMoveSpeed;
 
@@ -78,7 +70,7 @@ public class PlayerController : MonoBehaviour
     public void Movement()
     {
       
-        float currentSpeed = isSprinting ? baseMoveSpeed * 3 : baseMoveSpeed;
+        float currentSpeed = isSprinting ? baseMoveSpeed * 2 : baseMoveSpeed;
 
         Vector3 moveDir = (transform.forward * moveInput.y + transform.right * moveInput.x) * currentSpeed;
 
@@ -87,16 +79,7 @@ public class PlayerController : MonoBehaviour
         if (controller.isGrounded && verticalVelocity < 0)
             verticalVelocity = -2f;
 
-        moveDir.y = verticalVelocity;
-
-        if (IsDashing)
-        {
-            // dash in the forward direction without changing rotation
-            moveDir = transform.forward * dashForce;
-            dashTimer -= Time.deltaTime;
-            if (dashTimer <= 0)
-                IsDashing = false;
-        }
+        moveDir.y = verticalVelocity;   
 
         controller.Move(moveDir * Time.deltaTime);
 
