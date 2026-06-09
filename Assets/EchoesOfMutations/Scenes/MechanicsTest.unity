@@ -129,7 +129,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8182849}
   m_Layer: 0
-  m_Name: '//////  CINEMATIC (TEST) //////    '
+  m_Name: '//////  CINEMATIC  //////    '
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
