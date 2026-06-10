@@ -474,8 +474,8 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 733925433}
-        m_TargetAssemblyTypeName: PauseMenu, MoreMountains.Tools
-        m_MethodName: Resume
+        m_TargetAssemblyTypeName: PauseMenu, Assembly-CSharp
+        m_MethodName: ResumeM
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1539,8 +1539,8 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 733925433}
-        m_TargetAssemblyTypeName: PauseMenu, MoreMountains.Tools
-        m_MethodName: Pause
+        m_TargetAssemblyTypeName: PauseMenu, Assembly-CSharp
+        m_MethodName: PauseM
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
