@@ -5,11 +5,12 @@ TagManager:
   serializedVersion: 3
   tags:
   - Car
+  - Barricade
   layers:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - 
+  - Barricades
   - Water
   - UI
   - 

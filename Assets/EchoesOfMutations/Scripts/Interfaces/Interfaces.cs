@@ -6,6 +6,6 @@ public interface IInteractable
 }
 public interface IDamageable
 {
-    public void TakeDamage(float damage);
+    public void RecieveDamage(float damage);
 }
 
