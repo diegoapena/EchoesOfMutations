@@ -19,7 +19,7 @@ public class NormalEnemy : BaseEnemy
         if (other.CompareTag("Barricade"))
         {           
             barricades.Add(other.gameObject.GetComponent<Barricade>());
-            CurrentBarricade = other.gameObject;
+            CurrentBarricade = other.gameObject.GetComponent<Barricade>();
             FindBarricade();
 
         }

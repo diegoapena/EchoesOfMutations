@@ -21,13 +21,13 @@ public class BaseEnemy : MonoBehaviour
     [FoldoutGroup("Attack Settings")]
     public float AttackInterval;
 
-    public GameObject CurrentBarricade;
+    public Barricade CurrentBarricade = null;
     public List<Barricade> barricades;
-    public LayerMask Barricades;
+    public LayerMask LayerBarricades;
     private void Awake()
     {
         agent = GetComponent<NavMeshAgent>();
-        CurrentBarricade =  GetComponent<GameObject>();
+       // CurrentBarricade =  GetComponent<GameObject>();
     }
     void Start()
     {       
@@ -37,11 +37,32 @@ public class BaseEnemy : MonoBehaviour
     {
         
     }
+    public void FindBarricades()
+    {
+        if (CurrentBarricade != null) return;
+        Collider[] colls = Physics.OverlapSphere(transform.position, 4, LayerBarricades);
+
+        Barricade nearestBarricade = null;
+
+        Vector3 pos = transform.position;
+
+        foreach (var col in colls)
+        {
+            if (Vector3.Distance(pos, col.transform.position) < Vector3.Distance(pos, nearestBarricade.transform.position))
+            {
+                nearestBarricade = col.GetComponent<Barricade>();
+            }
+        }
+        CurrentBarricade = nearestBarricade;
+        isAttacking = true;
+    }
+
+
     public void Attack()
     {
         if (isAttacking)
         {
-            if (Physics.Raycast(transform.position,transform.forward, out RaycastHit hit, 1, Barricades))
+            if (Physics.Raycast(transform.position,transform.forward, out RaycastHit hit, 1, LayerBarricades))
             {
                 Debug.DrawRay(transform.position,transform.forward * hit.distance, Color.black);
 
@@ -51,7 +72,7 @@ public class BaseEnemy : MonoBehaviour
                 Debug.Log(hit.collider.name);
                 isAttacking = false;
 
-                CurrentBarricade.GetComponent<Barricade>().RecieveDamage(2);
+                CurrentBarricade.RecieveDamage(2);
                 StartCoroutine(nameof(EnableAttack));                
             }
         }
