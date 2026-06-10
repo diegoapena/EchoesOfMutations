@@ -74,7 +74,7 @@ public class RoamState : IState
             {
                 Vector3 dir = (enemyController.PlayerTransform.transform.position - enemyController.transform.position).normalized;
 
-                if(Vector3.Dot(enemyController.transform.forward, dir) > 0.7f)
+                if(Vector3.Dot(enemyController.transform.forward, dir) > 0.3f)
                 {
                     return true;
                 } 
