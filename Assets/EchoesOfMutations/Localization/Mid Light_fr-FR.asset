@@ -1,0 +1,43 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e9620f8c34305754d8cc9a7e49e852d9, type: 3}
+  m_Name: Mid Light_fr-FR
+  m_EditorClassIdentifier: 
+  m_LocaleId:
+    m_Code: fr-FR
+  m_SharedData: {fileID: 11400000, guid: c0a9d6b8ca0692d428d844aa17104d68, type: 2}
+  m_Metadata:
+    m_Items: []
+  m_TableData:
+  - m_Id: 16064790528
+    m_Localized: 'INSTRUCTIONS :'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 122067435520
+    m_Localized: "allumer / \xE9teindre la lampe torche : \xAB F \xBB"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 178887671808
+    m_Localized: 'interagir avec les objets : "E"'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 219446591488
+    m_Localized: "- TROUVER LES ENTIT\xC9S DANS LA MAISON"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 251017117696
+    m_Localized: "- \xC9TEIGNEZ TOUJOURS LES LUMI\xC8RES DE LA CHAMBRE"
+    m_Metadata:
+      m_Items: []
+  references:
+    version: 2
+    RefIds: []
