@@ -33,22 +33,25 @@ public class NormalEnemy : BaseEnemy
             {
                 agent.SetDestination(CurrentBarricade.transform.position);
                 agent.stoppingDistance = 2;
-            }          
+            }     
+            
         }
     }
+    
     private void OnTriggerExit(Collider other)
     {
         if (other.CompareTag("Barricade"))
         {
-            barricades.Remove(other.gameObject.GetComponent<Barricade>());          
+            barricades.Remove(other.gameObject.GetComponent<Barricade>());             
         }
     }
+    
 
     public void NextTarget()
     {
         if (CurrentBarricade == null) 
         {
-            ChangeTarget();
+            ChangeTarget();           
         }
     }
 }

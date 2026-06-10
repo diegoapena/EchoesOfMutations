@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7067431380660107081}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: RayCast
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -46,7 +46,7 @@ GameObject:
   - component: {fileID: 4673755971163305256}
   - component: {fileID: 3215944372395627622}
   - component: {fileID: 5622933637013117716}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Enemy
   m_TagString: Untagged
   m_Icon: {fileID: 0}
