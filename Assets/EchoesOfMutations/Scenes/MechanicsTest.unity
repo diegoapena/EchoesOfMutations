@@ -359,6 +359,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::GameManager
   playerManager: {fileID: 1846421747}
   flashLight: {fileID: 1111570774}
+  barricade: {fileID: 0}
+  normalEnemy: {fileID: 0}
   car: {fileID: 309894779}
   mutantCinematic: {fileID: 96724544}
   collition: {fileID: 250020133}
@@ -499,6 +501,40 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::TestCinematicMutant
   MutantSpeed: 30
+  movementCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: -0.033954665
+      outSlope: -0.033954665
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0.07825557
+    - serializedVersion: 3
+      time: 0.7420999
+      value: 0.49828902
+      inSlope: -2.6044943
+      outSlope: -2.6044943
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.04562227
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 0.9938965
+      value: 0.009525299
+      inSlope: -1.9411052
+      outSlope: -1.9411052
+      tangentMode: 34
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  time: 0
 --- !u!135 &96724545
 SphereCollider:
   m_ObjectHideFlags: 0
