@@ -424,7 +424,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Unity.Cinemachine::Unity.Cinemachine.CinemachineCamera
   Priority:
     Enabled: 1
-    m_Value: 1
+    m_Value: 2
   OutputChannel: 1
   StandbyUpdate: 2
   m_StreamingVersion: 20241001
@@ -462,7 +462,7 @@ Transform:
   m_GameObject: {fileID: 32986347}
   serializedVersion: 2
   m_LocalRotation: {x: 0.028457502, y: -0.7041821, z: -0.028365294, w: -0.70888174}
-  m_LocalPosition: {x: -153.97865, y: 2.165, z: -112.47381}
+  m_LocalPosition: {x: -150.97865, y: 2.165, z: -112.47381}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -500,41 +500,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a9ead83dd2c31da488d89229635342d9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::TestCinematicMutant
-  MutantSpeed: 30
-  movementCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: 0
-      value: 1
-      inSlope: -0.033954665
-      outSlope: -0.033954665
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0
-      outWeight: 0.07825557
-    - serializedVersion: 3
-      time: 0.7420999
-      value: 0.49828902
-      inSlope: -2.6044943
-      outSlope: -2.6044943
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.04562227
-      outWeight: 0.33333334
-    - serializedVersion: 3
-      time: 0.9938965
-      value: 0.009525299
-      inSlope: -1.9411052
-      outSlope: -1.9411052
-      tangentMode: 34
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
-  time: 0
+  duration: 10
+  endPosition: 1
 --- !u!135 &96724545
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -622,7 +589,7 @@ Transform:
   m_GameObject: {fileID: 96724543}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -88.71742, y: 1.5, z: -99.67938}
+  m_LocalPosition: {x: -88.71742, y: 1.5, z: -129.67938}
   m_LocalScale: {x: 2, y: 2, z: 2}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1732,7 +1699,7 @@ Transform:
   m_GameObject: {fileID: 309894778}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -153.97865, y: 2.165, z: -112.47381}
+  m_LocalPosition: {x: -150.97865, y: 2.165, z: -112.47381}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1825,8 +1792,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 330585543}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.011689276, y: -0.012901158, z: -0.00015078486, w: -0.9998485}
-  m_LocalPosition: {x: -22.008419, y: 1.4410619, z: -24.435368}
+  m_LocalRotation: {x: 0.028457502, y: -0.7041821, z: -0.028365294, w: -0.70888174}
+  m_LocalPosition: {x: -150.97865, y: 2.165, z: -112.47381}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
