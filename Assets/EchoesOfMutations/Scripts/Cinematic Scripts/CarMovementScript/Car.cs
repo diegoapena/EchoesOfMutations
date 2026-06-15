@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class Car : MonoBehaviour
 {
-    //THIS SCRIP IS FOR TESTING PURPOSES ONLY (TEMPORALY)
+    
     public float speed;
     void Start()
     {

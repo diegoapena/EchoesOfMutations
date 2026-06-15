@@ -1,12 +1,14 @@
+using DG.Tweening;
 using System;
 using UnityEngine;
 
 public class TestCinematicMutant : MonoBehaviour
 {
-    //THIS SCRIP IS FOR TESTING PURPOSES ONLY (TEMPORALY)
-    public float MutantSpeed;
-
+    public float duration;
+    public float endPosition;
+    //public float MutantSpeed; 
     public static Action OnMoveMutant;
+    
     void Start()
     {
         
@@ -18,9 +20,15 @@ public class TestCinematicMutant : MonoBehaviour
         
     }
 
+    
     public void MoveMutant()
-    {
+    {       
+        transform.DOMoveZ(endPosition , duration);
+        /*
         Vector3 moveDir = Vector3.forward * MutantSpeed * Time.deltaTime;
         transform.position -= moveDir;  
+        
+        */
     }
+    
 }

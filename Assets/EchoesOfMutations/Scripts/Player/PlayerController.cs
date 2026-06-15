@@ -10,10 +10,13 @@ public class PlayerController : MonoBehaviour
     private CharacterController controller;
     [FoldoutGroup("References")]
     public InputSystem_Actions inputs;
+    [FoldoutGroup("Shoot Settings")]
+    public Transform WeaponShootAnchor;
+    [FoldoutGroup("Shoot Settings")]
+    public LineRenderer RayPrefab;
     [FoldoutGroup("Movement Settings")]
     public float moveSpeed = 10f;
-    
-    
+    [FoldoutGroup("Movement Settings")]
     [SerializeField] private Vector2 moveInput;
     [FoldoutGroup("Jump")]
     public float verticalVelocity = 0f;
@@ -28,12 +31,14 @@ public class PlayerController : MonoBehaviour
     [FoldoutGroup("Interact")]
     public Action OnInteractEvent;
 
+    public LayerMask enemyMask;
 
     private void Awake()
     {
         inputs = new();
         controller = GetComponent<CharacterController>();
         baseMoveSpeed = moveSpeed;
+
         Cursor.visible = false;
         Cursor.lockState = CursorLockMode.Locked;
 
@@ -49,6 +54,8 @@ public class PlayerController : MonoBehaviour
         inputs.Player.Sprint.canceled += OnSprintCanceled;
 
         inputs.Player.Interact.performed += OnInteract;
+
+        inputs.Player.Attack.performed += OnAttack;
     }
 
     
@@ -63,9 +70,6 @@ public class PlayerController : MonoBehaviour
     {
         Movement();       
     }
-
-
-
 
     public void Movement()
     {
@@ -116,13 +120,34 @@ public class PlayerController : MonoBehaviour
         Vector3 direction = transform.forward.normalized;
 
         // Dibujar el rayo desde la posición del objeto hacia adelante
-        Gizmos.DrawRay(start, direction * 5f); // El 5f es la longitud del rayo
+        Gizmos.DrawRay(start, direction * 2f); // El 5f es la longitud del rayo
     }
+
     private void OnInteract(InputAction.CallbackContext context)
     {
         if(context.performed)
         {
             OnInteractEvent?.Invoke();
+        }
+    }
+    private void OnAttack(InputAction.CallbackContext context)
+    {
+        if(Physics.SphereCast(WeaponShootAnchor.position , 3f, WeaponShootAnchor.transform.forward , out RaycastHit hit ,100 , enemyMask))
+        {
+            Debug.Log("Hit");
+            LineRenderer ray = Instantiate(RayPrefab , transform.position , Quaternion.identity);
+            ray.gameObject.transform.position = WeaponShootAnchor.position;
+            ray.positionCount = 2;
+            ray.SetPosition(0, WeaponShootAnchor.position);
+            ray.SetPosition(1,hit.point);
+
+            Quaternion rot = Quaternion.LookRotation(hit.normal);
+
+            Destroy(ray, 2f);
+        }
+        else
+        {
+            Debug.Log("Shot miss");
         }
     }
 }

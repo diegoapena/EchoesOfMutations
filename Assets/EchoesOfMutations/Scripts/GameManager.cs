@@ -6,10 +6,14 @@ public class GameManager : MonoBehaviour
     public static GameManager Instance;
     public PlayerManager playerManager;
 
-    //          IN TEST
+    [FoldoutGroup("Items")]
     public FlashLight flashLight;
-    //
+    [FoldoutGroup("Items")]
+    public Barricade barricade;
 
+    [FoldoutGroup("BaseEnemy")]
+    public NormalEnemy normalEnemy;
+    
     [FoldoutGroup("Cinematic")]
     public Car car;
     [FoldoutGroup("Cinematic")]

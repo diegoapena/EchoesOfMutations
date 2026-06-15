@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class Collition : MonoBehaviour
 {
-    //THIS SCRIP IS FOR TESTING PURPOSES ONLY (TEMPORALY)
+    
    
     private void OnEnable()
     {
@@ -28,8 +28,8 @@ public class Collition : MonoBehaviour
         if (other.CompareTag("Car"))
         {
             GameManager.Instance.mutantCinematic.gameObject.SetActive(true);
-            GameManager.Instance.car.speed = 0;
-            TestCinematicMutant.OnMoveMutant?.Invoke();
+            GameManager.Instance.car.speed = 0;           
+            TestCinematicMutant.OnMoveMutant?.Invoke();          
             Debug.Log("Collition Detected");
         }
     }
