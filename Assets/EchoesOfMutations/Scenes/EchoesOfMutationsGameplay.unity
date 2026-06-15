@@ -5416,8 +5416,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1643174955}
-        m_TargetAssemblyTypeName: PauseMenu, MoreMountains.Tools
+      - m_Target: {fileID: 1643174957}
+        m_TargetAssemblyTypeName: UIS2_Manager, Assembly-CSharp
         m_MethodName: GotoMenu
         m_Mode: 1
         m_Arguments:
@@ -62789,13 +62789,13 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1643174954}
-        m_TargetAssemblyTypeName: 
-        m_MethodName: 
+      - m_Target: {fileID: 1643174957}
+        m_TargetAssemblyTypeName: UIManager, Assembly-CSharp
+        m_MethodName: GoToOptions_Game
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: 
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -63768,7 +63768,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1643174956}
-  - component: {fileID: 1643174955}
+  - component: {fileID: 1643174957}
   m_Layer: 0
   m_Name: PauseMenu
   m_TagString: Untagged
@@ -63776,19 +63776,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &1643174955
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1643174954}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 98b77e7e9dcd2ab4f979ddd10e681568, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: MoreMountains.Tools::PauseMenu
-  pauseUI: {fileID: 2114869220}
 --- !u!4 &1643174956
 Transform:
   m_ObjectHideFlags: 0
@@ -63804,6 +63791,19 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1643174957
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1643174954}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1883c879c8470194ab7154ef4f2d2f25, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::UIManager
+  panelPauseUI: {fileID: 2114869220}
 --- !u!1001 &1646859624
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -64434,9 +64434,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1643174955}
-        m_TargetAssemblyTypeName: PauseMenu, MoreMountains.Tools
-        m_MethodName: Resume
+      - m_Target: {fileID: 1643174957}
+        m_TargetAssemblyTypeName: UIS2_Manager, Assembly-CSharp
+        m_MethodName: ExitToPause
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -121392,7 +121392,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &2114869221
 MonoBehaviour:
   m_ObjectHideFlags: 0
