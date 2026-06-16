@@ -55,7 +55,7 @@ public class PlayerController : MonoBehaviour
 
         inputs.Player.Interact.performed += OnInteract;
 
-        inputs.Player.Attack.performed += OnAttack;
+       // inputs.Player.Attack.performed += OnAttack;
     }
 
     
@@ -86,6 +86,12 @@ public class PlayerController : MonoBehaviour
         moveDir.y = verticalVelocity;   
 
         controller.Move(moveDir * Time.deltaTime);
+
+        if (GameManager.Instance.animationManager != null)
+        {
+            GameManager.Instance.animationManager.SetFloat("VelX", moveInput.x);
+            GameManager.Instance.animationManager.SetFloat("VelY", moveInput.y);
+        }
 
     }
     private void Jump_performed(InputAction.CallbackContext context)
@@ -130,7 +136,7 @@ public class PlayerController : MonoBehaviour
             OnInteractEvent?.Invoke();
         }
     }
-    private void OnAttack(InputAction.CallbackContext context)
+    /*private void OnAttack(InputAction.CallbackContext context)
     {
         if(Physics.SphereCast(WeaponShootAnchor.position , 3f, WeaponShootAnchor.transform.forward , out RaycastHit hit ,100 , enemyMask))
         {
@@ -150,4 +156,5 @@ public class PlayerController : MonoBehaviour
             Debug.Log("Shot miss");
         }
     }
+    */
 }

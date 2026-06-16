@@ -5,6 +5,7 @@ public class GameManager : MonoBehaviour
 {
     public static GameManager Instance;
     public PlayerManager playerManager;
+    public Animator animationManager;
 
     [FoldoutGroup("Items")]
     public FlashLight flashLight;

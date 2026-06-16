@@ -9,7 +9,7 @@ public class MainMenu : MonoBehaviour
 {
     public void Jugar()
     {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+        SceneManager.LoadScene("EchoesOfMutationsGameplay");
     }
     public void Exit()
     {
