@@ -382,15 +382,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 183cfd2ba3442e94cab1b459cd6f80d7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerController
+  WeaponShootAnchor: {fileID: 0}
+  RayPrefab: {fileID: 0}
   moveSpeed: 6
-  rotationSpeed: 300
   moveInput: {x: 0, y: 0}
   verticalVelocity: 0
   JumpForce: 5
   pushForce: 2
-  IsDashing: 0
-  dashForce: 20
-  dashDuration: 0.5
+  enemyMask:
+    serializedVersion: 2
+    m_Bits: 0
 --- !u!114 &4229285413848986913
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -404,7 +405,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerMechanics
   ItemContainer: {fileID: 2395972265547344217}
-  FrontCamera: {fileID: 0}
 --- !u!143 &8674775751049969734
 CharacterController:
   m_ObjectHideFlags: 0
