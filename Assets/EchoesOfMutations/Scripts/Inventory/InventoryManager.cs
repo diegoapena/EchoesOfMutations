@@ -103,6 +103,7 @@ public class InventoryManager : MonoBehaviour
     #endregion
 
     #region Inventory Methods
+    [Button]
     public bool Pickup(BaseItemsData items , int quantity = 1)
     {
         if(items == null) return false;
@@ -129,15 +130,17 @@ public class InventoryManager : MonoBehaviour
             }
 
             list.AddLast(new Inventoryslot(items, quantity));
-            Debug.Log(items.ItemName + "add. Slots : " + list.Count / MAX_SLOTS );
+            Debug.Log(items.ItemName + "add. Slots : " + list.Count + " / " + MAX_SLOTS );
         }
 
         OnInventoryChanged?.Invoke();
         return true;
     }
 
-    public bool HasItem(BaseItems items) => list.Find(slot => slot.Items == items) != null;
-    public int GetQuantity(BaseItems items)
+    [Button]
+    public bool HasItem(BaseItemsData items) => list.Find(slot => slot.Items == items) != null;
+    [Button]
+    public int GetQuantity(BaseItemsData items)
     {
         Node<Inventoryslot> node = list.Find(slot => slot.Items == items);
         return node != null ? node.Value.Quantity : 0;
