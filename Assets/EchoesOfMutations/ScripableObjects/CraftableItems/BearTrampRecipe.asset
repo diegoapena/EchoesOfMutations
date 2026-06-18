@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 46cfa3359554dc14f92944490c5edb2f, type: 3}
-  m_Name: BearTramp
+  m_Name: BearTrampRecipe
   m_EditorClassIdentifier: Assembly-CSharp::ItemRecipe
   itemName: Bear Tramp
   resultPrefab: {fileID: 0}

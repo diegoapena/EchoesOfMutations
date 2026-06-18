@@ -10,10 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 46cfa3359554dc14f92944490c5edb2f, type: 3}
-  m_Name: Barricade
+  m_Name: WoodSpikesRecipe
   m_EditorClassIdentifier: Assembly-CSharp::ItemRecipe
-  itemName: Barricade
+  itemName: Wood spikes
   resultPrefab: {fileID: 0}
   ingredients:
   - material: {fileID: 11400000, guid: 5b9d523b3b066394e88e3d0f8cbab318, type: 2}
-    amount: 4
+    amount: 10

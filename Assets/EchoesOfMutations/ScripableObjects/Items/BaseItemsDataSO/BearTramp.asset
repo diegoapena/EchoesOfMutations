@@ -10,11 +10,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 652945745d013ca4ba3f01852cad1899, type: 3}
-  m_Name: Barricade
+  m_Name: BearTramp
   m_EditorClassIdentifier: Assembly-CSharp::BaseItemsData
-  id: 32
-  itemName: Barricade
+  id: 96
+  itemName: Bear tramp
   isStackable: 1
   maxStack: 99
   itemIcon: {fileID: 0}
-  itemDescription: Use this item to neutralize enemies from the windows
+  itemDescription: 

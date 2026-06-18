@@ -17,7 +17,7 @@ public class PlayerMechanics : MonoBehaviour
         
     }
 
-    public void PickUp(GameObject item)
+    public void GrabItem(GameObject item)
     {
         GameManager.Instance.flashLight.Interact(transform);
         
