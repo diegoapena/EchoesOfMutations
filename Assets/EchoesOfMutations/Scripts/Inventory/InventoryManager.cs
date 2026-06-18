@@ -17,6 +17,8 @@ public class InventoryManager : MonoBehaviour
     public int CurrentWood;
     [FoldoutGroup("Craftable Settings")]
     public int CurrentMetal;
+    [FoldoutGroup("Inventory Settings")]
+    public int SlotActivo = 0;
     
     private void Awake()
     {
@@ -119,7 +121,7 @@ public class InventoryManager : MonoBehaviour
                 return false;
             }
             existingNode.Value.Quantity += Mathf.Min(quantity, freeSpace);
-            Debug.Log("Acumulate" + items.ItemName + " - " + existingNode.Value.Quantity);
+            Debug.Log("Acumulate" + items.ItemName + " -  Item Quantity :" + existingNode.Value.Quantity);
         }
         else
         {
@@ -137,13 +139,58 @@ public class InventoryManager : MonoBehaviour
         return true;
     }
 
+    public bool RemoveItem(BaseItemsData items, int quantity = 1)
+    {
+        Node<Inventoryslot> node = list.Find(slot => slot.Items == items);
+        if (node == null) return false;
+
+        node.Value.Quantity -= quantity;
+
+        if (node.Value.Quantity <= 0) 
+        { 
+            list.Remove(node);         
+        }
+        if(SlotActivo >= list.Count)
+        {
+            SlotActivo = Math.Max(0, list.Count - 1);
+        }
+        OnInventoryChanged?.Invoke();
+        return true;
+    }
+    public Inventoryslot GetActiveSlot()
+    {
+        Inventoryslot[] dates = list.ToArray();
+        if(dates.Length == 0) return null;
+        if(SlotActivo >= dates.Length) return null;
+        return dates[SlotActivo];      
+    }
     [Button]
-    public bool HasItem(BaseItemsData items) => list.Find(slot => slot.Items == items) != null;
+    public bool HasItem(BaseItemsData items)
+    {
+        Node<Inventoryslot> node = list.Find(searchItem);
+        return node != null;
+
+        bool searchItem(Inventoryslot slot)
+        {
+            return slot.Items == items;
+        }
+    }
     [Button]
     public int GetQuantity(BaseItemsData items)
     {
-        Node<Inventoryslot> node = list.Find(slot => slot.Items == items);
-        return node != null ? node.Value.Quantity : 0;
+        Node<Inventoryslot> node = list.Find(searchItem);
+        if(node != null)
+        {
+            return node.Value.Quantity;
+        }
+        else
+        {
+            return 0;
+        }
+        bool searchItem(Inventoryslot slot)
+        {
+            return slot.Items == items;
+        }    
     }
     
     public Inventoryslot[] GetSlots() => list.ToArray();
