@@ -23,13 +23,19 @@ public class PlayerController : MonoBehaviour
     [FoldoutGroup("Jump")]
     public float JumpForce = 5f;
 
-    public float pushForce = 2f;
+    //public float pushForce = 2f;
     
     private bool isSprinting = false;
     private float baseMoveSpeed;
 
     [FoldoutGroup("Interact")]
     public Action OnInteractEvent;
+    public Action<float> OnScroolChanged;
+    public Action OnEquipEvent;
+   
+
+
+
 
     public LayerMask enemyMask;
     public Camera characterCamera;
@@ -61,7 +67,13 @@ public class PlayerController : MonoBehaviour
         inputs.Player.Grab.canceled += ReleaseObject;
 
         inputs.Player.Interact.performed += OnInteract;
+
+        inputs.Player.Next.performed += OnScroll;
+
     }
+
+    
+
     private void OnDisable()
     {
         inputs.Player.Move.performed -= ctx => moveInput = ctx.ReadValue<Vector2>();
@@ -120,12 +132,13 @@ public class PlayerController : MonoBehaviour
         verticalVelocity = JumpForce;
     }
 
+    /*
     private void OnControllerColliderHit(ControllerColliderHit hit)
     {
         Vector3 pushDir = (hit.transform.position - transform.position).normalized;
         if (hit.rigidbody != null)
             hit.rigidbody.AddForce(pushDir * pushForce, ForceMode.Impulse);
-    }
+    } */
   
     private void OnSprint(InputAction.CallbackContext context)
     {
@@ -156,8 +169,18 @@ public class PlayerController : MonoBehaviour
             OnInteractEvent?.Invoke();
         }
     }
+    private void OnScroll(InputAction.CallbackContext context)
+    {
+        /*
+        float value = context.ReadValue<float>();
+        float direcction = value > 0f ? -1 : 1f;
+        OnScroolChanged?.Invoke(direcction);
+        */
+        Debug.Log("Change");
+    }
     private void GrabObject(InputAction.CallbackContext ctx)
     {
+
         Ray ray = new Ray(characterCamera.transform.position, characterCamera.transform.forward);
 
         if (Physics.Raycast(ray, out RaycastHit hit, 10f))
