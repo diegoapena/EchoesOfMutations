@@ -1,10 +1,10 @@
     using UnityEngine;
-using MoreMountains.Feedbacks;
+
 using System.Collections;
 
 public class WoodSpawner : MonoBehaviour
 {
-    public MMF_Player WoodMove; 
+    
     public GameObject woodPrefab; 
     public Transform spawnPoint; 
     private void OnTriggerEnter(Collider other)
@@ -31,15 +31,8 @@ public class WoodSpawner : MonoBehaviour
       
         for (int i = 0; i < 3; i++)
         {
-           
-            GameObject wood = Instantiate(woodPrefab, spawnPoint.position, spawnPoint.rotation);
 
-            
-            MMF_Player feedback = wood.GetComponent<MMF_Player>();
-            if (feedback != null)
-            {
-                feedback.PlayFeedbacks();
-            }
+            GameObject wood = Instantiate(woodPrefab, spawnPoint.position, spawnPoint.rotation);   
 
             yield return new WaitForSeconds(5f);
         }

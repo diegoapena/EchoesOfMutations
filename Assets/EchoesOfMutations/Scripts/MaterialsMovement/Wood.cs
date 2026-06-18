@@ -1,30 +1,21 @@
 using UnityEngine;
-using MoreMountains.Feedbacks;
+
 
 
 public class Wood : MonoBehaviour
 {
-    public Transform startPoint; 
-    public Transform endPoint;   
-    private MMF_Player woodMove; 
+    [SerializeField] private float speed = 3f; // Velocidad del movimiento
+    [SerializeField] private float duration = 5f; // Duración del movimiento
 
-    private void Awake()
+    private float elapsedTime = 0f; // Tiempo transcurrido
+
+    void Update()
     {
-        
-        woodMove = GetComponent<MMF_Player>();
-    }
-
-    public void Initialize(Transform start, Transform end)
-    {
-        
-        startPoint = start;
-        endPoint = end;
-
-        
-        if (woodMove != null)
+        // Mover el objeto hacia adelante mientras no se exceda la duración
+        if (elapsedTime < duration)
         {
-           
-            woodMove.PlayFeedbacks();
+            transform.Translate(Vector3.right * speed * Time.deltaTime);
+            elapsedTime += Time.deltaTime;
         }
     }
 }
