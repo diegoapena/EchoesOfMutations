@@ -19,26 +19,26 @@ public class Linq : MonoBehaviour
     [Button]
     public void TestSelect()
     {
-        var enemyNames = dataBaseEnemies.enemyDataBase[EnemiesVarity.AllEnemies].Select(enemy => enemy.EnemyName).ToList();
+        var enemyNames = dataBaseEnemies.enemyDataBase[EnemiesTypes.AllEnemies].Select(enemy => enemy.EnemyName).ToList();
         enemyNames.ForEach(enemy => Debug.Log(enemy));
     }
     [Button]
     public void TestWhere()
     {
-        var strongEnemies = dataBaseEnemies.enemyDataBase[EnemiesVarity.AllEnemies].Where(enemy => enemy.DamageQuantity > 4).ToList();
+        var strongEnemies = dataBaseEnemies.enemyDataBase[EnemiesTypes.AllEnemies].Where(enemy => enemy.DamageQuantity > 4).ToList();
         strongEnemies.ForEach(enemy => Debug.Log(enemy.EnemyName + " has damage: " + enemy.DamageQuantity));
     }
     [Button]
     public void TestOrderByDescending()
     {
-        var sortedEnemies = dataBaseEnemies.enemyDataBase[EnemiesVarity.AllEnemies].OrderByDescending(enemy => enemy.Id).ToList();
+        var sortedEnemies = dataBaseEnemies.enemyDataBase[EnemiesTypes.AllEnemies].OrderByDescending(enemy => enemy.Id).ToList();
         sortedEnemies.ForEach(enemy => Debug.Log(enemy.EnemyName + " has ID: " + enemy.Id));
     }
 
     [Button]
     public void ChainLinq()
     {
-        var strongSortedEnemies = dataBaseEnemies.enemyDataBase[EnemiesVarity.AllEnemies]
+        var strongSortedEnemies = dataBaseEnemies.enemyDataBase[EnemiesTypes.AllEnemies]
             .Where(enemy => enemy.DamageQuantity > 3)
             .OrderByDescending(enemy => enemy.Id)
             .Take(1)

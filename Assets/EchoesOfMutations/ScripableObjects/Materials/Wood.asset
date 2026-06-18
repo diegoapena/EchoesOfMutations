@@ -9,11 +9,8 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 652945745d013ca4ba3f01852cad1899, type: 3}
+  m_Script: {fileID: 11500000, guid: 4a288c6a39da4dd4980d204f10219650, type: 3}
   m_Name: Wood
-  m_EditorClassIdentifier: Assembly-CSharp::BaseItemsData
-  id: 30
-  itemName: Wood
-  itemPrefab: {fileID: 0}
-  itemIcon: {fileID: 0}
-  itemDescription: 
+  m_EditorClassIdentifier: Assembly-CSharp::BaseMaterialData
+  materialName: Wood
+  icon: {fileID: 0}

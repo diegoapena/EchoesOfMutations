@@ -7,8 +7,8 @@ public class DataBaseItems : SerializedScriptableObject
     [FoldoutGroup("References"),PreviewField(150)]
     public GameObject itemPrefab;
 
-    public Dictionary<ItemsVarity, List<BaseItemsData>> itemDataBase = new();
-    public BaseItemsData GetItem(ItemsVarity itemType, string itemName)
+    public Dictionary<ItemsTypes, List<BaseItemsData>> itemDataBase = new();
+    public BaseItemsData GetItem(ItemsTypes itemType, string itemName)
     {
         if (itemDataBase.TryGetValue(itemType, out List<BaseItemsData> items))
         {
