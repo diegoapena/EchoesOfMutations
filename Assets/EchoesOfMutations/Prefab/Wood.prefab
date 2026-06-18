@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 4460714665878755200}
   - component: {fileID: 5843847709037336654}
   m_Layer: 0
-  m_Name: Rock
+  m_Name: Wood
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -108,7 +108,7 @@ BoxCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
@@ -127,7 +127,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: MoreMountains.Tools::MoreMountains.Feedbacks.MMF_Player
   Feedbacks: []
-  InitializationMode: 2
+  InitializationMode: 0
   AutoInitialization: 1
   SafeMode: 3
   Direction: 0

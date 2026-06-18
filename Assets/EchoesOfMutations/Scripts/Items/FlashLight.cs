@@ -18,24 +18,14 @@ public class FlashLight : MonoBehaviour, IInteractable
     }
 
     private void OnEnable()
-    {
-       
-        
+    { 
             GameManager.Instance.playerManager.playerController.OnInteractEvent += DetectPosition;
             GameManager.Instance.playerManager.playerController.inputs.Player.FlashLight.performed += OnFlashLightAction;
         
        
     }
 
-    private void OnDisable()
-    {
-       
-        
-            GameManager.Instance.playerManager.playerController.OnInteractEvent -= DetectPosition;
-            GameManager.Instance.playerManager.playerController.inputs.Player.FlashLight.performed -= OnFlashLightAction;
-        
-    }
-   
+  
     void Update()
     {
        

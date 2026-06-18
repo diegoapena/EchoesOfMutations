@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Car
   - Barricade
+  - Box
   layers:
   - Default
   - TransparentFX

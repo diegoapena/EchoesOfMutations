@@ -32,6 +32,9 @@ public class PlayerController : MonoBehaviour
     public Action OnInteractEvent;
 
     public LayerMask enemyMask;
+    public Camera characterCamera;
+    public Transform holdpoint;
+    private Rigidbody grabbedObject;
 
     private void Awake()
     {
@@ -49,16 +52,33 @@ public class PlayerController : MonoBehaviour
         inputs.Player.Move.performed += ctx => moveInput = ctx.ReadValue<Vector2>();
         inputs.Player.Move.canceled += ctx => moveInput = Vector2.zero;
         inputs.Player.Jump.performed += Jump_performed;
-       
+
         inputs.Player.Sprint.performed += OnSprint;
         inputs.Player.Sprint.canceled += OnSprintCanceled;
 
-        inputs.Player.Interact.performed += OnInteract;
+        
+        inputs.Player.Grab.performed += GrabObject;
+        inputs.Player.Grab.canceled += ReleaseObject;
 
-       // inputs.Player.Attack.performed += OnAttack;
+        inputs.Player.Interact.performed += OnInteract;
+    }
+    private void OnDisable()
+    {
+        inputs.Player.Move.performed -= ctx => moveInput = ctx.ReadValue<Vector2>();
+        inputs.Player.Move.canceled -= ctx => moveInput = Vector2.zero;
+        inputs.Player.Jump.performed -= Jump_performed;
+
+        inputs.Player.Sprint.performed -= OnSprint;
+        inputs.Player.Sprint.canceled -= OnSprintCanceled;
+
+        
+        inputs.Player.Grab.performed -= GrabObject;
+        inputs.Player.Grab.canceled -= ReleaseObject;
+
+        inputs.Player.Interact.performed -= OnInteract;
     }
 
-    
+
 
     void Start()
     {
@@ -72,7 +92,7 @@ public class PlayerController : MonoBehaviour
     }
 
     public void Movement()
-    {
+    {  
       
         float currentSpeed = isSprinting ? baseMoveSpeed * 2 : baseMoveSpeed;
 
@@ -136,6 +156,36 @@ public class PlayerController : MonoBehaviour
             OnInteractEvent?.Invoke();
         }
     }
+    private void GrabObject(InputAction.CallbackContext ctx)
+    {
+        Ray ray = new Ray(characterCamera.transform.position, characterCamera.transform.forward);
+
+        if (Physics.Raycast(ray, out RaycastHit hit, 10f))
+        {
+            if (hit.collider.CompareTag("Box"))
+            {
+                grabbedObject = hit.collider.GetComponent<Rigidbody>();
+
+                if (grabbedObject != null)
+                {
+                    grabbedObject.useGravity = false;
+                    grabbedObject.transform.SetParent(holdpoint); 
+                    grabbedObject.transform.localPosition = Vector3.zero; 
+                    grabbedObject.transform.localRotation = Quaternion.identity; 
+                }
+            }
+        }
+    }
+    private void ReleaseObject(InputAction.CallbackContext ctx)
+    {
+        if (grabbedObject != null)
+        {
+            grabbedObject.useGravity = true;
+            grabbedObject.transform.SetParent(null); 
+            grabbedObject = null;
+        }
+    }
+
     /*private void OnAttack(InputAction.CallbackContext context)
     {
         if(Physics.SphereCast(WeaponShootAnchor.position , 3f, WeaponShootAnchor.transform.forward , out RaycastHit hit ,100 , enemyMask))

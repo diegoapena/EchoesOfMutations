@@ -21,7 +21,7 @@ public class GameManager : MonoBehaviour
     public TestCinematicMutant mutantCinematic;
     [FoldoutGroup("Cinematic")]
     public Collition collition;
-    private void Awake()
+   private void Awake()
     {
         if (Instance == null)
         {
@@ -33,6 +33,7 @@ public class GameManager : MonoBehaviour
             Destroy(gameObject);
         }
     }
+   
  
     void Update()
     {
