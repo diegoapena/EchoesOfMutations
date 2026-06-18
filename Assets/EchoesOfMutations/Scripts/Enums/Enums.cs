@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public enum EnemiesVarity
+public enum EnemiesTypes
 {
     None,
     Small,
@@ -9,7 +9,7 @@ public enum EnemiesVarity
     Boss,
     AllEnemies
 }
-public enum ItemsVarity
+public enum ItemsTypes
 {
     None,
     Interactable,

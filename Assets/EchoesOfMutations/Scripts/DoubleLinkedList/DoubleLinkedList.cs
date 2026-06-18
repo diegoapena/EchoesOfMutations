@@ -19,7 +19,7 @@ public class DoubleLinkedList<T>
         else
         {
             newNode.SetPrev(tail);
-            head.SetPrev(newNode);
+            tail.SetPrev(newNode);
             tail = newNode;
         }
         count++;

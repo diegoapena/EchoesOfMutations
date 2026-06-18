@@ -5,8 +5,8 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "DataBaseEnemy", menuName = "EchoesOfMutations/DataBaseEnemy")]
 public class DataBaseEnemies : SerializedScriptableObject
 {
-    public Dictionary<EnemiesVarity, List<BaseEnemiesData>> enemyDataBase = new();
-       public BaseEnemiesData GetEnemy(EnemiesVarity enemyType, string enemyName)
+    public Dictionary<EnemiesTypes, List<BaseEnemiesData>> enemyDataBase = new();
+       public BaseEnemiesData GetEnemy(EnemiesTypes enemyType, string enemyName)
         {
             if (enemyDataBase.TryGetValue(enemyType, out List<BaseEnemiesData> enemies))
             {
