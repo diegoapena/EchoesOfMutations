@@ -358,6 +358,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::GameManager
   playerManager: {fileID: 1846421747}
+  animationManager: {fileID: 0}
   flashLight: {fileID: 1111570774}
   barricade: {fileID: 0}
   normalEnemy: {fileID: 0}
@@ -1907,6 +1908,7 @@ MonoBehaviour:
   Crafting: {fileID: 0}
   CurrentWood: 0
   CurrentMetal: 0
+  SlotActivo: 0
 --- !u!4 &380497399
 Transform:
   m_ObjectHideFlags: 0
@@ -11261,6 +11263,10 @@ PrefabInstance:
     - target: {fileID: 8816475528842848093, guid: 818b0e22b28bcc84499d001b47c87c58, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9181930328376627942, guid: 818b0e22b28bcc84499d001b47c87c58, type: 3}
+      propertyPath: enemyMask.m_Bits
+      value: 64
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
