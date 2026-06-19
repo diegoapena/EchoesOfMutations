@@ -182,7 +182,7 @@ public class PlayerController : MonoBehaviour
 
         if (Physics.Raycast(ray, out RaycastHit hit, 10f))
         {
-            if (hit.collider.CompareTag("Box"))
+            if (hit.collider.CompareTag("MetalBox") || hit.collider.CompareTag("WoodBox"))
             {
                 grabbedObject = hit.collider.GetComponent<Rigidbody>();
 

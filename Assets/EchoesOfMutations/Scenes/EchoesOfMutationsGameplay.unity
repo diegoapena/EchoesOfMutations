@@ -2576,7 +2576,6 @@ MonoBehaviour:
   moveInput: {x: 0, y: 0}
   verticalVelocity: 0
   JumpForce: 5
-  pushForce: 2
   enemyMask:
     serializedVersion: 2
     m_Bits: 0
@@ -18993,6 +18992,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4035b44242399704a82fbb4941488442, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::FlashLight
+  itemData: {fileID: 0}
+  quantity: 0
+  isInInventory: 0
+  isOn: 0
 --- !u!114 &1111570775
 MonoBehaviour:
   m_ObjectHideFlags: 0
