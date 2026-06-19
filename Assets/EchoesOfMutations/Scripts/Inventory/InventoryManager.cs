@@ -11,6 +11,7 @@ public class InventoryManager : MonoBehaviour
     public const int MAX_SLOTS = 9;
     private DoubleLinkedList<Inventoryslot> list = new();
     public static event Action OnInventoryChanged;
+    public static event Action OnSlotChanged;
     [FoldoutGroup("Craftable Settings")]
     private Dictionary<BaseMaterialData, int> materials = new();
     [FoldoutGroup("Craftable Settings")]
@@ -18,7 +19,9 @@ public class InventoryManager : MonoBehaviour
     [FoldoutGroup("Craftable Settings")]
     public int CurrentMetal;
     [FoldoutGroup("Inventory Settings")]
-    public int SlotActivo = 0;
+    public int ActiveSlot = 0;
+
+    
     
     private void Awake()
     {
@@ -36,6 +39,8 @@ public class InventoryManager : MonoBehaviour
        
         
     }
+    
+
     void Start()
     {
         
@@ -150,19 +155,36 @@ public class InventoryManager : MonoBehaviour
         { 
             list.Remove(node);         
         }
-        if(SlotActivo >= list.Count)
+        if(ActiveSlot >= list.Count)
         {
-            SlotActivo = Math.Max(0, list.Count - 1);
+            ActiveSlot = Math.Max(0, list.Count - 1);
         }
         OnInventoryChanged?.Invoke();
         return true;
+    }
+    public void ChangeSlot(int direcction)
+    {
+        if (list.Count == 0) return;
+
+        
+        ActiveSlot+= direcction;
+
+        if (ActiveSlot >= list.Count)
+        {
+            ActiveSlot = 0;
+        }
+        if (ActiveSlot < 0)
+        {
+            ActiveSlot = list.Count - 1;
+        }
+        OnSlotChanged?.Invoke();
     }
     public Inventoryslot GetActiveSlot()
     {
         Inventoryslot[] dates = list.ToArray();
         if(dates.Length == 0) return null;
-        if(SlotActivo >= dates.Length) return null;
-        return dates[SlotActivo];      
+        if(ActiveSlot >= dates.Length) return null;
+        return dates[ActiveSlot];      
     }
     [Button]
     public bool HasItem(BaseItemsData items)

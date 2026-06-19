@@ -10,5 +10,5 @@ public class Inventoryslot
         Items = items;
         Quantity = quantity;
     }
-    public bool isEmpty => Items == null;
+    public bool IsEmpty => Items == null;
 }

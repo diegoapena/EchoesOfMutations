@@ -3,11 +3,13 @@ using UnityEngine.InputSystem;
 
 public class FlashLight : MonoBehaviour, IInteractable
 {
-    private bool isInInventory = false; 
-    private bool isOn = false; 
+    [SerializeField] private bool isInInventory = false;
+    [SerializeField] private bool isOn = false; 
     
-    private Light flashlightLight; 
-    
+    private Light flashlightLight;
+
+    [SerializeField] private BaseItemsData itemData;
+    [SerializeField] private int quantity;
 
     private void Awake()
     {
@@ -19,9 +21,9 @@ public class FlashLight : MonoBehaviour, IInteractable
 
     private void OnEnable()
     { 
-            GameManager.Instance.playerManager.playerController.OnInteractEvent += DetectPosition;
+            PlayerController.OnInteractEvent += TryPickUp;
             GameManager.Instance.playerManager.playerController.inputs.Player.FlashLight.performed += OnFlashLightAction;
-        
+            
        
     }
 
@@ -40,13 +42,18 @@ public class FlashLight : MonoBehaviour, IInteractable
         }
     }
 
-    public void DetectPosition()
+    public void TryPickUp()
     {
+        if (itemData == null) return;
+
         if (Vector3.Distance(transform.position, GameManager.Instance.playerManager.transform.position) < 2.5f)
         {
-            //GameManager.Instance.playerManager.playerMechanics.GrabItem(gameObject);
-            isInInventory = true; 
-           
+            bool exito = InventoryManager.Instance.Pickup(itemData, quantity);
+            if (exito) 
+            {
+                GameManager.Instance.playerManager.playerMechanics.GrabItem(gameObject);
+            }      
+            isInInventory = true;          
         }
     }
 

@@ -16,5 +16,6 @@ MonoBehaviour:
   itemName: Weapon
   isStackable: 1
   maxStack: 99
+  itemTypes: 1
   itemIcon: {fileID: 0}
   itemDescription: Help you complete the game

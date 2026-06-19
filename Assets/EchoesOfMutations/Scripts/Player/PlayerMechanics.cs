@@ -16,6 +16,7 @@ public class PlayerMechanics : MonoBehaviour
 
     }
 
+    
     public void GrabItem(GameObject item)
     {
         GameManager.Instance.flashLight.Interact(transform);
@@ -26,6 +27,6 @@ public class PlayerMechanics : MonoBehaviour
         item.transform.localPosition = Vector3.zero;
         item.transform.localRotation = Quaternion.identity;
     }
-
+    
     
 }

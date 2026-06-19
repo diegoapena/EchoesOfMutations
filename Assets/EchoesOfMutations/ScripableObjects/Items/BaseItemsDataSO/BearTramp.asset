@@ -16,5 +16,6 @@ MonoBehaviour:
   itemName: Bear tramp
   isStackable: 1
   maxStack: 99
+  itemTypes: 2
   itemIcon: {fileID: 0}
   itemDescription: 

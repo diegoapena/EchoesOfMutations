@@ -14,6 +14,5 @@ public enum ItemsTypes
     None,
     Interactable,
     Craftable,
-    Material,
-    AllItems
+    Material
 }

@@ -16,6 +16,7 @@ public class Linq : MonoBehaviour
     {
         
     }
+    /*
     [Button]
     public void TestSelect()
     {
@@ -46,4 +47,5 @@ public class Linq : MonoBehaviour
 
         strongSortedEnemies.ForEach(enemy => Debug.Log(enemy));
     }
+    */
 }

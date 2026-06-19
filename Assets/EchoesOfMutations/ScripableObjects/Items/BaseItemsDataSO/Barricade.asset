@@ -16,5 +16,6 @@ MonoBehaviour:
   itemName: Barricade
   isStackable: 1
   maxStack: 99
+  itemTypes: 2
   itemIcon: {fileID: 0}
   itemDescription: Use this item to neutralize enemies from the windows

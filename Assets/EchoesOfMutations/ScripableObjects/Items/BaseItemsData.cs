@@ -13,6 +13,7 @@ public class BaseItemsData : ScriptableObject
     [SerializeField] private bool isStackable = true;
     [FoldoutGroup("Settings")]
     [SerializeField]private int maxStack = 99;
+    [FoldoutGroup("Settings")]
     [SerializeField] private ItemsTypes itemTypes;
     [FoldoutGroup("Settings"), PreviewField(150)]
     public Sprite itemIcon;

@@ -3,6 +3,7 @@ using System.Threading;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using Sirenix.OdinInspector;
+using Unity.VisualScripting;
 
 public class PlayerController : MonoBehaviour
 {
@@ -29,9 +30,8 @@ public class PlayerController : MonoBehaviour
     private float baseMoveSpeed;
 
     [FoldoutGroup("Interact")]
-    public Action OnInteractEvent;
-    public Action<float> OnScroolChanged;
-    public Action OnEquipEvent;
+    public static  Action OnInteractEvent;
+    public static  Action<float> OnScrollChanged;  
    
 
 
@@ -71,9 +71,6 @@ public class PlayerController : MonoBehaviour
         inputs.Player.Next.performed += OnScroll;
 
     }
-
-    
-
     private void OnDisable()
     {
         inputs.Player.Move.performed -= ctx => moveInput = ctx.ReadValue<Vector2>();
@@ -171,12 +168,10 @@ public class PlayerController : MonoBehaviour
     }
     private void OnScroll(InputAction.CallbackContext context)
     {
-        /*
-        float value = context.ReadValue<float>();
-        float direcction = value > 0f ? -1 : 1f;
-        OnScroolChanged?.Invoke(direcction);
-        */
-        Debug.Log("Change");
+        Vector2 scroll = context.ReadValue<Vector2>();
+        float direcction = scroll.y > 0f ? 1f : -1f;
+        OnScrollChanged?.Invoke(direcction);
+        Debug.Log("Change Slot");     
     }
     private void GrabObject(InputAction.CallbackContext ctx)
     {

@@ -16,13 +16,10 @@ MonoBehaviour:
     SerializedFormat: 2
     SerializedBytes: 
     ReferencedUnityObjects:
-    - {fileID: 11400000, guid: 7b99d1376f53a9d4692b8b1fb0d5da85, type: 2}
     - {fileID: 11400000, guid: 2bc7320cd54e7914b9fa8b59b53b5b81, type: 2}
+    - {fileID: 11400000, guid: 7f0d61d01d3c2f44bbffabb97570a842, type: 2}
     - {fileID: 11400000, guid: 87cf020d7d9010d44b30ed8dcebba274, type: 2}
     - {fileID: 11400000, guid: 9b0af40b342a7044595983e864eee01b, type: 2}
-    - {fileID: 11400000, guid: 16fb715201b8b364b9340ce73b122f5e, type: 2}
-    - {fileID: 11400000, guid: e019dbac9176dd645a193d7063732326, type: 2}
-    - {fileID: 11400000, guid: 2675781338ebbb64386456bf2faf1c26, type: 2}
     SerializedBytesString: 
     Prefab: {fileID: 0}
     PrefabModificationsReferencedUnityObjects: []
@@ -30,11 +27,11 @@ MonoBehaviour:
     SerializationNodes:
     - Name: itemDataBase
       Entry: 7
-      Data: 0|System.Collections.Generic.Dictionary`2[[ItemsVarity, Assembly-CSharp],[System.Collections.Generic.List`1[[BaseItemsData,
+      Data: 0|System.Collections.Generic.Dictionary`2[[ItemsTypes, Assembly-CSharp],[System.Collections.Generic.List`1[[BaseItemsData,
         Assembly-CSharp]], mscorlib]], mscorlib
     - Name: comparer
       Entry: 7
-      Data: 1|System.Collections.Generic.EnumEqualityComparer`1[[ItemsVarity, Assembly-CSharp]],
+      Data: 1|System.Collections.Generic.EnumEqualityComparer`1[[ItemsTypes, Assembly-CSharp]],
         mscorlib
     - Name: 
       Entry: 12
@@ -88,16 +85,13 @@ MonoBehaviour:
         mscorlib
     - Name: 
       Entry: 12
-      Data: 3
+      Data: 2
     - Name: 
       Entry: 10
       Data: 2
     - Name: 
       Entry: 10
       Data: 3
-    - Name: 
-      Entry: 10
-      Data: 4
     - Name: 
       Entry: 13
       Data: 
@@ -121,19 +115,10 @@ MonoBehaviour:
       Entry: 12
       Data: 2
     - Name: 
-      Entry: 10
-      Data: 5
-    - Name: 
-      Entry: 10
-      Data: 6
-    - Name: 
-      Entry: 13
+      Entry: 6
       Data: 
     - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 8
+      Entry: 6
       Data: 
     - Name: 
       Entry: 13
@@ -141,4 +126,12 @@ MonoBehaviour:
     - Name: 
       Entry: 8
       Data: 
-  itemPrefab: {fileID: 0}
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 13
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
