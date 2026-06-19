@@ -17,7 +17,7 @@ public class Car : MonoBehaviour
 
     public void Move()
     {
-        Vector3 Dir = Vector3.left * speed * Time.deltaTime;
+        Vector3 Dir = Vector3.right * speed * Time.deltaTime;
         transform.position -= Dir;
     }
 }
