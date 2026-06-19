@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class BaseItems : MonoBehaviour , IDamageable
+public class BaseCraftable : MonoBehaviour , IDamageable
 {
     public float durability;
 

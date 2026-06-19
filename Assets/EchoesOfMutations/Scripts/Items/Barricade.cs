@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class Barricade : BaseItems 
+public class Barricade : BaseCraftable 
 {
     
 

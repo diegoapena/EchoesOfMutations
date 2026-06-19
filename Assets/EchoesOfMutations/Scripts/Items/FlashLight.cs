@@ -1,15 +1,14 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-public class FlashLight : MonoBehaviour, IInteractable
+public class FlashLight : BaseInteractableObj, IInteractable
 {
     [SerializeField] private bool isInInventory = false;
     [SerializeField] private bool isOn = false; 
     
     private Light flashlightLight;
 
-    [SerializeField] private BaseItemsData itemData;
-    [SerializeField] private int quantity;
+    
 
     private void Awake()
     {
@@ -21,10 +20,8 @@ public class FlashLight : MonoBehaviour, IInteractable
 
     private void OnEnable()
     { 
-            PlayerController.OnInteractEvent += TryPickUp;
-            GameManager.Instance.playerManager.playerController.inputs.Player.FlashLight.performed += OnFlashLightAction;
-            
-       
+        PlayerController.OnInteractEvent += TryPickUp;
+        GameManager.Instance.playerManager.playerController.inputs.Player.FlashLight.performed += OnFlashLightAction;
     }
 
   

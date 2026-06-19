@@ -31,8 +31,12 @@ public class EquipManager : MonoBehaviour
     {
         PlayerController.OnScrollChanged += OnScroll ;
     }
+    private void OnDisable()
+    {
+        
+    }
 
-    
+
     void Start()
     {
         

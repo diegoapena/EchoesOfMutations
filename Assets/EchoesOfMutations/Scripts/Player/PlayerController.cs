@@ -85,6 +85,8 @@ public class PlayerController : MonoBehaviour
         inputs.Player.Grab.canceled -= ReleaseObject;
 
         inputs.Player.Interact.performed -= OnInteract;
+
+        inputs.Player.Next.performed -= OnScroll;
     }
 
 
