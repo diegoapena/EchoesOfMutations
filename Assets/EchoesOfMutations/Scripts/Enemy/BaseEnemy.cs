@@ -9,8 +9,7 @@ public class BaseEnemy : MonoBehaviour
 {
     [FoldoutGroup ("References")]
     public NavMeshAgent agent;
-    [FoldoutGroup("References")]
-    public Transform Raycast;
+    
 
     [FoldoutGroup("Attack Settings")]
     public float damageToObjects;
@@ -26,9 +25,11 @@ public class BaseEnemy : MonoBehaviour
     public LayerMask LayerBarricades;
     private void Awake()
     {
-        agent = GetComponent<NavMeshAgent>();
+        
+       
        // CurrentBarricade =  GetComponent<GameObject>();
     }
+
     void Start()
     {       
     }
@@ -109,7 +110,8 @@ public class BaseEnemy : MonoBehaviour
                 }               
             }      
         }
-    }  
+    }
+    
     public IEnumerator EnableAttack()
     {
         CurrentAttackCD = 0;

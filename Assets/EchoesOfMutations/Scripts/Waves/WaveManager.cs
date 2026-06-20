@@ -1,18 +1,34 @@
 using NUnit.Framework;
 using Sirenix.OdinInspector;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class WaveManager : MonoBehaviour
 {
+    [FoldoutGroup("Wave Settings")]
+    [SerializeField] private List<BaseWaveData> waves = new();
+    [FoldoutGroup("Wave Settings")]
     [SerializeField] private Transform[] spawnPoints;
-    [SerializeField] private List<BaseWaveData> waves;
-    [SerializeField] private List<GameObject> activesEnemies = new();
-    [SerializeField] private int currentWave;
-    public MyQueue<BaseWaveData> waveQueue = new();
+    [FoldoutGroup("Wave Settings/ Spawn Settings")]
+    [SerializeField] private float timeBetweenSpawns = 0.5f;
+    [FoldoutGroup("Wave Settings/ Spawn Settings")]
+    [SerializeField] private float timeBeforeFirstWave = 3f;
+    public UnityEvent<int> OnWaveStarted;
+    public UnityEvent<int> OnWaveCleared;
+    public UnityEvent<float> OnWaveCountDown;
+    public UnityEvent OnAllWavesCompleted;
+    private MyQueue<GameObject> spawnQueue = new();
+    private List<GameObject> aliveEnemies = new();
+    private int currentWaveIndex = -1;
+    private bool isSpawning = false;
+
+
+    
     void Start()
     {
-        
+        StartCoroutine(BeginWaveSystem());
     }
 
     
@@ -20,11 +36,12 @@ public class WaveManager : MonoBehaviour
     {
         
     }
+    /*
     [Button]
     public void WaveEnqueue(BaseWaveData waveData)
     {
         waveQueue.Enqueue(waveData);
-        currentWave = waveData.WaveNumber;
+        currentWaveIndex = waveData.WaveNumber;
         Debug.Log("Wave # : " + waveData.WaveNumber + " has started");
     }
     [Button]
@@ -44,7 +61,94 @@ public class WaveManager : MonoBehaviour
         waveQueue.Clear();
         Debug.Log("Wave Queue Cleared");
     }
+    */
+    private IEnumerator BeginWaveSystem()
+    {
+        yield return new WaitForSeconds(timeBeforeFirstWave);
+        StartNextWave();
+    }
 
+    private void StartNextWave()
+    {
+        currentWaveIndex++;
+        if (currentWaveIndex >= waves.Count)
+        {
+            OnAllWavesCompleted?.Invoke();
+            return;
+        }
+        BaseWaveData wave = waves[currentWaveIndex];
+        FillQueueWithWave(wave);
+        OnWaveStarted?.Invoke(currentWaveIndex + 1);
+        StartCoroutine(SpawnWave(wave));
+
+    }
+
+    private void FillQueueWithWave(BaseWaveData wave)
+    {
+        spawnQueue.Clear();
+        foreach (EnemySpawnData spawnData in wave.Enemies)
+        {
+            for (int i = 0; i < spawnData.Amount; i++) 
+            { 
+                spawnQueue.Enqueue(spawnData.EnemyPrefab);         
+            }
+        }
+    }
+    private IEnumerator SpawnWave(BaseWaveData wave)
+    {
+        isSpawning = true;
+        while (spawnQueue.Count > 0) 
+        { 
+            GameObject prefabToSpwan = spawnQueue.Dequeue();
+            SpawnEnemy(prefabToSpwan);
+            yield return new WaitForSeconds(timeBetweenSpawns);
+        
+        }
+        isSpawning = false;
+
+        yield return new WaitUntil(() => AllEnemiesDead());
+
+        OnWaveCleared?.Invoke(currentWaveIndex + 1);
+
+        yield return StartCoroutine(WaveCountdown(wave.TimeUntilNextWave));
+        StartNextWave();
+    }
+
+    private IEnumerator WaveCountdown(float duration)
+    {
+        float reaniming = duration;
+        while(reaniming > 0f)
+        {
+            OnWaveCountDown?.Invoke(reaniming);
+            reaniming -= Time.deltaTime;
+            yield return null;
+        }
+        OnWaveCountDown?.Invoke(0f);
+    }
+
+    private void SpawnEnemy(GameObject prefab)
+    {
+        if (prefab == null || spawnPoints == null || spawnPoints.Length == 0) return;
+
+        Transform point = spawnPoints[Random.Range(0,spawnPoints.Length)];
+        GameObject enemyInstance = Instantiate(prefab , point.position , point.rotation);
+        aliveEnemies.Add(enemyInstance);
+    }
+    private void HandleEnemyDeath(GameObject enemy)
+    {
+        aliveEnemies.Remove(enemy);
+    }
+    private bool AllEnemiesDead()
+    {
+        aliveEnemies.RemoveAll(e => e == null);
+        return aliveEnemies.Count == 0;
+    }
+
+    public int CurrentWaveNumber => currentWaveIndex + 1;
+    public int TotalWaves => waves.Count;
+    public int EnemiesReanimingInQueue => spawnQueue.Count;
+    public int EnemiesAlive => aliveEnemies.Count;
+    public bool IsSpawning => isSpawning;
 }
 
 
