@@ -6,7 +6,7 @@ public class PlayerMechanics : MonoBehaviour
 {
     public Transform ItemContainer;
     private GameObject currentItem;
-   
+    
 
 
 
@@ -17,13 +17,13 @@ public class PlayerMechanics : MonoBehaviour
     }
 
     
-    public void GrabItem(GameObject item)
-    {
-        GameManager.Instance.flashLight.Interact(transform);
-
+    public void GrabItem(GameObject item )
+    {       
+        
         currentItem = item;
-        item.transform.SetParent(ItemContainer);
 
+        
+        item.transform.SetParent(ItemContainer);
         item.transform.localPosition = Vector3.zero;
         item.transform.localRotation = Quaternion.identity;
     }

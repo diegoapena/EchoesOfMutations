@@ -3,7 +3,7 @@ using UnityEngine;
 public class Node<T>
 {
     #region Properties
-    private T value = default;
+    private T value = default ;
     private Node<T> next;
     private Node<T> prev;
     #endregion
@@ -12,18 +12,16 @@ public class Node<T>
     {
         this.value = value;
     }
-
-    public void SetNext(Node<T> next) 
+    public void SetNext(Node<T> next)
     {
         this.next = next;
     }
-
-    public void SetPrev(Node<T> prev) 
-    { 
-        this.prev = prev; 
+    public void SetPrev(Node<T> prev)
+    {
+        this.prev = prev;
     }
     #endregion
-    #region Getters
+    #region Getter
     public T Value => value;
     public Node<T> Next => next;
     public Node<T> Prev => prev;

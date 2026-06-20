@@ -12,8 +12,9 @@ GameObject:
   - component: {fileID: 8695856325348819550}
   - component: {fileID: 2418666393941469632}
   - component: {fileID: 6822456778411120434}
+  - component: {fileID: 546786298192369360}
   m_Layer: 0
-  m_Name: Weapon
+  m_Name: Gun
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -27,8 +28,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1971714654317476139}
   serializedVersion: 2
-  m_LocalRotation: {x: -0.011689276, y: 0.012901158, z: 0.00015078486, w: -0.9998485}
-  m_LocalPosition: {x: 0.59135735, y: -0.34052128, z: 0.5289875}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 0.22032937, y: 0.14877702, z: 1.1659025}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -113,6 +114,25 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &546786298192369360
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1971714654317476139}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ce87c3ecdfbd82b4bbcf0de25bd21196, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Gun
+  itemData: {fileID: 11400000, guid: 2bc7320cd54e7914b9fa8b59b53b5b81, type: 2}
+  quantity: 0
+  gunMuzzle: {fileID: 5417854489116423610}
+  enemyMask:
+    serializedVersion: 2
+    m_Bits: 64
+  RayPrefab: {fileID: 669402000536526204, guid: a1e0d664694009e41b691b86a70afe1d, type: 3}
 --- !u!1 &7358206325699628748
 GameObject:
   m_ObjectHideFlags: 0
@@ -123,7 +143,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5417854489116423610}
   m_Layer: 0
-  m_Name: WeaponShootAnchor
+  m_Name: Muzzle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -138,7 +158,7 @@ Transform:
   m_GameObject: {fileID: 7358206325699628748}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0, y: 0, z: 0.504}
+  m_LocalPosition: {x: -0, y: 0, z: 0.5094}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []

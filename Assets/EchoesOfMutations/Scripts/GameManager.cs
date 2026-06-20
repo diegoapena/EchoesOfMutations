@@ -6,11 +6,14 @@ public class GameManager : MonoBehaviour
     public static GameManager Instance;
     public PlayerManager playerManager;
     public Animator animationManager;
+    public InventoryManager invetoryManager;
 
     [FoldoutGroup("Items")]
     public FlashLight flashLight;
     [FoldoutGroup("Items")]
     public Barricade barricade;
+    [FoldoutGroup("Items")]
+    public Gun gun;
 
     [FoldoutGroup("BaseEnemy")]
     public NormalEnemy normalEnemy;
