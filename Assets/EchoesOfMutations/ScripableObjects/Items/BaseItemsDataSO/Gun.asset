@@ -18,3 +18,4 @@ MonoBehaviour:
   maxStack: 99
   itemIcon: {fileID: 0}
   itemDescription: Help you complete the game
+  itemType: 1

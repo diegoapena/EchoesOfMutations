@@ -17,6 +17,7 @@ public class BaseItemsData : ScriptableObject
     public Sprite itemIcon;
     [FoldoutGroup("Settings"), TextArea(2,10)]
     [SerializeField] private string itemDescription;
+    [SerializeField] private ItemsTypes itemType;
 
 
     public int Id => id;
@@ -24,4 +25,5 @@ public class BaseItemsData : ScriptableObject
     public bool IsStackable => isStackable;
     public int MaxStack => maxStack;
     public string ItemDescription => itemDescription;
+    public ItemsTypes ItemType => itemType;
 }
