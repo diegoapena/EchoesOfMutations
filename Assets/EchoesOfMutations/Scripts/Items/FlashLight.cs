@@ -29,18 +29,19 @@ public class FlashLight : BaseInteractableObj, IInteractable
        
     
     }
-
-    
-    
-   
-
     public void ToggleFlashlight()
     {
-        if (flashlightLight != null)
+
+        if (isInInventory)
         {
-            isOn = !isOn;
-            flashlightLight.enabled = isOn; 
+            if (flashlightLight != null)
+            {
+                isOn = !isOn;
+                flashlightLight.enabled = isOn;
+            }
         }
+        
     }  
+   
 }
     

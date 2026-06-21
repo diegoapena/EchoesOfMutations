@@ -65,7 +65,7 @@ public class PlayerController : MonoBehaviour
         inputs.Player.Sprint.performed += OnSprint;
         inputs.Player.Sprint.canceled += OnSprintCanceled;
 
-        //inputs.Player.Attack.performed += OnAttack;
+        inputs.Player.Attack.performed += OnAttack;
 
         inputs.Player.FlashLight.performed += TurnObj;
 
@@ -101,7 +101,9 @@ public class PlayerController : MonoBehaviour
         inputs.Player.Sprint.performed -= OnSprint;
         inputs.Player.Sprint.canceled -= OnSprintCanceled;
 
-        inputs.Player.FlashLight.performed += TurnObj;
+        inputs.Player.Attack.performed -= OnAttack;
+
+        inputs.Player.FlashLight.performed -= TurnObj;
 
         inputs.Player.Grab.performed -= GrabObject;
 
@@ -235,12 +237,11 @@ public class PlayerController : MonoBehaviour
         OnRemoveItem?.Invoke();
     }
 
-    /*
+    
     private void OnAttack(InputAction.CallbackContext context)
     {
-        if(GameManager.Instance.gun.IsInInventory == true)
-        {
-            Physics.SphereCast(gunMuzzle.position, 3f, gunMuzzle.transform.forward, out RaycastHit hit, 100f, enemyMask);
+        if(Physics.SphereCast(gunMuzzle.position, 3f, gunMuzzle.transform.forward, out RaycastHit hit, 100f, enemyMask))
+        { 
             Debug.Log("Enemy hit" + hit.collider.name);
 
             LineRenderer ray = Instantiate(RayPrefab, transform.position, Quaternion.identity);
@@ -258,7 +259,7 @@ public class PlayerController : MonoBehaviour
             Debug.Log("Shot miss");
         }
     }
-    */
+    
     private void OnDrawGizmos()
     {
         Gizmos.color = Color.red;

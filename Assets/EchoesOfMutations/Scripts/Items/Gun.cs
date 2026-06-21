@@ -7,7 +7,7 @@ public class Gun : BaseInteractableObj
 
     private void Awake()
     {
-        //PlayerController.OnInteractEvent += TryPickUp;
+        
     }
 
     
@@ -22,21 +22,5 @@ public class Gun : BaseInteractableObj
     {
         
     }
-    /*
-    private void TryPickUp()
-    {
-        if (itemData == null) return;
-        GameManager.Instance.playerManager.playerMechanics.GrabItem(gameObject);
-        IsInInventory = true;
-
-    }
-
-    private void OnTriggerEnter(Collider other)
-    {
-        if (other.CompareTag("Player"))
-        {
-            TryPickUp();
-        }
-    }
-    */
+   
 }
