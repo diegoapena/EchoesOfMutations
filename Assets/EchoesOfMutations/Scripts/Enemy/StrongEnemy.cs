@@ -18,6 +18,7 @@ public class StrongEnemy : BaseEnemy
     
     void Update()
     {
+        OnDestroy();
         NextTarget();
         Attack();
     }
@@ -58,6 +59,14 @@ public class StrongEnemy : BaseEnemy
         if (other.CompareTag("Barricade"))
         {
             barricades.Remove(other.gameObject.GetComponent<Barricade>());
+        }
+    }
+
+    private void OnDestroy()
+    {
+        if (health <= 0)
+        {
+            Destroy(gameObject);
         }
     }
 }

@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 7464710721194439624}
   - component: {fileID: 943130243385836701}
   - component: {fileID: 6998363281528756151}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: StrongEnemy
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -153,15 +153,16 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::StrongEnemy
   enemyData: {fileID: 11400000, guid: 27d9a77feec164341886e59aa759b6e2, type: 2}
   agent: {fileID: 0}
-  damageToObjects: 10
   isAttacking: 0
   CurrentAttackCD: 0
   AttackInterval: 3
+  health: 18
   CurrentBarricade: {fileID: 0}
   barricades: []
   Barricades:
     serializedVersion: 2
     m_Bits: 8
+  damageToObjects: 10
 --- !u!135 &6998363281528756151
 SphereCollider:
   m_ObjectHideFlags: 0

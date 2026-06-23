@@ -19,6 +19,7 @@ public class WaveManager : MonoBehaviour
     public UnityEvent<int> OnWaveCleared;
     public UnityEvent<float> OnWaveCountDown;
     public UnityEvent OnAllWavesCompleted;
+
     private MyQueue<GameObject> spawnQueue = new();
     private List<GameObject> aliveEnemies = new();
     private int currentWaveIndex = -1;
@@ -31,7 +32,12 @@ public class WaveManager : MonoBehaviour
         StartCoroutine(BeginWaveSystem());
     }
 
-    
+   
+
+    private void OnDisable()
+    {
+        
+    }
     void Update()
     {
         
@@ -135,7 +141,8 @@ public class WaveManager : MonoBehaviour
         aliveEnemies.Add(enemyInstance);
     }
     private void HandleEnemyDeath(GameObject enemy)
-    {
+    {       
+        
         aliveEnemies.Remove(enemy);
     }
     private bool AllEnemiesDead()
@@ -143,7 +150,6 @@ public class WaveManager : MonoBehaviour
         aliveEnemies.RemoveAll(e => e == null);
         return aliveEnemies.Count == 0;
     }
-
     public int CurrentWaveNumber => currentWaveIndex + 1;
     public int TotalWaves => waves.Count;
     public int EnemiesReanimingInQueue => spawnQueue.Count;

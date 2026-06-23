@@ -1757,6 +1757,63 @@ MonoBehaviour:
   m_IgnoreFromBuild: 0
   m_ApplyToChildren: 1
   m_AffectedAgents: ffffffff
+--- !u!1001 &594702549
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 999480969797672808, guid: d70e272cce0949344a555b0272f00013, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -2.628787
+      objectReference: {fileID: 0}
+    - target: {fileID: 999480969797672808, guid: d70e272cce0949344a555b0272f00013, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.074388586
+      objectReference: {fileID: 0}
+    - target: {fileID: 999480969797672808, guid: d70e272cce0949344a555b0272f00013, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -1.950021
+      objectReference: {fileID: 0}
+    - target: {fileID: 999480969797672808, guid: d70e272cce0949344a555b0272f00013, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 999480969797672808, guid: d70e272cce0949344a555b0272f00013, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 999480969797672808, guid: d70e272cce0949344a555b0272f00013, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 999480969797672808, guid: d70e272cce0949344a555b0272f00013, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 999480969797672808, guid: d70e272cce0949344a555b0272f00013, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 999480969797672808, guid: d70e272cce0949344a555b0272f00013, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 999480969797672808, guid: d70e272cce0949344a555b0272f00013, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1971714654317476139, guid: d70e272cce0949344a555b0272f00013, type: 3}
+      propertyPath: m_Name
+      value: Gun
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: d70e272cce0949344a555b0272f00013, type: 3}
 --- !u!1 &803048652
 GameObject:
   m_ObjectHideFlags: 0
@@ -1885,6 +1942,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 9181930328376627942, guid: 818b0e22b28bcc84499d001b47c87c58, type: 3}
+      propertyPath: gunMuzzle
+      value: 
+      objectReference: {fileID: 1676188008}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -1955,6 +2016,11 @@ PrefabInstance:
 Transform:
   m_CorrespondingSourceObject: {fileID: 4043815886287188458, guid: 818b0e22b28bcc84499d001b47c87c58, type: 3}
   m_PrefabInstance: {fileID: 841969187}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &1676188008 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 5417854489116423610, guid: d70e272cce0949344a555b0272f00013, type: 3}
+  m_PrefabInstance: {fileID: 594702549}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &1726632010
 GameObject:
@@ -2126,9 +2192,11 @@ MonoBehaviour:
   playerManager: {fileID: 1731395821}
   animationManager: {fileID: 0}
   invetoryManager: {fileID: 2126419685}
+  waveManager: {fileID: 0}
+  hitscan: {fileID: 2324793995639953435, guid: a1e0d664694009e41b691b86a70afe1d, type: 3}
   flashLight: {fileID: 0}
   barricade: {fileID: 4762996200443985000}
-  gun: {fileID: 0}
+  gun: {fileID: 8854836153516165218, guid: d70e272cce0949344a555b0272f00013, type: 3}
   normalEnemy: {fileID: 8491033088549683761, guid: 17bbfeab4bfa6be46803b6a577471f0a, type: 3}
   strongEnemy: {fileID: 943130243385836701, guid: be096eb449c1e704ea9c23e486b83030, type: 3}
   car: {fileID: 0}
@@ -2374,3 +2442,4 @@ SceneRoots:
   - {fileID: 803048654}
   - {fileID: 1929021254}
   - {fileID: 1890417642}
+  - {fileID: 594702549}

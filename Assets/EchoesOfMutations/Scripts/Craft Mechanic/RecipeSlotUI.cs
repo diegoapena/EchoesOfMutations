@@ -75,7 +75,7 @@ public class RecipeSlotUI : MonoBehaviour
         foreach (var ingredients in recipe.Ingredients) 
         {
             if(ingredients.material == null) continue;     
-        int have = InventoryManager.Instance.GetAmount(ingredients.material);
+            int have = InventoryManager.Instance.GetAmount(ingredients.material);
             int need = ingredients.amount;
         }
         return sb.ToString().TrimEnd();

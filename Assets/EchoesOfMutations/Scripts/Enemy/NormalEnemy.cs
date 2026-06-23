@@ -18,7 +18,7 @@ public class NormalEnemy : BaseEnemy
     }
     void Update()
     {
-        
+        OnDestroy();
         NextTarget();
         Attack();
     }
@@ -59,6 +59,14 @@ public class NormalEnemy : BaseEnemy
         if (CurrentBarricade == null)
         {
             ChangeTarget();
+        }
+    }
+
+    private void OnDestroy()
+    {
+        if(health <= 0)
+        {
+            Destroy(gameObject);
         }
     }
 }

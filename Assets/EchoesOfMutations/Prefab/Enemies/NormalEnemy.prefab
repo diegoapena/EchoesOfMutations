@@ -131,15 +131,16 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::NormalEnemy
   enemyData: {fileID: 11400000, guid: 3697c8691ae8d614097aec9ed32bdfd2, type: 2}
   agent: {fileID: 0}
-  damageToObjects: 2
   isAttacking: 0
   CurrentAttackCD: 0
   AttackInterval: 3
+  health: 9
   CurrentBarricade: {fileID: 0}
   barricades: []
   Barricades:
     serializedVersion: 2
     m_Bits: 8
+  damageToObjects: 2
 --- !u!195 &887266884488123716
 NavMeshAgent:
   m_ObjectHideFlags: 0
