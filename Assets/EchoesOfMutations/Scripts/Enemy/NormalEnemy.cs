@@ -1,9 +1,11 @@
+using Sirenix.OdinInspector;
 using UnityEngine;
 using UnityEngine.AI;
 
 public class NormalEnemy : BaseEnemy
 {
-
+    [FoldoutGroup("Attack Settings")]
+    public float damageToObjects;
     private void Awake()
     {
         agent = GetComponent<NavMeshAgent>();

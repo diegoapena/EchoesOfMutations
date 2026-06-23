@@ -131,10 +131,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::NormalEnemy
   enemyData: {fileID: 11400000, guid: 3697c8691ae8d614097aec9ed32bdfd2, type: 2}
   agent: {fileID: 0}
-  damageToObjects: 0
+  damageToObjects: 2
   isAttacking: 0
   CurrentAttackCD: 0
-  AttackInterval: 0
+  AttackInterval: 3
   CurrentBarricade: {fileID: 0}
   barricades: []
   Barricades:

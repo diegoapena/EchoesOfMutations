@@ -10,8 +10,7 @@ public class BaseEnemy : MonoBehaviour
     [SerializeField] private BaseEnemiesData enemyData;
     [FoldoutGroup ("References")]
     public NavMeshAgent agent;
-    [FoldoutGroup("Attack Settings")]
-    public float damageToObjects;
+    
     [FoldoutGroup("Attack Settings")]
     public bool isAttacking = false;
     [FoldoutGroup("Attack Settings")]
