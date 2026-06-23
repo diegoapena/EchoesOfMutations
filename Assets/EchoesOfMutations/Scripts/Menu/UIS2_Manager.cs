@@ -31,6 +31,7 @@ public class UIS2_Manager : MonoBehaviour
    
     public void ExitToPause()
     {
+        
         panelPauseUI.SetActive(false);
         Time.timeScale = 1f;
         isPaused = false;
@@ -62,8 +63,5 @@ public class UIS2_Manager : MonoBehaviour
     public void GotoMenu()
     {
         SceneManager.LoadScene("EMMenu");
-        
-
-
     }
 }
