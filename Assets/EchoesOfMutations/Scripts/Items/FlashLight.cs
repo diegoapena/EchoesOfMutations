@@ -1,9 +1,9 @@
+using System;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
 public class FlashLight : BaseInteractableObj, IInteractable
-{
-    [SerializeField] private bool isInInventory = false;
+{  
     [SerializeField] private bool isOn = false; 
     
     private Light flashlightLight;
@@ -19,56 +19,37 @@ public class FlashLight : BaseInteractableObj, IInteractable
     }
 
     private void OnEnable()
-    { 
-        PlayerController.OnInteractEvent += TryPickUp;
-        GameManager.Instance.playerManager.playerController.inputs.Player.FlashLight.performed += OnFlashLightAction;
+    {
+        PlayerController.OnTurnFlashlight += TurnOnOrOff;
+    }
+    private void OnDisable()
+    {
+        PlayerController.OnTurnFlashlight -= TurnOnOrOff;
     }
 
-  
+
+
     void Update()
     {
        
     
     }
-
-    public void Interact(Transform interactor)
-    {
-        if (isInInventory)
-        {
-            ToggleFlashlight(); 
-        }
-    }
-
-    public void TryPickUp()
-    {
-        if (itemData == null) return;
-
-        if (Vector3.Distance(transform.position, GameManager.Instance.playerManager.transform.position) < 2.5f)
-        {
-            bool exito = InventoryManager.Instance.Pickup(itemData, quantity);
-            if (exito) 
-            {
-                GameManager.Instance.playerManager.playerMechanics.GrabItem(gameObject);
-            }      
-            isInInventory = true;          
-        }
-    }
-
-    private void OnFlashLightAction(InputAction.CallbackContext context)
-    {
-        if (isInInventory)
-        {
-            ToggleFlashlight(); 
-        }
-    }
-
-    private void ToggleFlashlight()
+    public void ToggleFlashlight()
     {
         if (flashlightLight != null)
         {
             isOn = !isOn;
-            flashlightLight.enabled = isOn; 
+            flashlightLight.enabled = isOn;
         }
     }
+    private void TurnOnOrOff()
+    {
+        if (isInInventory)
+        {
+            ToggleFlashlight();
+        }
+
+    }
+
 }
     

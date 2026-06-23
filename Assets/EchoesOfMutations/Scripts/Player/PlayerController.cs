@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 using Sirenix.OdinInspector;
 using Unity.VisualScripting;
+using Unity.Cinemachine;
 
 public class PlayerController : MonoBehaviour
 {
@@ -11,10 +12,7 @@ public class PlayerController : MonoBehaviour
     private CharacterController controller;
     [FoldoutGroup("References")]
     public InputSystem_Actions inputs;
-    [FoldoutGroup("Shoot Settings")]
-    public Transform WeaponShootAnchor;
-    [FoldoutGroup("Shoot Settings")]
-    public LineRenderer RayPrefab;
+
     [FoldoutGroup("Movement Settings")]
     public float moveSpeed = 10f;
     [FoldoutGroup("Movement Settings")]
@@ -24,21 +22,27 @@ public class PlayerController : MonoBehaviour
     [FoldoutGroup("Jump")]
     public float JumpForce = 5f;
 
-    //public float pushForce = 2f;
-    
+    [SerializeField] private float distance = 2f;
     private bool isSprinting = false;
     private float baseMoveSpeed;
 
     [FoldoutGroup("Interact")]
     public static  Action OnInteractEvent;
-    public static  Action<float> OnScrollChanged;  
-   
+    public static event Action<int> OnSlotSelected;
+    public static event Action<float> OnSlotScroll;
+    public static event Action OnInventory;
+    public static event Action OnRemoveItem;
+    public static event Action<CraftingStation> OnCraftingOpen;
+    public static event Action OnTurnFlashlight;
+
+    [SerializeField] private Transform gunMuzzle;   
+    [SerializeField] private LayerMask enemyMask;
+    [SerializeField] private LayerMask Interactable;
+    [SerializeField] private LineRenderer RayPrefab;
+    
 
 
-
-
-    public LayerMask enemyMask;
-    public Camera characterCamera;
+    public CinemachineCamera characterCamera;
     public Transform holdpoint;
     private Rigidbody grabbedObject;
 
@@ -57,22 +61,41 @@ public class PlayerController : MonoBehaviour
         inputs.Enable();
         inputs.Player.Move.performed += ctx => moveInput = ctx.ReadValue<Vector2>();
         inputs.Player.Move.canceled += ctx => moveInput = Vector2.zero;
+
         inputs.Player.Jump.performed += Jump_performed;
 
         inputs.Player.Sprint.performed += OnSprint;
         inputs.Player.Sprint.canceled += OnSprintCanceled;
 
-        
+        inputs.Player.Attack.performed += OnAttack;
+
+        inputs.Player.FlashLight.performed += TurnObj;
+
         inputs.Player.Grab.performed += GrabObject;
+
         inputs.Player.Grab.canceled += ReleaseObject;
 
         inputs.Player.Interact.performed += OnInteract;
 
-        inputs.Player.Next.performed += OnScroll;
+        inputs.Player.NextOrPrev.performed += OnScroll;
 
+        inputs.Player.Remove.performed += SpawnObj;
+
+        inputs.Player.Slot1.performed += ctx => OnSlotSelected?.Invoke(0);
+        inputs.Player.Slot2.performed += ctx => OnSlotSelected?.Invoke(1);
+        inputs.Player.Slot3.performed += ctx => OnSlotSelected?.Invoke(2);
+        inputs.Player.Slot4.performed += ctx => OnSlotSelected?.Invoke(3);
+        inputs.Player.Slot5.performed += ctx => OnSlotSelected?.Invoke(4);
+        inputs.Player.Slot6.performed += ctx => OnSlotSelected?.Invoke(5);
+        inputs.Player.Slot7.performed += ctx => OnSlotSelected?.Invoke(6);
+        inputs.Player.Slot8.performed += ctx => OnSlotSelected?.Invoke(7);
+        inputs.Player.Slot9.performed += ctx => OnSlotSelected?.Invoke(8);
     }
+
+   
+
     private void OnDisable()
-    {
+    {      
         inputs.Player.Move.performed -= ctx => moveInput = ctx.ReadValue<Vector2>();
         inputs.Player.Move.canceled -= ctx => moveInput = Vector2.zero;
         inputs.Player.Jump.performed -= Jump_performed;
@@ -80,13 +103,31 @@ public class PlayerController : MonoBehaviour
         inputs.Player.Sprint.performed -= OnSprint;
         inputs.Player.Sprint.canceled -= OnSprintCanceled;
 
-        
+        inputs.Player.Attack.performed -= OnAttack;
+
+        inputs.Player.FlashLight.performed -= TurnObj;
+
         inputs.Player.Grab.performed -= GrabObject;
+
         inputs.Player.Grab.canceled -= ReleaseObject;
 
         inputs.Player.Interact.performed -= OnInteract;
+       
+        inputs.Player.NextOrPrev.performed -= OnScroll;
 
-        inputs.Player.Next.performed -= OnScroll;
+        inputs.Player.Remove.performed -= SpawnObj;
+
+        inputs.Player.Slot1.performed -= ctx => OnSlotSelected?.Invoke(0);
+        inputs.Player.Slot2.performed -= ctx => OnSlotSelected?.Invoke(1);
+        inputs.Player.Slot3.performed -= ctx => OnSlotSelected?.Invoke(2);
+        inputs.Player.Slot4.performed -= ctx => OnSlotSelected?.Invoke(3);
+        inputs.Player.Slot5.performed -= ctx => OnSlotSelected?.Invoke(4);
+        inputs.Player.Slot6.performed -= ctx => OnSlotSelected?.Invoke(5);
+        inputs.Player.Slot7.performed -= ctx => OnSlotSelected?.Invoke(6);
+        inputs.Player.Slot8.performed -= ctx => OnSlotSelected?.Invoke(7);
+        inputs.Player.Slot9.performed -= ctx => OnSlotSelected?.Invoke(8);
+        inputs.Disable();
+
     }
 
 
@@ -130,14 +171,6 @@ public class PlayerController : MonoBehaviour
         if (!controller.isGrounded) return;
         verticalVelocity = JumpForce;
     }
-
-    /*
-    private void OnControllerColliderHit(ControllerColliderHit hit)
-    {
-        Vector3 pushDir = (hit.transform.position - transform.position).normalized;
-        if (hit.rigidbody != null)
-            hit.rigidbody.AddForce(pushDir * pushForce, ForceMode.Impulse);
-    } */
   
     private void OnSprint(InputAction.CallbackContext context)
     {
@@ -147,6 +180,117 @@ public class PlayerController : MonoBehaviour
     {
         isSprinting = false;
     }
+    private void TurnObj(InputAction.CallbackContext context)
+    {
+        //GameManager.Instance.flashLight.ToggleFlashlight();
+
+        OnTurnFlashlight?.Invoke();
+    }
+
+    private void OnInteract(InputAction.CallbackContext context)
+    {
+        Ray ray = new Ray(characterCamera.transform.position, characterCamera.transform.forward);
+
+
+        if (!Physics.Raycast(ray, out RaycastHit itemhit, distance, Interactable))
+            return;
+
+        CraftingStation station = itemhit.collider.GetComponent<CraftingStation>();
+        if (station != null) 
+        {
+            Cursor.visible = true;
+            OnCraftingOpen?.Invoke(station);
+            return;
+        }
+        else
+        {
+            Cursor.visible = false;
+        }
+
+            IInteractable interactable = itemhit.collider.GetComponent<IInteractable>();
+        Debug.Log(itemhit.collider.name);
+        if (interactable != null)
+        {
+            OnInteractEvent?.Invoke();
+            interactable.Interact();
+        }
+
+        /*
+    if (Physics.Raycast(ray, out RaycastHit itemhit, distance, Interactable))
+    {           
+        IInteractable interactable = itemhit.collider.GetComponent<IInteractable>();           
+        Debug.Log(itemhit.collider.name);
+        if (interactable != null)
+        {
+            OnInteractEvent?.Invoke();
+            interactable.Interact();
+        }
+    }
+        */
+
+    }
+    private void OnScroll(InputAction.CallbackContext context) => OnSlotScroll?.Invoke(context.ReadValue<Vector2>().y);
+    
+    private void GrabObject(InputAction.CallbackContext ctx)
+    {     
+        Ray ray = new Ray(characterCamera.transform.position, characterCamera.transform.forward);
+        
+        if (Physics.Raycast(ray, out RaycastHit hit, 10f))
+        {
+            
+            if (hit.collider.CompareTag("MetalBox") || hit.collider.CompareTag("WoodBox"))
+            {
+                if (hit.collider.gameObject == null) return;    
+                grabbedObject = hit.collider.GetComponent<Rigidbody>();    
+                if (grabbedObject != null)
+                {
+                    grabbedObject.useGravity = false;
+                    grabbedObject.transform.SetParent(holdpoint); 
+                    grabbedObject.transform.localPosition = Vector3.zero; 
+                    grabbedObject.transform.localRotation = Quaternion.identity; 
+                }
+            }
+        }
+
+        
+    }
+    private void ReleaseObject(InputAction.CallbackContext ctx)
+    {
+        if (grabbedObject != null)
+        {
+            grabbedObject.useGravity = true;
+            grabbedObject.transform.SetParent(null); 
+            grabbedObject = null;
+        }
+    }
+    private void SpawnObj(InputAction.CallbackContext context)
+    {
+        OnRemoveItem?.Invoke();
+    }
+
+    
+    private void OnAttack(InputAction.CallbackContext context)
+    {
+        if(Physics.SphereCast(gunMuzzle.position, 3f, gunMuzzle.transform.forward, out RaycastHit hit, 100f, enemyMask))
+        { 
+            Debug.Log("Enemy hit" + hit.collider.name);
+
+            LineRenderer ray = Instantiate(RayPrefab, transform.position, Quaternion.identity);
+            ray.gameObject.transform.position = gunMuzzle.position;
+            ray.positionCount = 2;
+            ray.SetPosition(0, gunMuzzle.position);
+            ray.SetPosition(1, hit.point);
+
+            Quaternion rot = Quaternion.LookRotation(hit.normal);
+
+            Destroy(ray, 2f);
+        }
+        else
+        {
+            Debug.Log("Shot miss");
+        }
+    }
+    
     private void OnDrawGizmos()
     {
         Gizmos.color = Color.red;
@@ -159,72 +303,9 @@ public class PlayerController : MonoBehaviour
 
         // Dibujar el rayo desde la posición del objeto hacia adelante
         Gizmos.DrawRay(start, direction * 2f); // El 5f es la longitud del rayo
+
+        Gizmos.color = Color.green;
+        Gizmos.DrawLine(characterCamera.transform.position, characterCamera.transform.position + characterCamera.transform.forward * 2f);
     }
 
-    private void OnInteract(InputAction.CallbackContext context)
-    {
-        if(context.performed)
-        {
-            OnInteractEvent?.Invoke();
-        }
-    }
-    private void OnScroll(InputAction.CallbackContext context)
-    {
-        Vector2 scroll = context.ReadValue<Vector2>();
-        float direcction = scroll.y > 0f ? 1f : -1f;
-        OnScrollChanged?.Invoke(direcction);
-        Debug.Log("Change Slot");     
-    }
-    private void GrabObject(InputAction.CallbackContext ctx)
-    {
-
-        Ray ray = new Ray(characterCamera.transform.position, characterCamera.transform.forward);
-
-        if (Physics.Raycast(ray, out RaycastHit hit, 10f))
-        {
-            if (hit.collider.CompareTag("MetalBox") || hit.collider.CompareTag("WoodBox"))
-            {
-                grabbedObject = hit.collider.GetComponent<Rigidbody>();
-
-                if (grabbedObject != null)
-                {
-                    grabbedObject.useGravity = false;
-                    grabbedObject.transform.SetParent(holdpoint); 
-                    grabbedObject.transform.localPosition = Vector3.zero; 
-                    grabbedObject.transform.localRotation = Quaternion.identity; 
-                }
-            }
-        }
-    }
-    private void ReleaseObject(InputAction.CallbackContext ctx)
-    {
-        if (grabbedObject != null)
-        {
-            grabbedObject.useGravity = true;
-            grabbedObject.transform.SetParent(null); 
-            grabbedObject = null;
-        }
-    }
-
-    /*private void OnAttack(InputAction.CallbackContext context)
-    {
-        if(Physics.SphereCast(WeaponShootAnchor.position , 3f, WeaponShootAnchor.transform.forward , out RaycastHit hit ,100 , enemyMask))
-        {
-            Debug.Log("Hit");
-            LineRenderer ray = Instantiate(RayPrefab , transform.position , Quaternion.identity);
-            ray.gameObject.transform.position = WeaponShootAnchor.position;
-            ray.positionCount = 2;
-            ray.SetPosition(0, WeaponShootAnchor.position);
-            ray.SetPosition(1,hit.point);
-
-            Quaternion rot = Quaternion.LookRotation(hit.normal);
-
-            Destroy(ray, 2f);
-        }
-        else
-        {
-            Debug.Log("Shot miss");
-        }
-    }
-    */
 }

@@ -62,7 +62,8 @@ Transform:
   m_LocalPosition: {x: -0.0061, y: 0.3698, z: 0.3254}
   m_LocalScale: {x: 0.80979615, y: 0.2605, z: 0.3493}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 399455857854320431}
   m_Father: {fileID: 8816475528842848093}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &3608417295033989956
@@ -153,6 +154,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4263514979729669299}
   - component: {fileID: 5227898547689134980}
+  - component: {fileID: 3025914087438430091}
   - component: {fileID: 3738133487561491506}
   m_Layer: 0
   m_Name: FrontCamera
@@ -169,13 +171,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7555553229570858981}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.011689276, y: -0.012901158, z: -0.00015078486, w: -0.9998485}
-  m_LocalPosition: {x: 0.0015809505, y: 0.32106185, z: 0.15463257}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: -0.0000001144043, z: -0.000000834465}
+  m_LocalScale: {x: 1.2353464, y: 3.8380537, z: 2.8607564}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 2395972265547344217}
-  m_Father: {fileID: 8816475528842848093}
+  m_Father: {fileID: 399455857854320431}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &5227898547689134980
 MonoBehaviour:
@@ -190,14 +192,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Unity.Cinemachine::Unity.Cinemachine.CinemachineCamera
   Priority:
-    Enabled: 0
-    m_Value: 0
+    Enabled: 1
+    m_Value: 1
   OutputChannel: 1
   StandbyUpdate: 2
   m_StreamingVersion: 20241001
   m_LegacyPriority: 0
   Target:
-    TrackingTarget: {fileID: 0}
+    TrackingTarget: {fileID: 399455857854320431}
     LookAtTarget: {fileID: 0}
     CustomLookAtTarget: 0
   Lens:
@@ -220,6 +222,19 @@ MonoBehaviour:
       BarrelClipping: 0.25
       Anamorphism: 0
   BlendHint: 0
+--- !u!114 &3025914087438430091
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7555553229570858981}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 36d1163fa822e8b418a0a603ec078d5c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Unity.Cinemachine::Unity.Cinemachine.CinemachineHardLockToTarget
+  Damping: 0
 --- !u!114 &3738133487561491506
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -232,7 +247,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3b0ef21a24142bc4fb32981d162835b0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::FirstPersonCamera
-  mouseSensitivity: 80
+  mouseSensitivity: 15
   Player: {fileID: 8816475528842848093}
 --- !u!1 &8083547267981267730
 GameObject:
@@ -249,8 +264,7 @@ GameObject:
   - component: {fileID: 5122219181573196673}
   - component: {fileID: 9181930328376627942}
   - component: {fileID: 4229285413848986913}
-  - component: {fileID: 4698979447820170524}
-  - component: {fileID: -5277939836184739107}
+  - component: {fileID: 6555008934547130739}
   - component: {fileID: 8674775751049969734}
   m_Layer: 0
   m_Name: Player
@@ -273,7 +287,6 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 4043815886287188458}
-  - {fileID: 4263514979729669299}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &2849645554381798568
@@ -368,7 +381,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 35b9931aece71554da1862ecd18c6729, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerManager
-  entityName: 
+  entityName: Paquito
   description: 
   playerController: {fileID: 9181930328376627942}
   playerMechanics: {fileID: 4229285413848986913}
@@ -384,16 +397,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 183cfd2ba3442e94cab1b459cd6f80d7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerController
-  WeaponShootAnchor: {fileID: 0}
-  RayPrefab: {fileID: 0}
   moveSpeed: 6
   moveInput: {x: 0, y: 0}
   verticalVelocity: 0
   JumpForce: 5
+  distance: 4
+  gunMuzzle: {fileID: 0}
   enemyMask:
     serializedVersion: 2
     m_Bits: 64
-  characterCamera: {fileID: 0}
+  Interactable:
+    serializedVersion: 2
+    m_Bits: 128
+  RayPrefab: {fileID: 669402000536526204, guid: a1e0d664694009e41b691b86a70afe1d, type: 3}
+  characterCamera: {fileID: 5227898547689134980}
   holdpoint: {fileID: 0}
 --- !u!114 &4229285413848986913
 MonoBehaviour:
@@ -408,7 +425,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerMechanics
   ItemContainer: {fileID: 2395972265547344217}
---- !u!114 &4698979447820170524
+--- !u!114 &6555008934547130739
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -420,27 +437,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 375b7acc410a2204b982ba7b005a10f1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::InventoryManager
-  Crafting: {fileID: 0}
+  MaxSlotsQuantity: 9
   CurrentWood: 0
   CurrentMetal: 0
-  ActiveSlot: 0
---- !u!114 &-5277939836184739107
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8083547267981267730}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8afd2fcda5302f24cab9131327c0970a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::EquipManager
-  equipables:
-  - item: {fileID: 0}
-    ObjectOnScene: {fileID: 0}
-  equippedItem: {fileID: 0}
-  currentObjActive: {fileID: 0}
+  Crafting: {fileID: 0}
 --- !u!143 &8674775751049969734
 CharacterController:
   m_ObjectHideFlags: 0
@@ -466,3 +466,35 @@ CharacterController:
   m_SkinWidth: 0.08
   m_MinMoveDistance: 0.001
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!1 &8724359546969687445
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 399455857854320431}
+  m_Layer: 0
+  m_Name: CameraAnchor
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &399455857854320431
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8724359546969687445}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: -0.245}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 4263514979729669299}
+  m_Father: {fileID: 4043815886287188458}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}

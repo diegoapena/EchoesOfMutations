@@ -1,30 +1,34 @@
 using Sirenix.OdinInspector;
 using System;
 using System.Collections.Generic;
-using UnityEditor.Localization.Plugins.XLIFF.V12;
+using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.InputSystem;
+[Serializable]
 
 public class InventoryManager : MonoBehaviour
-{   
+{
     public static InventoryManager Instance;
-    public CraftingStation Crafting;
-    public const int MAX_SLOTS = 9;
-    private DoubleLinkedList<Inventoryslot> list = new();
-    public static event Action OnInventoryChanged;
-    public static event Action OnSlotChanged;
+    private CircularLinkedList<IInteractable> inventoryData = new();
+ 
+    [FoldoutGroup("Inventory Settings")]
+    public int MaxSlotsQuantity = 9;
+    
+
+    public static event Action<CircularLinkedList<IInteractable>> OnInventoryChanged;
+    public static event Action<int> OnEquippedItem;
+    private BaseInteractableObj currentEquipped;
+    private Node<IInteractable> currentNode;
+    private int selectedSlot = 0;
+
     [FoldoutGroup("Craftable Settings")]
     private Dictionary<BaseMaterialData, int> materials = new();
     [FoldoutGroup("Craftable Settings")]
     public int CurrentWood;
     [FoldoutGroup("Craftable Settings")]
-    public int CurrentMetal;
-    [FoldoutGroup("Inventory Settings")]
-    public int ActiveSlot = 0;
-
-    
-    
+    public int CurrentMetal;    
     private void Awake()
-    {
+    {      
         if(Instance == null)
         {
             Instance = this;
@@ -37,9 +41,24 @@ public class InventoryManager : MonoBehaviour
             return;
         }
        
-        
     }
+
+    private void OnEnable()
+    {
+        PlayerController.OnSlotSelected += SelectSlot;
+        PlayerController.OnSlotScroll += ScrollSlot;
+        PlayerController.OnRemoveItem += RemoveCurrentItem;
+    }
+
     
+
+    private void OnDisable()
+    {
+        PlayerController.OnSlotSelected -= SelectSlot;
+        PlayerController.OnSlotScroll -= ScrollSlot;
+        PlayerController.OnRemoveItem -= RemoveCurrentItem;
+    }
+
 
     void Start()
     {
@@ -51,28 +70,27 @@ public class InventoryManager : MonoBehaviour
     {
         
     }
-    #region Craftable Methods
-    [Button]
+    #region Craftable Methods 
     public void AddMaterial(BaseMaterialData material , int amount)
     {
-        if (materials.ContainsKey(material)) 
+        if (material.MaterialName == "Wood")
         {
-            if (material.MaterialName == "Wood")
-            {
-                CurrentWood += amount;
-            }
-            else if (material.MaterialName == "Metal")
-            {
-                CurrentMetal += amount;               
-            }           
+            CurrentWood += amount;
+        }
+        else if (material.MaterialName == "Metal")
+        {
+            CurrentMetal += amount;
+        }
+        if (materials.ContainsKey(material))
+        {
             materials[material] += amount;
-            Debug.Log("Material obtained :" + material.MaterialName + " - " + "Quantity :" + amount );           
-        } 
-
-        else 
+        }
+        else
+        {
             materials[material] = amount;
-    }
-    [Button]
+        }        
+        Debug.Log("Material obtained :" + material.MaterialName + " - " + "Quantity :" + amount);
+    }   
     public bool CanCraft(ItemRecipe recipe)
     {
         foreach(var ingredient in recipe.Ingredients)
@@ -92,132 +110,157 @@ public class InventoryManager : MonoBehaviour
         
         foreach(var ingredient in recipe.Ingredients)
         {
-            materials[ingredient.material] -= ingredient.amount;           
-        }       
+            materials[ingredient.material] -= ingredient.amount;         
+            if(ingredient.material.MaterialName == "Wood")
+            {
+                CurrentWood -= ingredient.amount;
+            }
+            else if(ingredient.material.MaterialName == "Metal")
+            {
+                CurrentMetal -= ingredient.amount;
+            }
+        }   
+        
         Instantiate(recipe.resultPrefab, spawnPosition, Quaternion.identity);
         return true;       
     }
 
-    [Button]
-    public int GetAmount(BaseMaterialData material) => materials.TryGetValue(material, out int count) ? count : 0;
-    [Button]
+    
+    public int GetAmount(BaseMaterialData material) => materials.TryGetValue(material, out int count) ? count : 0;   
+    /*
     public void ClearInventory()
     {
         materials.Clear();
         CurrentMetal = 0;
         CurrentWood = 0;
     }
+    */
     #endregion
 
     #region Inventory Methods
-    [Button]
-    public bool Pickup(BaseItemsData items , int quantity = 1)
+    public bool AddItem(IInteractable item)
     {
-        if(items == null) return false;
-        Node<Inventoryslot> existingNode = list.Find(slot => slot.Items == items);
-
-        if(existingNode != null && items.IsStackable)
+        if(inventoryData.Count >= MaxSlotsQuantity)
         {
-            int freeSpace = items.MaxStack - existingNode.Value.Quantity;
-
-            if(freeSpace <= 0)
-            {
-                Debug.Log("Slot of " + items.ItemName + "full");
-                return false;
-            }
-            existingNode.Value.Quantity += Mathf.Min(quantity, freeSpace);
-            Debug.Log("Acumulate" + items.ItemName + " -  Item Quantity :" + existingNode.Value.Quantity);
+            Debug.Log("Inventory full!");
+            return false;
         }
-        else
-        {
-            if (list.Count >= MAX_SLOTS)
-            {
-                Debug.Log("Inventory full 9/9");
-                return false;
-            }
-
-            list.AddLast(new Inventoryslot(items, quantity));
-            Debug.Log(items.ItemName + "add. Slots : " + list.Count + " / " + MAX_SLOTS );
-        }
-
-        OnInventoryChanged?.Invoke();
+        inventoryData.Add(item);
+       Debug.Log(" Item added to "  + inventoryData.Count);
+        currentNode = inventoryData.tail;
+        selectedSlot = inventoryData.Count - 1;
+        OnInventoryChanged?.Invoke(inventoryData);
+        OnEquippedItem?.Invoke(selectedSlot);
+        EquipNode(currentNode);
         return true;
     }
-
-    public bool RemoveItem(BaseItemsData items, int quantity = 1)
+    private void RemoveCurrentItem()
     {
-        Node<Inventoryslot> node = list.Find(slot => slot.Items == items);
-        if (node == null) return false;
+        if (currentNode != null)
+            RemoveItem(currentNode.Value);
+    }
+    private bool RemoveItem(IInteractable item)
+    {
+        if (item == null) return false;
+        if(inventoryData.Count == 0) return false;
 
-        node.Value.Quantity -= quantity;
-
-        if (node.Value.Quantity <= 0) 
+        Node<IInteractable> found = null;
+        Node<IInteractable> node = inventoryData.head;
+        for (int i = 0; i < inventoryData.Count && node != null; i++) 
         { 
-            list.Remove(node);         
+            if(node.Value == item)
+            {
+                found = node;
+                break;
+            }  
+            node = node.Next;
         }
-        if(ActiveSlot >= list.Count)
+        if (found == null) return false;
+        if(found == currentNode)
         {
-            ActiveSlot = Math.Max(0, list.Count - 1);
+            if(currentEquipped != null)
+            {
+                currentEquipped.OnUnEquipped();
+                currentEquipped.OnPlaceItem(GameManager.Instance.playerManager.playerMechanics.ItemContainer.position);
+                currentEquipped = null;
+            }
         }
-        OnInventoryChanged?.Invoke();
+        Node<IInteractable> newCurrent = null;
+        if (inventoryData.Count > 1)
+        {
+            newCurrent = (found == currentNode) ? found.Next : currentNode ?? inventoryData.head;
+        }
+        inventoryData.RemoveNode(found);
+        currentNode = newCurrent;
+        selectedSlot = currentNode != null? GetIndexByNode(currentNode) : -1;
+        OnInventoryChanged?.Invoke(inventoryData);
+        if (selectedSlot >= 0)
+            OnEquippedItem?.Invoke(selectedSlot);
         return true;
+         
     }
-    public void ChangeSlot(int direcction)
+    private void SelectSlot(int index)
     {
-        if (list.Count == 0) return;
+        if(inventoryData.Count == 0 || index < 0 || index >= inventoryData.Count)
+            return;
+        selectedSlot = index;
+        currentNode = GetNodeByIndex(index);
+        Debug.Log("Selected slot :" + selectedSlot + 1);
+        OnEquippedItem?.Invoke(selectedSlot);
+        EquipNode(currentNode);
+    }
+    private void ScrollSlot(float direction)
+    {
+        if(inventoryData.Count == 0)
+            return;
+        if(currentNode == null)
+            currentNode = inventoryData.head;
 
-        
-        ActiveSlot+= direcction;
+        currentNode = direction > 0 ? currentNode.Prev : currentNode.Next;
 
-        if (ActiveSlot >= list.Count)
-        {
-            ActiveSlot = 0;
-        }
-        if (ActiveSlot < 0)
-        {
-            ActiveSlot = list.Count - 1;
-        }
-        OnSlotChanged?.Invoke();
+        selectedSlot = GetIndexByNode(currentNode);
+        Debug.Log("Selected by scroll" + (selectedSlot + 1));
+        OnEquippedItem?.Invoke(selectedSlot);
+        EquipNode(currentNode);
     }
-    public Inventoryslot GetActiveSlot()
+    private Node<IInteractable> GetNodeByIndex(int index)
     {
-        Inventoryslot[] dates = list.ToArray();
-        if(dates.Length == 0) return null;
-        if(ActiveSlot >= dates.Length) return null;
-        return dates[ActiveSlot];      
+        Node<IInteractable> current = inventoryData.head;
+        for (int i = 0; i < index && current != null; i++) 
+            current = current.Next;
+        return current;
     }
-    [Button]
-    public bool HasItem(BaseItemsData items)
+    private int GetIndexByNode(Node<IInteractable> target)
     {
-        Node<Inventoryslot> node = list.Find(searchItem);
-        return node != null;
+        if (target == null)
+            return -1;
+        Node<IInteractable> current = inventoryData.head;
+        for(int i = 0; i < inventoryData.Count; i++)
+        {
+            if (current == target)
+                return i;
 
-        bool searchItem(Inventoryslot slot)
-        {
-            return slot.Items == items;
+            current = current.Next;
         }
+        return -1;
     }
-    [Button]
-    public int GetQuantity(BaseItemsData items)
+    private void EquipNode(Node<IInteractable> node)
     {
-        Node<Inventoryslot> node = list.Find(searchItem);
-        if(node != null)
+        if (currentEquipped != null) 
         {
-            return node.Value.Quantity;
+            currentEquipped.OnUnEquipped();
+            currentEquipped = null;       
         }
-        else
+        if(node?.Value is BaseInteractableObj item)
         {
-            return 0;
+            currentEquipped = item;
+            currentEquipped.OnEquip(GameManager.Instance.playerManager.playerMechanics.ItemContainer);
+            Debug.Log("Equipped :" + item.ItemData.ItemName);
         }
-        bool searchItem(Inventoryslot slot)
-        {
-            return slot.Items == items;
-        }    
     }
-    
-    public Inventoryslot[] GetSlots() => list.ToArray();
-    #endregion
-    /*
-    public void AddMaterial(BaseMaterialData material, int amount) => CraftingStation.AddMaterial(material, amount);
-    */
+    public IInteractable GetSelectedItem()
+    {
+        return currentNode?.Value;
+    }
+    #endregion   
 }

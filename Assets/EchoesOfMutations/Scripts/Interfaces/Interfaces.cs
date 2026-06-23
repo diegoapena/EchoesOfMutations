@@ -2,7 +2,7 @@ using UnityEngine;
 
 public interface IInteractable
 {
-    public void Interact(Transform interactor);
+    public void Interact();   
 }
 public interface IDamageable
 {

@@ -15,7 +15,8 @@ MonoBehaviour:
   id: 2711
   enemyName: deer mutant
   damageQuantity: 4
-  enemyPrefab: {fileID: 0}
+  amount: 1
+  enemyPrefab: {fileID: 4996332201873764090, guid: 17bbfeab4bfa6be46803b6a577471f0a, type: 3}
   enemyIcon: {fileID: 0}
   enemyDescription: A standard enemy with no special attacks or movements abilities
     , It has normal durability and  takes 3 shots to knockdown. This enemy can break

@@ -10,6 +10,8 @@ public class BaseEnemiesData : ScriptableObject
     [SerializeField] private string enemyName;
     [FoldoutGroup("Settings")]
     [SerializeField] private int damageQuantity;
+    [FoldoutGroup("Settings")]
+    [SerializeField] private int amount = 1;
     [FoldoutGroup("Settings"), PreviewField(150)]
     public GameObject enemyPrefab;
     [FoldoutGroup("Settings"), PreviewField(150)]
@@ -20,5 +22,6 @@ public class BaseEnemiesData : ScriptableObject
     public int Id => id;
     public string EnemyName => enemyName;
     public int DamageQuantity => damageQuantity;
+    public int Amount => amount;    
     public string EnemyDescription => enemyDescription;
 }

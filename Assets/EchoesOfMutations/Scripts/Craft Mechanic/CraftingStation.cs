@@ -4,19 +4,32 @@ using UnityEngine;
 public class CraftingStation : MonoBehaviour
 {
     public ItemRecipe[] availableRecipes;
+    
 
     void Start()
     {
         
     }
-
-    [Button]
-    public void TryCraft(ItemRecipe recipe)
+    private void OnEnable()
     {
-        bool success = InventoryManager.Instance.Craft(recipe, transform.position);
-        if (success == InventoryManager.Instance.Craft(recipe, transform.position))      
+        PlayerController.OnCraftingOpen += OnCraftingOpenRequested;
+    }
+    private void OnDisable()
+    {
+        PlayerController.OnCraftingOpen -= OnCraftingOpenRequested;
+    }
+
+    private void OnCraftingOpenRequested(CraftingStation station)
+    {
+        if (station != this) return;
+
+        if (GameManager.Instance.craftingUI.IsVisible)
         {
-            Debug.Log(recipe.ItemName + " : " + success + " -" + " Not enough materials ");
-        }      
+            GameManager.Instance.craftingUI.Hide();          
+        }
+        else
+        {          
+            GameManager.Instance.craftingUI.Show(availableRecipes, transform.position);           
+        }
     }
 }

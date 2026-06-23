@@ -1,8 +1,14 @@
 using UnityEngine;
+using UnityEngine.AI;
 
 public class NormalEnemy : BaseEnemy
 {
 
+    private void Awake()
+    {
+        agent = GetComponent<NavMeshAgent>();
+
+    }
     void Start()
     {
 
@@ -45,13 +51,11 @@ public class NormalEnemy : BaseEnemy
             barricades.Remove(other.gameObject.GetComponent<Barricade>());             
         }
     }
-    
-
     public void NextTarget()
     {
-        if (CurrentBarricade == null) 
+        if (CurrentBarricade == null)
         {
-            ChangeTarget();           
+            ChangeTarget();
         }
     }
 }
