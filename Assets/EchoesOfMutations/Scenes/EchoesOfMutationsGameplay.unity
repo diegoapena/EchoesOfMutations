@@ -349,6 +349,9 @@ MonoBehaviour:
   car: {fileID: 0}
   mutantCinematic: {fileID: 0}
   collition: {fileID: 0}
+  recipeSlotUI: {fileID: 0}
+  craftingUI: {fileID: 0}
+  craftingStation: {fileID: 0}
 --- !u!4 &28112468
 Transform:
   m_ObjectHideFlags: 0
@@ -2630,7 +2633,6 @@ MonoBehaviour:
   MaxSlotsQuantity: 9
   CurrentWood: 0
   CurrentMetal: 0
-  Crafting: {fileID: 0}
 --- !u!1 &348947302
 GameObject:
   m_ObjectHideFlags: 0

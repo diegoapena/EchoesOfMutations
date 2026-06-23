@@ -148,7 +148,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1b8d85f943a33904980dc96336ea8778, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CraftingStation
-  availableRecipes: []
+  availableRecipes:
+  - {fileID: 0}
 --- !u!4 &224516116
 Transform:
   m_ObjectHideFlags: 0
@@ -193,6 +194,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 375b7acc410a2204b982ba7b005a10f1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::InventoryManager
+  MaxSlotsQuantity: 9
   CurrentWood: 0
   CurrentMetal: 0
 --- !u!4 &579163472
