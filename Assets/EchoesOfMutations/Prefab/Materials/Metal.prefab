@@ -156,4 +156,4 @@ MonoBehaviour:
   materialData: {fileID: 11400000, guid: a91876542211e8c4c9d22d343a8aeec0, type: 2}
   amount: 1
   speed: 3
-  duration: 5
+  duration: 10
