@@ -12021,6 +12021,10 @@ PrefabInstance:
       propertyPath: Crafting
       value: 
       objectReference: {fileID: 442697006}
+    - target: {fileID: 6555008934547130739, guid: 818b0e22b28bcc84499d001b47c87c58, type: 3}
+      propertyPath: CurrentWood
+      value: 20
+      objectReference: {fileID: 0}
     - target: {fileID: 8083547267981267730, guid: 818b0e22b28bcc84499d001b47c87c58, type: 3}
       propertyPath: m_Name
       value: Player
@@ -12305,6 +12309,18 @@ PrefabInstance:
     - target: {fileID: 4200572297708774818, guid: ddb501d4ed573fb4d9666fedc90a3b54, type: 3}
       propertyPath: m_Name
       value: Flashlight
+      objectReference: {fileID: 0}
+    - target: {fileID: 7264419713101989360, guid: ddb501d4ed573fb4d9666fedc90a3b54, type: 3}
+      propertyPath: originalScale.x
+      value: 0.31
+      objectReference: {fileID: 0}
+    - target: {fileID: 7264419713101989360, guid: ddb501d4ed573fb4d9666fedc90a3b54, type: 3}
+      propertyPath: originalScale.y
+      value: 0.2094984
+      objectReference: {fileID: 0}
+    - target: {fileID: 7264419713101989360, guid: ddb501d4ed573fb4d9666fedc90a3b54, type: 3}
+      propertyPath: originalScale.z
+      value: 0.5973
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
