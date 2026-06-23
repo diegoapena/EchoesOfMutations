@@ -127,6 +127,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Gun
   itemData: {fileID: 11400000, guid: 2bc7320cd54e7914b9fa8b59b53b5b81, type: 2}
+  isInInventory: 0
+  originalScale: {x: 0.2203294, y: 0.148777, z: 1.165902}
   IsInInventory: 0
 --- !u!1 &7358206325699628748
 GameObject:

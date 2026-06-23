@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 1746243730109449178}
   - component: {fileID: 8491033088549683761}
   - component: {fileID: 887266884488123716}
+  - component: {fileID: 4047549546176311822}
   m_Layer: 6
   m_Name: NormalEnemy
   m_TagString: Untagged
@@ -128,6 +129,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: adc73aeef057545439495b7eb04a29b4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::NormalEnemy
+  enemyData: {fileID: 11400000, guid: 3697c8691ae8d614097aec9ed32bdfd2, type: 2}
   agent: {fileID: 0}
   damageToObjects: 0
   isAttacking: 0
@@ -135,7 +137,7 @@ MonoBehaviour:
   AttackInterval: 0
   CurrentBarricade: {fileID: 0}
   barricades: []
-  LayerBarricades:
+  Barricades:
     serializedVersion: 2
     m_Bits: 8
 --- !u!195 &887266884488123716
@@ -160,3 +162,24 @@ NavMeshAgent:
   m_BaseOffset: 1
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
+--- !u!135 &4047549546176311822
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4996332201873764090}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Radius: 4
+  m_Center: {x: 0, y: 0, z: 0}

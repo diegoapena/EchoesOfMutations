@@ -5,7 +5,7 @@ public class BaseInteractableObj : MonoBehaviour , IInteractable
     [SerializeField] protected BaseItemsData itemData;
     [SerializeField] protected bool isInInventory = false;
     private Vector3 equipPosition;
-    private Vector3 originalScale;
+    [SerializeField]private Vector3 originalScale;
     private Vector3 equipRotation;
     
     void Start()

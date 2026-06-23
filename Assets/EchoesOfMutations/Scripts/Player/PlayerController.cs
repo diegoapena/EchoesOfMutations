@@ -181,9 +181,7 @@ public class PlayerController : MonoBehaviour
         isSprinting = false;
     }
     private void TurnObj(InputAction.CallbackContext context)
-    {
-        //GameManager.Instance.flashLight.ToggleFlashlight();
-
+    {        
         OnTurnFlashlight?.Invoke();
     }
 
@@ -198,36 +196,19 @@ public class PlayerController : MonoBehaviour
         CraftingStation station = itemhit.collider.GetComponent<CraftingStation>();
         if (station != null) 
         {
+            Cursor.lockState = CursorLockMode.None;
             Cursor.visible = true;
             OnCraftingOpen?.Invoke(station);
             return;
         }
-        else
-        {
-            Cursor.visible = false;
-        }
-
-            IInteractable interactable = itemhit.collider.GetComponent<IInteractable>();
+        
+        IInteractable interactable = itemhit.collider.GetComponent<IInteractable>();
         Debug.Log(itemhit.collider.name);
         if (interactable != null)
         {
             OnInteractEvent?.Invoke();
             interactable.Interact();
-        }
-
-        /*
-    if (Physics.Raycast(ray, out RaycastHit itemhit, distance, Interactable))
-    {           
-        IInteractable interactable = itemhit.collider.GetComponent<IInteractable>();           
-        Debug.Log(itemhit.collider.name);
-        if (interactable != null)
-        {
-            OnInteractEvent?.Invoke();
-            interactable.Interact();
-        }
-    }
-        */
-
+        }  
     }
     private void OnScroll(InputAction.CallbackContext context) => OnSlotScroll?.Invoke(context.ReadValue<Vector2>().y);
     
@@ -266,11 +247,11 @@ public class PlayerController : MonoBehaviour
     private void SpawnObj(InputAction.CallbackContext context)
     {
         OnRemoveItem?.Invoke();
-    }
-
-    
+    }   
     private void OnAttack(InputAction.CallbackContext context)
     {
+        if(gunMuzzle.position == null) return;
+
         if(Physics.SphereCast(gunMuzzle.position, 3f, gunMuzzle.transform.forward, out RaycastHit hit, 100f, enemyMask))
         { 
             Debug.Log("Enemy hit" + hit.collider.name);
