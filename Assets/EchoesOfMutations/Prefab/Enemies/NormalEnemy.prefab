@@ -129,6 +129,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: adc73aeef057545439495b7eb04a29b4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::NormalEnemy
+  enemyData: {fileID: 11400000, guid: 3697c8691ae8d614097aec9ed32bdfd2, type: 2}
   agent: {fileID: 0}
   damageToObjects: 0
   isAttacking: 0

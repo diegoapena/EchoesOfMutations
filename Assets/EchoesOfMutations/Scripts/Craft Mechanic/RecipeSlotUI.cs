@@ -53,6 +53,11 @@ public class RecipeSlotUI : MonoBehaviour
         if (currentRecipe == null) return;
 
         bool canCraft = InventoryManager.Instance.CanCraft(currentRecipe);
+
+        if(craftButtonTxt != null)
+        {
+            craftButtonTxt.text = (canCraft ? "Craft " : "Without materials");
+        }
     }
     public void OnCraftClicked()
     {
@@ -69,7 +74,8 @@ public class RecipeSlotUI : MonoBehaviour
 
         foreach (var ingredients in recipe.Ingredients) 
         {
-            int have = InventoryManager.Instance.GetAmount(ingredients.material);
+            if(ingredients.material == null) continue;     
+        int have = InventoryManager.Instance.GetAmount(ingredients.material);
             int need = ingredients.amount;
         }
         return sb.ToString().TrimEnd();

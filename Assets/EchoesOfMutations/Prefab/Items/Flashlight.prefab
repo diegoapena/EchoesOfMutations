@@ -223,4 +223,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::FlashLight
   itemData: {fileID: 11400000, guid: 7f0d61d01d3c2f44bbffabb97570a842, type: 2}
   isInInventory: 0
+  originalScale: {x: 0.31, y: 0.2094984, z: 0.5973}
   isOn: 0

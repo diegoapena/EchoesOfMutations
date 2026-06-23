@@ -28,7 +28,7 @@ public class NormalEnemy : BaseEnemy
             CurrentBarricade = other.gameObject.GetComponent<Barricade>();
             barricades.Add(other.gameObject.GetComponent<Barricade>());                      
             FindBarricade();
-
+            
         }
     }
     private void OnTriggerStay(Collider other)

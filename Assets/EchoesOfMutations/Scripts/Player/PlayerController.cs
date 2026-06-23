@@ -196,16 +196,13 @@ public class PlayerController : MonoBehaviour
         CraftingStation station = itemhit.collider.GetComponent<CraftingStation>();
         if (station != null) 
         {
+            Cursor.lockState = CursorLockMode.None;
             Cursor.visible = true;
             OnCraftingOpen?.Invoke(station);
             return;
         }
-        else
-        {
-            Cursor.visible = false;
-        }
-
-            IInteractable interactable = itemhit.collider.GetComponent<IInteractable>();
+        
+        IInteractable interactable = itemhit.collider.GetComponent<IInteractable>();
         Debug.Log(itemhit.collider.name);
         if (interactable != null)
         {

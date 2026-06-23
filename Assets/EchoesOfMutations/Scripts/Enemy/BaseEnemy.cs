@@ -7,10 +7,9 @@ using UnityEngine.AI;
 [RequireComponent(typeof(NavMeshAgent))]
 public class BaseEnemy : MonoBehaviour
 {
+    [SerializeField] private BaseEnemiesData enemyData;
     [FoldoutGroup ("References")]
     public NavMeshAgent agent;
-    
-
     [FoldoutGroup("Attack Settings")]
     public float damageToObjects;
     [FoldoutGroup("Attack Settings")]
@@ -72,7 +71,7 @@ public class BaseEnemy : MonoBehaviour
         if (isAttacking)
         {              
             if (Physics.Raycast(transform.position,transform.forward, out RaycastHit hit, 1.5f, Barricades))
-            {
+            { 
                     //Debug.DrawRay(transform.position,transform.forward * hit.distance, Color.black);
 
                     if (hit.collider.gameObject == null) return;
@@ -80,10 +79,10 @@ public class BaseEnemy : MonoBehaviour
                     GameObject obj = hit.collider.gameObject;
                     Debug.Log(hit.collider.name);
                     isAttacking = false;
-                    
-                    
-                    StartCoroutine(nameof(EnableAttack));
+
+
                     CurrentBarricade.RecieveDamage(2);
+                    StartCoroutine(nameof(EnableAttack));                    
             }          
             else
             {
@@ -115,10 +114,8 @@ public class BaseEnemy : MonoBehaviour
             { 
                 if(Vector3.Distance(pos , barricade.transform.position) < Vector3.Distance(pos , nearestBarricade.transform.position))
                 {                  
-                    nearestBarricade = barricade;
-                    CurrentBarricade = barricade;
+                    nearestBarricade = barricade;                  
                 }
-                
             }
             
         }
