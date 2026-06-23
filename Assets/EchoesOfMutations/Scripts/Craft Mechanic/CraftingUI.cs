@@ -8,7 +8,7 @@ public class CraftingUI : MonoBehaviour
 
     private Vector3 stationPosition;
 
-    public bool IsVisible => craftingPanel != null && craftingPanel.activeSelf;
+    
 
 
     private void Awake()
@@ -35,22 +35,23 @@ public class CraftingUI : MonoBehaviour
     {
         
     }
-    private void OnCraftingOpenRequested(CraftingStation station) { } 
+    
     public void Show(ItemRecipe[] recipes, Vector3 spawnPosition)
     {
         stationPosition = spawnPosition;
         craftingPanel.SetActive(true);
         BuildRecipeList(recipes);   
     }
+    public bool IsVisible => craftingPanel != null && craftingPanel.activeSelf;
     public void Hide()
     {
         if(craftingPanel != null)
         {
             craftingPanel.SetActive(false);
         }
-        ClearRecipeList();
-        
+        ClearRecipeList();       
     }
+    private void OnCraftingOpenRequested(CraftingStation station) { }
     private void BuildRecipeList(ItemRecipe[] recipes)
     {
         ClearRecipeList();

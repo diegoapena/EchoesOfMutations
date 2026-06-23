@@ -16,6 +16,7 @@ public class NormalEnemy : BaseEnemy
     }
     void Update()
     {
+        
         NextTarget();
         Attack();
     }
@@ -23,9 +24,9 @@ public class NormalEnemy : BaseEnemy
     private void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("Barricade"))
-        {           
-            barricades.Add(other.gameObject.GetComponent<Barricade>());
+        {
             CurrentBarricade = other.gameObject.GetComponent<Barricade>();
+            barricades.Add(other.gameObject.GetComponent<Barricade>());                      
             FindBarricade();
 
         }
