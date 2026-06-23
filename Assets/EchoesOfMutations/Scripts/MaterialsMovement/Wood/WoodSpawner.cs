@@ -10,7 +10,7 @@ public class WoodSpawner : MonoBehaviour
     private void OnTriggerEnter(Collider other)
     {
         
-        if (other.CompareTag("Box"))
+        if (other.CompareTag("WoodBox"))
         {
            
             Rigidbody rb = other.GetComponent<Rigidbody>();

@@ -3,6 +3,7 @@ using UnityEngine;
 public class BaseInteractableObj : MonoBehaviour , IInteractable
 {
     [SerializeField] protected BaseItemsData itemData;
+    [SerializeField] protected bool isInInventory = false;
     private Vector3 equipPosition;
     private Vector3 originalScale;
     private Vector3 equipRotation;
@@ -27,7 +28,7 @@ public class BaseInteractableObj : MonoBehaviour , IInteractable
     public void OnEquip(Transform equipPoint)
     {
         equipPoint = GameManager.Instance.playerManager.playerMechanics.ItemContainer;
-        
+        isInInventory = true;
         transform.SetParent(equipPoint);
         transform.localPosition = equipPosition;
         transform.localRotation = Quaternion.Euler(equipRotation);

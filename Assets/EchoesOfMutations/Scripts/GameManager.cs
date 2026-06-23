@@ -28,6 +28,13 @@ public class GameManager : MonoBehaviour
     public TestCinematicMutant mutantCinematic;
     [FoldoutGroup("References/Cinematic")]
     public Collition collition;
+
+    [FoldoutGroup("UI")]
+    public RecipeSlotUI recipeSlotUI;
+    [FoldoutGroup("UI")]
+    public CraftingUI craftingUI;
+    [FoldoutGroup("UI")]
+    public CraftingStation craftingStation;
    private void Awake()
     {
         if (Instance == null)

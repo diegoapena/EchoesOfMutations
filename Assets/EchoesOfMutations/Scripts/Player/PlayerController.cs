@@ -32,7 +32,9 @@ public class PlayerController : MonoBehaviour
     public static event Action<float> OnSlotScroll;
     public static event Action OnInventory;
     public static event Action OnRemoveItem;
-    
+    public static event Action<CraftingStation> OnCraftingOpen;
+    public static event Action OnTurnFlashlight;
+
     [SerializeField] private Transform gunMuzzle;   
     [SerializeField] private LayerMask enemyMask;
     [SerializeField] private LayerMask Interactable;
@@ -180,23 +182,52 @@ public class PlayerController : MonoBehaviour
     }
     private void TurnObj(InputAction.CallbackContext context)
     {
-        GameManager.Instance.flashLight.ToggleFlashlight();
+        //GameManager.Instance.flashLight.ToggleFlashlight();
+
+        OnTurnFlashlight?.Invoke();
     }
 
     private void OnInteract(InputAction.CallbackContext context)
     {
         Ray ray = new Ray(characterCamera.transform.position, characterCamera.transform.forward);
-        if (Physics.Raycast(ray, out RaycastHit itemhit, distance, Interactable))
+
+
+        if (!Physics.Raycast(ray, out RaycastHit itemhit, distance, Interactable))
+            return;
+
+        CraftingStation station = itemhit.collider.GetComponent<CraftingStation>();
+        if (station != null) 
+        {
+            Cursor.visible = true;
+            OnCraftingOpen?.Invoke(station);
+            return;
+        }
+        else
+        {
+            Cursor.visible = false;
+        }
+
+            IInteractable interactable = itemhit.collider.GetComponent<IInteractable>();
+        Debug.Log(itemhit.collider.name);
+        if (interactable != null)
         {
             OnInteractEvent?.Invoke();
-            IInteractable interactable = itemhit.collider.GetComponent<IInteractable>();           
-            Debug.Log(itemhit.collider.name);
-            if (interactable != null)
-            {
-                interactable.Interact();
-            }
+            interactable.Interact();
         }
-                
+
+        /*
+    if (Physics.Raycast(ray, out RaycastHit itemhit, distance, Interactable))
+    {           
+        IInteractable interactable = itemhit.collider.GetComponent<IInteractable>();           
+        Debug.Log(itemhit.collider.name);
+        if (interactable != null)
+        {
+            OnInteractEvent?.Invoke();
+            interactable.Interact();
+        }
+    }
+        */
+
     }
     private void OnScroll(InputAction.CallbackContext context) => OnSlotScroll?.Invoke(context.ReadValue<Vector2>().y);
     

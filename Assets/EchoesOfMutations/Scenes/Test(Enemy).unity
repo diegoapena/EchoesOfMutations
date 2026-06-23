@@ -206,8 +206,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 296148240}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.011689276, y: -0.012901158, z: -0.00015078486, w: -0.9998485}
-  m_LocalPosition: {x: 0.07953811, y: 1.3210628, z: -4.996313}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.071857154, y: 1.3698009, z: -4.825546}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1829,6 +1829,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 4263514979729669299, guid: 818b0e22b28bcc84499d001b47c87c58, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0.0000000011500704
+      objectReference: {fileID: 0}
+    - target: {fileID: 4263514979729669299, guid: 818b0e22b28bcc84499d001b47c87c58, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0.24499966
+      objectReference: {fileID: 0}
     - target: {fileID: 5227898547689134980, guid: 818b0e22b28bcc84499d001b47c87c58, type: 3}
       propertyPath: Target.TrackingTarget
       value: 
@@ -2185,12 +2193,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::GameManager
   playerManager: {fileID: 1731395821}
+  animationManager: {fileID: 0}
+  invetoryManager: {fileID: 0}
   flashLight: {fileID: 0}
   barricade: {fileID: 4762996200443985000}
+  gun: {fileID: 0}
   normalEnemy: {fileID: 0}
+  strongEnemy: {fileID: 0}
   car: {fileID: 0}
   mutantCinematic: {fileID: 0}
   collition: {fileID: 0}
+  recipeSlotUI: {fileID: 0}
+  craftingUI: {fileID: 0}
+  craftingStation: {fileID: 0}
 --- !u!4 &1861787204
 Transform:
   m_ObjectHideFlags: 0
@@ -2228,7 +2243,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5908811854212289456, guid: 97f7de3df2e0f8a47b474a4a4b4e8767, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -2.59
+      value: 4.27
       objectReference: {fileID: 0}
     - target: {fileID: 5908811854212289456, guid: 97f7de3df2e0f8a47b474a4a4b4e8767, type: 3}
       propertyPath: m_LocalPosition.y

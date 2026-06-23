@@ -2,7 +2,6 @@ using Sirenix.OdinInspector;
 using System;
 using System.Collections.Generic;
 using Unity.VisualScripting;
-using UnityEditor.Localization.Plugins.XLIFF.V12;
 using UnityEngine;
 using UnityEngine.InputSystem;
 [Serializable]
@@ -27,9 +26,7 @@ public class InventoryManager : MonoBehaviour
     [FoldoutGroup("Craftable Settings")]
     public int CurrentWood;
     [FoldoutGroup("Craftable Settings")]
-    public int CurrentMetal;
-    [FoldoutGroup("Craftable Settings")]
-    public CraftingStation Crafting;
+    public int CurrentMetal;    
     private void Awake()
     {      
         if(Instance == null)
@@ -73,28 +70,27 @@ public class InventoryManager : MonoBehaviour
     {
         
     }
-    #region Craftable Methods
-    [Button]
+    #region Craftable Methods 
     public void AddMaterial(BaseMaterialData material , int amount)
     {
-        if (materials.ContainsKey(material)) 
+        if (material.MaterialName == "Wood")
         {
-            if (material.MaterialName == "Wood")
-            {
-                CurrentWood += amount;
-            }
-            else if (material.MaterialName == "Metal")
-            {
-                CurrentMetal += amount;               
-            }           
+            CurrentWood += amount;
+        }
+        else if (material.MaterialName == "Metal")
+        {
+            CurrentMetal += amount;
+        }
+        if (materials.ContainsKey(material))
+        {
             materials[material] += amount;
-            Debug.Log("Material obtained :" + material.MaterialName + " - " + "Quantity :" + amount );           
-        } 
-
-        else 
+        }
+        else
+        {
             materials[material] = amount;
-    }
-    [Button]
+        }        
+        Debug.Log("Material obtained :" + material.MaterialName + " - " + "Quantity :" + amount);
+    }   
     public bool CanCraft(ItemRecipe recipe)
     {
         foreach(var ingredient in recipe.Ingredients)
@@ -114,21 +110,31 @@ public class InventoryManager : MonoBehaviour
         
         foreach(var ingredient in recipe.Ingredients)
         {
-            materials[ingredient.material] -= ingredient.amount;           
-        }       
+            materials[ingredient.material] -= ingredient.amount;         
+            if(ingredient.material.MaterialName == "Wood")
+            {
+                CurrentWood -= ingredient.amount;
+            }
+            else if(ingredient.material.MaterialName == "Metal")
+            {
+                CurrentMetal -= ingredient.amount;
+            }
+        }   
+        
         Instantiate(recipe.resultPrefab, spawnPosition, Quaternion.identity);
         return true;       
     }
 
-    [Button]
-    public int GetAmount(BaseMaterialData material) => materials.TryGetValue(material, out int count) ? count : 0;
-    [Button]
+    
+    public int GetAmount(BaseMaterialData material) => materials.TryGetValue(material, out int count) ? count : 0;   
+    /*
     public void ClearInventory()
     {
         materials.Clear();
         CurrentMetal = 0;
         CurrentWood = 0;
     }
+    */
     #endregion
 
     #region Inventory Methods
@@ -256,8 +262,5 @@ public class InventoryManager : MonoBehaviour
     {
         return currentNode?.Value;
     }
-    #endregion
-    /*
-    public void AddMaterial(BaseMaterialData material, int amount) => CraftingStation.AddMaterial(material, amount);
-    */
+    #endregion   
 }
