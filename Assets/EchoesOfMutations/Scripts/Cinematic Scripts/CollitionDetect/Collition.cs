@@ -25,6 +25,7 @@ public class Collition : MonoBehaviour
 
     private void OnTriggerStay(Collider other)
     {
+
         if (other.CompareTag("Car"))
         {
             GameManager.Instance.mutantCinematic.gameObject.SetActive(true);
