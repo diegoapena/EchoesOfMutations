@@ -18,24 +18,22 @@ public class StrongEnemy : BaseEnemy
     
     void Update()
     {
-        OnDestroy();
-        NextTarget();
+        DeadEnemy();
+        
         Attack();
     }
-
-    public void NextTarget()
-    {
-        if (CurrentBarricade == null)
-        {
-            ChangeTarget();
-        }
-    }
+    
+   
     private void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("Barricade"))
         {
-            CurrentBarricade = other.gameObject.GetComponent<Barricade>();
-            barricades.Add(other.gameObject.GetComponent<Barricade>());
+            if(CurrentBarricade == null)
+            {
+                CurrentBarricade = other.gameObject.GetComponent<Barricade>();
+                barricades.Add(other.gameObject.GetComponent<Barricade>());
+            }
+      
             FindBarricade();
 
         }
@@ -52,6 +50,7 @@ public class StrongEnemy : BaseEnemy
                 agent.stoppingDistance = 2;
             }
 
+
         }
     }
     private void OnTriggerExit(Collider other)
@@ -62,11 +61,21 @@ public class StrongEnemy : BaseEnemy
         }
     }
 
-    private void OnDestroy()
+    private void DeadEnemy()
     {
         if (health <= 0)
         {
-            Destroy(gameObject);
+            //OnDead?.Invoke();
+            Debug.Log("dead");
+            if (GetComponent<NavMeshAgent>().enabled == true)
+            {
+                GetComponent<NavMeshAgent>().isStopped = true;
+                GetComponent<NavMeshAgent>().ResetPath();
+                GetComponent<NavMeshAgent>().enabled = false;
+            }
+            transform.gameObject.SetActive(false);
+            Destroy(gameObject, 1f);
         }
     }
+
 }

@@ -40,7 +40,19 @@ public class GameManager : MonoBehaviour
     public CraftingUI craftingUI;
     [FoldoutGroup("UI")]
     public CraftingStation craftingStation;
-   private void Awake()
+    private void OnEnable()
+    {
+        normalEnemy.OnDead += DeadNormalEnemy;
+    }
+    private void OnDisable()
+    {
+        normalEnemy.OnDead -= DeadNormalEnemy;
+    }
+    private void DeadNormalEnemy()
+    {
+        normalEnemy = null;
+    }
+    private void Awake()
     {
         if (Instance == null)
         {

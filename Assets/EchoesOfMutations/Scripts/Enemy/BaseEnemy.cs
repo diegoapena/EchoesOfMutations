@@ -6,7 +6,7 @@ using UnityEngine;
 using UnityEngine.AI;
 
 [RequireComponent(typeof(NavMeshAgent))]
-public class BaseEnemy : MonoBehaviour,IDamageable
+public abstract class BaseEnemy : MonoBehaviour,IDamageable
 {
     [SerializeField] private BaseEnemiesData enemyData;
     [FoldoutGroup ("References")]
@@ -35,7 +35,7 @@ public class BaseEnemy : MonoBehaviour,IDamageable
    
     void Update()
     {
-        
+      
     }
     /*
     public void FindBarricades()
@@ -70,43 +70,56 @@ public class BaseEnemy : MonoBehaviour,IDamageable
     */
 
     public void Attack()
-    {
-        if (isAttacking)
-        {              
-            if (Physics.Raycast(transform.position,transform.forward, out RaycastHit hit, 1.5f, Barricades))
-            { 
-                    //Debug.DrawRay(transform.position,transform.forward * hit.distance, Color.black);
-
-                    if (hit.collider.gameObject == null) return;
-
-                    GameObject obj = hit.collider.gameObject;
-                    Debug.Log(hit.collider.name);
-                    isAttacking = false;
-
-
-                    CurrentBarricade.RecieveDamage(2);
-                    StartCoroutine(nameof(EnableAttack));                    
-            }          
-            else
+    {  
+        if (Physics.SphereCast(transform.position, 3f, transform.forward, out RaycastHit hit, 1f, Barricades))
+        {
+            isAttacking = true;
+            if (isAttacking)
             {
-                Debug.DrawRay(transform.position, transform.forward * 1, Color.red);
+                GameObject obj = hit.collider.gameObject;
+                StartCoroutine(nameof(EnableAttack));
+                Debug.Log(hit.collider.name);
+                if (hit.collider.gameObject == null) return;
+                CurrentBarricade.RecieveDamage(2);
+                isAttacking = false;
             }
+                            
         }
+            
+        
+                         
+        
+    
     }
-    public void ChangeTarget()
+    public void Target()
     {
         if (!agent.hasPath)
         {
             Debug.Log("No path to follow");
         }
-        if (GameManager.Instance.playerManager != null)
-        {
+        if (GameManager.Instance.playerManager != null && GetComponent<NavMeshAgent>().enabled == true)
+        {               
+
+            OnDeath?.Invoke();
+            /*
+            if (health <= 0 && GetComponent<NavMeshAgent>().enabled == true )
+            {
+                Debug.Log("dead 2"); 
+                GetComponent<NavMeshAgent>().isStopped = true;
+                GetComponent<NavMeshAgent>().ResetPath();
+                GetComponent<NavMeshAgent>().enabled = false;
+
+                return;
+            }  
+            */
             agent.SetDestination(GameManager.Instance.playerManager.transform.position);
             agent.stoppingDistance = 1;
         }
+        
     }
     public void FindBarricade()
     {
+        ClearBarricades();
         if (CurrentBarricade == null && barricades.Count > 0) 
         {
             Barricade nearestBarricade = barricades[0];
@@ -117,15 +130,27 @@ public class BaseEnemy : MonoBehaviour,IDamageable
             { 
                 if(Vector3.Distance(pos , barricade.transform.position) < Vector3.Distance(pos , nearestBarricade.transform.position))
                 {                  
-                    nearestBarricade = barricade;                  
+                    nearestBarricade = barricade;
                 }
-            }
-            
+                CurrentBarricade = nearestBarricade;
+            }        
+        }       
+    }
+    public void NextTarget()
+    {
+        if (CurrentBarricade != null)
+        {
+            agent.SetDestination(CurrentBarricade.transform.position);
+            agent.stoppingDistance = 2;
         }
-        
+        else
+        {
+            Target();
+        }
     }
     public IEnumerator EnableAttack()
     {
+        
         CurrentAttackCD = 0;
         while(CurrentAttackCD <= AttackInterval)
         {
@@ -134,6 +159,7 @@ public class BaseEnemy : MonoBehaviour,IDamageable
         }
         isAttacking = true;
         yield break;
+        
     }
 
     public void RecieveDamage(float damage)
@@ -141,4 +167,13 @@ public class BaseEnemy : MonoBehaviour,IDamageable
         damage = GameManager.Instance.hitscan.DamageHit;
         health-=damage;
     }
+    public void ClearBarricades()
+    {
+        barricades.RemoveAll( x => x == null);
+    }
+
+
+
+    
+
 }
