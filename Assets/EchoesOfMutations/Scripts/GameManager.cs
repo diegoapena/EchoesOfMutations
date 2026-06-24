@@ -10,6 +10,11 @@ public class GameManager : MonoBehaviour
     public Animator animationManager;
     [FoldoutGroup("References")]
     public InventoryManager invetoryManager;
+    [FoldoutGroup("References")]
+    public WaveManager waveManager;
+    [FoldoutGroup("References")]
+    public HitScan hitscan;
+
 
     [FoldoutGroup("References/Items")]
     public FlashLight flashLight;

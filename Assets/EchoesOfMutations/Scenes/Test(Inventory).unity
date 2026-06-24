@@ -360,6 +360,8 @@ MonoBehaviour:
   playerManager: {fileID: 1846421747}
   animationManager: {fileID: 0}
   invetoryManager: {fileID: 843030874862516375}
+  waveManager: {fileID: 0}
+  hitscan: {fileID: 0}
   flashLight: {fileID: 7264419713101989360, guid: ddb501d4ed573fb4d9666fedc90a3b54, type: 3}
   barricade: {fileID: 4591493071442823826, guid: 97f7de3df2e0f8a47b474a4a4b4e8767, type: 3}
   gun: {fileID: 8854836153516165218, guid: d70e272cce0949344a555b0272f00013, type: 3}
@@ -2088,7 +2090,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!108 &410087040
 Light:
   m_ObjectHideFlags: 0

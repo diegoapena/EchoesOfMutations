@@ -250,20 +250,21 @@ public class PlayerController : MonoBehaviour
     }   
     private void OnAttack(InputAction.CallbackContext context)
     {
-        if(gunMuzzle.position == null) return;
+      
 
-        if(Physics.SphereCast(gunMuzzle.position, 3f, gunMuzzle.transform.forward, out RaycastHit hit, 100f, enemyMask))
-        { 
+        if(Physics.SphereCast(gunMuzzle.position, 5f, gunMuzzle.transform.forward, out RaycastHit hit, 100f, enemyMask))
+        {
+            if (hit.collider.gameObject == null) return;
             Debug.Log("Enemy hit" + hit.collider.name);
-
             LineRenderer ray = Instantiate(RayPrefab, transform.position, Quaternion.identity);
             ray.gameObject.transform.position = gunMuzzle.position;
             ray.positionCount = 2;
             ray.SetPosition(0, gunMuzzle.position);
             ray.SetPosition(1, hit.point);
-
             Quaternion rot = Quaternion.LookRotation(hit.normal);
 
+            GameObject obj = hit.collider.gameObject;
+            obj.GetComponent<BaseEnemy>().RecieveDamage(3);
             Destroy(ray, 2f);
         }
         else

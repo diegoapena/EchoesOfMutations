@@ -1,24 +1,27 @@
 using Sirenix.OdinInspector;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 
 [RequireComponent(typeof(NavMeshAgent))]
-public class BaseEnemy : MonoBehaviour
+public class BaseEnemy : MonoBehaviour,IDamageable
 {
     [SerializeField] private BaseEnemiesData enemyData;
     [FoldoutGroup ("References")]
     public NavMeshAgent agent;
-    [FoldoutGroup("Attack Settings")]
-    public float damageToObjects;
+    
     [FoldoutGroup("Attack Settings")]
     public bool isAttacking = false;
     [FoldoutGroup("Attack Settings")]
     public float CurrentAttackCD;
     [FoldoutGroup("Attack Settings")]
     public float AttackInterval;
+    [FoldoutGroup("Health Settings")]
+    public float health;
 
+    public static event Action OnDeath;
     public Barricade CurrentBarricade;
     public List<Barricade> barricades;
     public LayerMask Barricades;
@@ -131,5 +134,11 @@ public class BaseEnemy : MonoBehaviour
         }
         isAttacking = true;
         yield break;
+    }
+
+    public void RecieveDamage(float damage)
+    {
+        damage = GameManager.Instance.hitscan.DamageHit;
+        health-=damage;
     }
 }

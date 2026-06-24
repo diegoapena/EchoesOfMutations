@@ -24,6 +24,7 @@ public class BaseInteractableObj : MonoBehaviour , IInteractable
             Debug.Log("Item addeded to slot");
             InventoryManager.Instance.AddItem(this);
         }
+       
     }
     public void OnEquip(Transform equipPoint)
     {

@@ -1,9 +1,11 @@
+using Sirenix.OdinInspector;
 using UnityEngine;
 using UnityEngine.AI;
 
 public class NormalEnemy : BaseEnemy
 {
-
+    [FoldoutGroup("Attack Settings")]
+    public float damageToObjects;
     private void Awake()
     {
         agent = GetComponent<NavMeshAgent>();
@@ -16,7 +18,7 @@ public class NormalEnemy : BaseEnemy
     }
     void Update()
     {
-        
+        OnDestroy();
         NextTarget();
         Attack();
     }
@@ -57,6 +59,14 @@ public class NormalEnemy : BaseEnemy
         if (CurrentBarricade == null)
         {
             ChangeTarget();
+        }
+    }
+
+    private void OnDestroy()
+    {
+        if(health <= 0)
+        {
+            Destroy(gameObject);
         }
     }
 }
