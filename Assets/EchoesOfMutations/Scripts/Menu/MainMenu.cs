@@ -9,7 +9,7 @@ public class MainMenu : MonoBehaviour
 {
     public void Jugar()
     {
-        SceneManager.LoadScene("EchoesOfMutationsGameplay");
+        SceneManager.LoadScene("PrincipalCinematic");
     }
     public void Exit()
     {
