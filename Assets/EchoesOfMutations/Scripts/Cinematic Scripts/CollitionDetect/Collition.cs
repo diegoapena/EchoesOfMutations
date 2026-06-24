@@ -28,7 +28,7 @@ public class Collition : MonoBehaviour
         if (other.CompareTag("Car"))
         {
             GameManager.Instance.mutantCinematic.gameObject.SetActive(true);
-            GameManager.Instance.car.speed = 0;           
+            GameManager.Instance.car.speed = 10;           
             TestCinematicMutant.OnMoveMutant?.Invoke();          
             Debug.Log("Collition Detected");
         }

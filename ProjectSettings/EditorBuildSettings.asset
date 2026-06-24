@@ -11,9 +11,15 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/EchoesOfMutations/Scenes/EMMenu.unity
     guid: 193a41979ae8d584493e7a505e035784
-  - enabled: 1
+  - enabled: 0
     path: Assets/EchoesOfMutations/Scenes/EchoesOfMutationsGameplay.unity
     guid: 83d8f018a39061946a9ff39abaa90a82
+  - enabled: 1
+    path: Assets/EchoesOfMutations/Scenes/PrincipalCinematic.unity
+    guid: 768ea0426bf442d4288cb400b81b3021
+  - enabled: 1
+    path: Assets/EchoesOfMutations/Scenes/EchoesOfMutationsGameplay (SQP).unity
+    guid: 46ec5c698398de4469218e239f6da256
   m_configObjects:
     com.unity.addressableassets: {fileID: 11400000, guid: fa5aac4de42633748ae6614871cdc9a0, type: 2}
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 052faaac586de48259a63d0c4782560b, type: 3}
