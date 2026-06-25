@@ -40,6 +40,7 @@ public class BaseInteractableObj : MonoBehaviour , IInteractable
     public void OnUnEquipped()
     {
         gameObject.SetActive(false);
+        isInInventory = false;
     }
     public void OnPlaceItem(Vector3 position)
     {

@@ -509,8 +509,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a9ead83dd2c31da488d89229635342d9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::TestCinematicMutant
-  duration: 10
-  endPosition: 1
+  MutantSpeed: 0
+  OptionsUI: {fileID: 0}
+  CarCamera: {fileID: 0}
+  CarCrashCamera: {fileID: 0}
+  DummyAnimationCamera: {fileID: 0}
+  AnimacionDummy: {fileID: 0}
 --- !u!135 &96724545
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -5222,6 +5226,75 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1001 &861751417
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 1923679003052308759, guid: ddb501d4ed573fb4d9666fedc90a3b54, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -22.8
+      objectReference: {fileID: 0}
+    - target: {fileID: 1923679003052308759, guid: ddb501d4ed573fb4d9666fedc90a3b54, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.1758
+      objectReference: {fileID: 0}
+    - target: {fileID: 1923679003052308759, guid: ddb501d4ed573fb4d9666fedc90a3b54, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -28.669
+      objectReference: {fileID: 0}
+    - target: {fileID: 1923679003052308759, guid: ddb501d4ed573fb4d9666fedc90a3b54, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1923679003052308759, guid: ddb501d4ed573fb4d9666fedc90a3b54, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1923679003052308759, guid: ddb501d4ed573fb4d9666fedc90a3b54, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1923679003052308759, guid: ddb501d4ed573fb4d9666fedc90a3b54, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1923679003052308759, guid: ddb501d4ed573fb4d9666fedc90a3b54, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1923679003052308759, guid: ddb501d4ed573fb4d9666fedc90a3b54, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1923679003052308759, guid: ddb501d4ed573fb4d9666fedc90a3b54, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4200572297708774818, guid: ddb501d4ed573fb4d9666fedc90a3b54, type: 3}
+      propertyPath: m_Name
+      value: Flashlight (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 7264419713101989360, guid: ddb501d4ed573fb4d9666fedc90a3b54, type: 3}
+      propertyPath: originalScale.x
+      value: 0.31
+      objectReference: {fileID: 0}
+    - target: {fileID: 7264419713101989360, guid: ddb501d4ed573fb4d9666fedc90a3b54, type: 3}
+      propertyPath: originalScale.y
+      value: 0.2094984
+      objectReference: {fileID: 0}
+    - target: {fileID: 7264419713101989360, guid: ddb501d4ed573fb4d9666fedc90a3b54, type: 3}
+      propertyPath: originalScale.z
+      value: 0.5973
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: ddb501d4ed573fb4d9666fedc90a3b54, type: 3}
 --- !u!43 &907282319
 Mesh:
   m_ObjectHideFlags: 0
@@ -12398,6 +12471,7 @@ SceneRoots:
   - {fileID: 1771515703}
   - {fileID: 592430511}
   - {fileID: 6977798108058264753}
+  - {fileID: 861751417}
   - {fileID: 28112468}
   - {fileID: 576004576}
   - {fileID: 544356543}

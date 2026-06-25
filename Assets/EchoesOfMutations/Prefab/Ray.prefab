@@ -165,7 +165,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d0cc6e8e0bd07304bb9e1fe6a5a16501, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::HitScan
-  DamageHit: 5
+  DamageHit: 4
 --- !u!1 &7155421121828278159
 GameObject:
   m_ObjectHideFlags: 0

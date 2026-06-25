@@ -70,26 +70,46 @@ public abstract class BaseEnemy : MonoBehaviour,IDamageable
     */
 
     public void Attack()
-    {  
-        if (Physics.SphereCast(transform.position, 3f, transform.forward, out RaycastHit hit, 1f, Barricades))
+    {
+        
+        if (isAttacking)
         {
-            isAttacking = true;
-            if (isAttacking)
+            if(Physics.SphereCast(transform.position, 1f, transform.forward, out RaycastHit hit, 0.7f, Barricades))
             {
                 GameObject obj = hit.collider.gameObject;
-                StartCoroutine(nameof(EnableAttack));
-                Debug.Log(hit.collider.name);
-                if (hit.collider.gameObject == null) return;
                 CurrentBarricade.RecieveDamage(2);
                 isAttacking = false;
+                Debug.Log(hit.collider.name);
             }
-                            
         }
-            
-        
-                         
-        
-    
+        else
+        {
+            StartCoroutine(nameof(EnableAttack));
+        }
+            /* 
+             if (Physics.SphereCast(transform.position, 1f, transform.forward, out RaycastHit hit, 0.5f, Barricades))
+             {
+                 if (hit.collider.gameObject)
+                 {
+                     StartCoroutine(nameof(EnableAttack));
+                 }
+                 //isAttacking = true;
+
+                 Debug.Log(hit.collider.name);
+
+
+                 GameObject obj = hit.collider.gameObject;
+                 if (hit.collider.gameObject)
+                 {
+
+                 }
+                 CurrentBarricade.RecieveDamage(2);
+
+
+                 if (hit.collider.gameObject == null) return;
+
+             }
+             */     
     }
     public void Target()
     {
@@ -113,7 +133,7 @@ public abstract class BaseEnemy : MonoBehaviour,IDamageable
             }  
             */
             agent.SetDestination(GameManager.Instance.playerManager.transform.position);
-            agent.stoppingDistance = 1;
+            agent.stoppingDistance = 1.5f;
         }
         
     }
@@ -141,7 +161,7 @@ public abstract class BaseEnemy : MonoBehaviour,IDamageable
         if (CurrentBarricade != null)
         {
             agent.SetDestination(CurrentBarricade.transform.position);
-            agent.stoppingDistance = 2;
+            agent.stoppingDistance = 2f;
         }
         else
         {
@@ -149,15 +169,15 @@ public abstract class BaseEnemy : MonoBehaviour,IDamageable
         }
     }
     public IEnumerator EnableAttack()
-    {
+    {        
         
         CurrentAttackCD = 0;
         while(CurrentAttackCD <= AttackInterval)
         {
             CurrentAttackCD += Time.deltaTime;
             yield return null;
-        }
-        isAttacking = true;
+        }        
+        isAttacking = true;       
         yield break;
         
     }
@@ -171,9 +191,4 @@ public abstract class BaseEnemy : MonoBehaviour,IDamageable
     {
         barricades.RemoveAll( x => x == null);
     }
-
-
-
-    
-
 }

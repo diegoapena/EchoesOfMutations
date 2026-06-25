@@ -14,8 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::BaseItemsData
   id: 23
   itemName: Flashlight
-  isStackable: 0
-  maxStack: 1
+  isStackable: 1
+  maxStack: 99
   itemIcon: {fileID: 0}
   itemDescription: 
   itemType: 1
