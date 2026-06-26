@@ -1,6 +1,7 @@
 using Sirenix.OdinInspector;
 using UnityEngine;
 
+
 public class GameManager : MonoBehaviour
 {
     public static GameManager Instance;
@@ -27,6 +28,8 @@ public class GameManager : MonoBehaviour
     public NormalEnemy normalEnemy;
     [FoldoutGroup("References/BaseEnemy")]
     public StrongEnemy strongEnemy;
+    [FoldoutGroup("References/Cinematic")]
+    public CarfinalCamera carfinalCamera;
     [FoldoutGroup("References/Cinematic")]
     public Car car;
     [FoldoutGroup("References/Cinematic")]
