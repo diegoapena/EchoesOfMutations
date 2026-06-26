@@ -190,9 +190,11 @@ public class PlayerController : MonoBehaviour
         Ray ray = new Ray(characterCamera.transform.position, characterCamera.transform.forward);
 
 
-        if (!Physics.Raycast(ray, out RaycastHit itemhit, distance, Interactable))
+        if (!Physics.Raycast(ray, out RaycastHit itemhit, distance, Interactable ))
             return;
 
+        //if(!Physics.Raycast(ray , out RaycastHit craftitem , distance , Barricades ))
+        
         CraftingStation station = itemhit.collider.GetComponent<CraftingStation>();
         if (station != null) 
         {

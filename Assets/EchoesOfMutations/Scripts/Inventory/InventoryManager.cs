@@ -18,6 +18,7 @@ public class InventoryManager : MonoBehaviour
     public static event Action<CircularLinkedList<IInteractable>> OnInventoryChanged;
     public static event Action<int> OnEquippedItem;
     private BaseInteractableObj currentEquipped;
+    private BaseCraftable currentEquippedCraftable;
     private Node<IInteractable> currentNode;
     private int selectedSlot = 0;
 
@@ -181,8 +182,13 @@ public class InventoryManager : MonoBehaviour
             if(currentEquipped != null)
             {
                 currentEquipped.OnUnEquipped();
-                currentEquipped.OnPlaceItem(GameManager.Instance.playerManager.playerMechanics.ItemContainer.position);
                 currentEquipped = null;
+            }
+            if(currentEquippedCraftable != null)
+            {
+                currentEquippedCraftable.OnUnEquipped();
+                currentEquippedCraftable.OnPlaceItem(GameManager.Instance.playerManager.playerMechanics.ItemContainer.position);
+                currentEquippedCraftable = null;
             }
         }
         Node<IInteractable> newCurrent = null;
@@ -249,13 +255,26 @@ public class InventoryManager : MonoBehaviour
         if (currentEquipped != null) 
         {
             currentEquipped.OnUnEquipped();
-            currentEquipped = null;       
+            currentEquipped = null;
+
+            
         }
-        if(node?.Value is BaseInteractableObj item)
+        if (currentEquippedCraftable != null)
+        {
+            currentEquippedCraftable.OnUnEquipped();
+            currentEquippedCraftable = null;
+        }
+
+        if (node?.Value is BaseInteractableObj item)
         {
             currentEquipped = item;
             currentEquipped.OnEquip(GameManager.Instance.playerManager.playerMechanics.ItemContainer);
             Debug.Log("Equipped :" + item.ItemData.ItemName);
+        }
+        if(node?.Value is BaseCraftable craftitem)
+        {
+            currentEquippedCraftable = craftitem;
+            currentEquippedCraftable.OnEquip(GameManager.Instance.playerManager.playerMechanics.ItemContainer);
         }
     }
     public IInteractable GetSelectedItem()

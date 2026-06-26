@@ -126,7 +126,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c34569b655d229a4aa7443842d4f06af, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Barricade
+  itemData: {fileID: 11400000, guid: 9b0af40b342a7044595983e864eee01b, type: 2}
+  isInInventory: 0
   durability: 10
+  originalScale: {x: 1.631969, y: 1.50059, z: 0.4910783}
 --- !u!54 &-2308836917107190139
 Rigidbody:
   m_ObjectHideFlags: 0

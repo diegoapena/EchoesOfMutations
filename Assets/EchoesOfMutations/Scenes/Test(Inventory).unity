@@ -2094,7 +2094,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!108 &410087040
 Light:
   m_ObjectHideFlags: 0
@@ -6418,6 +6418,63 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5971e63fdef118140bb55b7e072f193f, type: 3}
+--- !u!1001 &1102266869
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 3829639472579463862, guid: 97f7de3df2e0f8a47b474a4a4b4e8767, type: 3}
+      propertyPath: m_Name
+      value: Barricade (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 5908811854212289456, guid: 97f7de3df2e0f8a47b474a4a4b4e8767, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -18.799002
+      objectReference: {fileID: 0}
+    - target: {fileID: 5908811854212289456, guid: 97f7de3df2e0f8a47b474a4a4b4e8767, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.7503952
+      objectReference: {fileID: 0}
+    - target: {fileID: 5908811854212289456, guid: 97f7de3df2e0f8a47b474a4a4b4e8767, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -32.007774
+      objectReference: {fileID: 0}
+    - target: {fileID: 5908811854212289456, guid: 97f7de3df2e0f8a47b474a4a4b4e8767, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5908811854212289456, guid: 97f7de3df2e0f8a47b474a4a4b4e8767, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5908811854212289456, guid: 97f7de3df2e0f8a47b474a4a4b4e8767, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5908811854212289456, guid: 97f7de3df2e0f8a47b474a4a4b4e8767, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5908811854212289456, guid: 97f7de3df2e0f8a47b474a4a4b4e8767, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5908811854212289456, guid: 97f7de3df2e0f8a47b474a4a4b4e8767, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5908811854212289456, guid: 97f7de3df2e0f8a47b474a4a4b4e8767, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 97f7de3df2e0f8a47b474a4a4b4e8767, type: 3}
 --- !u!1 &1181529133
 GameObject:
   m_ObjectHideFlags: 0
@@ -6774,6 +6831,63 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1948511129}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1001 &1189665042
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 3829639472579463862, guid: 97f7de3df2e0f8a47b474a4a4b4e8767, type: 3}
+      propertyPath: m_Name
+      value: Barricade
+      objectReference: {fileID: 0}
+    - target: {fileID: 5908811854212289456, guid: 97f7de3df2e0f8a47b474a4a4b4e8767, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -18.513592
+      objectReference: {fileID: 0}
+    - target: {fileID: 5908811854212289456, guid: 97f7de3df2e0f8a47b474a4a4b4e8767, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.7503952
+      objectReference: {fileID: 0}
+    - target: {fileID: 5908811854212289456, guid: 97f7de3df2e0f8a47b474a4a4b4e8767, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -27.55231
+      objectReference: {fileID: 0}
+    - target: {fileID: 5908811854212289456, guid: 97f7de3df2e0f8a47b474a4a4b4e8767, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5908811854212289456, guid: 97f7de3df2e0f8a47b474a4a4b4e8767, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5908811854212289456, guid: 97f7de3df2e0f8a47b474a4a4b4e8767, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5908811854212289456, guid: 97f7de3df2e0f8a47b474a4a4b4e8767, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5908811854212289456, guid: 97f7de3df2e0f8a47b474a4a4b4e8767, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5908811854212289456, guid: 97f7de3df2e0f8a47b474a4a4b4e8767, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5908811854212289456, guid: 97f7de3df2e0f8a47b474a4a4b4e8767, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 97f7de3df2e0f8a47b474a4a4b4e8767, type: 3}
 --- !u!43 &1208118572
 Mesh:
   m_ObjectHideFlags: 0
@@ -12148,6 +12262,10 @@ PrefabInstance:
       propertyPath: gunMuzzle
       value: 
       objectReference: {fileID: 1287225647}
+    - target: {fileID: 9181930328376627942, guid: 818b0e22b28bcc84499d001b47c87c58, type: 3}
+      propertyPath: Interactable.m_Bits
+      value: 136
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -12484,3 +12602,5 @@ SceneRoots:
   - {fileID: 8264601365512328494}
   - {fileID: 1460770629}
   - {fileID: 174431406}
+  - {fileID: 1189665042}
+  - {fileID: 1102266869}

@@ -42,6 +42,7 @@ public class BaseInteractableObj : MonoBehaviour , IInteractable
         gameObject.SetActive(false);
         isInInventory = false;
     }
+    /*
     public void OnPlaceItem(Vector3 position)
     {
         transform.SetParent(null);
@@ -50,5 +51,6 @@ public class BaseInteractableObj : MonoBehaviour , IInteractable
         transform.localScale = originalScale;
         gameObject.SetActive(true);
     }
+    */
     public BaseItemsData ItemData => itemData;   
 }
