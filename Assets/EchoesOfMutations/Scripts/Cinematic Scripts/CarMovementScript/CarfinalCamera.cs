@@ -10,16 +10,22 @@ public class CarfinalCamera : MonoBehaviour
     {
         
     }
+    public void Update()
+    {
+        Move();
+    }
 
-  
+
 
     public void Move()
     {
         StartCoroutine(WaitAndGoCar());
     }
+
+
     private IEnumerator WaitAndGoCar()
     {
-        yield return new WaitForSeconds(2f);
+        yield return new WaitForSeconds(10f);
 
         Vector3 Dir = Vector3.back * speed * Time.deltaTime;
         transform.position -= Dir;
