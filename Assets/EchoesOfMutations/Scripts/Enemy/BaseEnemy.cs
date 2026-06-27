@@ -80,7 +80,8 @@ public abstract class BaseEnemy : MonoBehaviour,IDamageable
             if(Physics.SphereCast(transform.position, 1f, transform.forward, out RaycastHit hit, 0.7f, Barricades))
             {
                 GameObject obj = hit.collider.gameObject;
-                CurrentBarricade.RecieveDamage(2);
+                //CurrentBarricade.RecieveDamage(damageToObjects);
+                AttackObj(CurrentBarricade.gameObject);
                 isAttacking = false;
                 Debug.Log(hit.collider.name);
             }
@@ -123,18 +124,7 @@ public abstract class BaseEnemy : MonoBehaviour,IDamageable
         if (GameManager.Instance.playerManager != null && GetComponent<NavMeshAgent>().enabled == true)
         {               
 
-            OnDeath?.Invoke();
-            /*
-            if (health <= 0 && GetComponent<NavMeshAgent>().enabled == true )
-            {
-                Debug.Log("dead 2"); 
-                GetComponent<NavMeshAgent>().isStopped = true;
-                GetComponent<NavMeshAgent>().ResetPath();
-                GetComponent<NavMeshAgent>().enabled = false;
-
-                return;
-            }  
-            */
+            OnDeath?.Invoke();              
             agent.SetDestination(GameManager.Instance.playerManager.transform.position);
             agent.stoppingDistance = 1.5f;
         }
@@ -184,7 +174,17 @@ public abstract class BaseEnemy : MonoBehaviour,IDamageable
         yield break;
         
     }
-
+    public void DamageObject(GameObject target)
+    {
+        if (target.TryGetComponent<IDamageable>(out IDamageable damageable))
+        {
+            damageable.RecieveDamage(damageToObjects);
+        }
+    }
+    public void AttackObj(GameObject target)
+    {
+        DamageObject(target);
+    }
     public void RecieveDamage(float damage)
     {
         damage = GameManager.Instance.hitscan.DamageHit;
@@ -194,4 +194,5 @@ public abstract class BaseEnemy : MonoBehaviour,IDamageable
     {
         barricades.RemoveAll( x => x == null);
     }
+    
 }

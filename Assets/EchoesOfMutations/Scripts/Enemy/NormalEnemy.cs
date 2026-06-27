@@ -5,8 +5,7 @@ using UnityEngine;
 using UnityEngine.AI;
 
 public class NormalEnemy : BaseEnemy
-{
-    
+{    
     public Action OnDead;
     private void Awake()
     {
@@ -28,8 +27,7 @@ public class NormalEnemy : BaseEnemy
     }
     void Update()
     {       
-        DeadEnemy();
-        
+        DeadEnemy();     
         NextTarget();
         Attack();
     }
@@ -62,8 +60,7 @@ public class NormalEnemy : BaseEnemy
                 GetComponent<NavMeshAgent>().isStopped = true;
                 GetComponent<NavMeshAgent>().ResetPath();
                 GetComponent<NavMeshAgent>().enabled = false;
-            }
-            transform.gameObject.SetActive(false);
+            }           
             Destroy(gameObject,1f);
         }
     }
