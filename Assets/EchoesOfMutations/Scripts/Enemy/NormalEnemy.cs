@@ -6,8 +6,7 @@ using UnityEngine.AI;
 
 public class NormalEnemy : BaseEnemy
 {
-    [FoldoutGroup("Attack Settings")]
-    public float damageToObjects;
+    
     public Action OnDead;
     private void Awake()
     {

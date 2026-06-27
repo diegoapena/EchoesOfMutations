@@ -18,4 +18,4 @@ MonoBehaviour:
   maxStack: 99
   itemIcon: {fileID: 0}
   itemDescription: Use this item to neutralize enemies from the windows
-  itemType: 1
+  itemType: 2

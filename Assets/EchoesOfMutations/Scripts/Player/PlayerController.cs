@@ -203,8 +203,12 @@ public class PlayerController : MonoBehaviour
             OnCraftingOpen?.Invoke(station);
             return;
         }
-        
-        IInteractable interactable = itemhit.collider.GetComponent<IInteractable>();
+        else
+        {
+            Cursor.visible = false;
+        }
+
+            IInteractable interactable = itemhit.collider.GetComponent<IInteractable>();
         Debug.Log(itemhit.collider.name);
         if (interactable != null)
         {

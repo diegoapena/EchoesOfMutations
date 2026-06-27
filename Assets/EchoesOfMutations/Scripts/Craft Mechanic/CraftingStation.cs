@@ -25,7 +25,8 @@ public class CraftingStation : MonoBehaviour
 
         if (GameManager.Instance.craftingUI.IsVisible)
         {
-            GameManager.Instance.craftingUI.Hide();          
+            GameManager.Instance.craftingUI.Hide();    
+            
         }
         else
         {          

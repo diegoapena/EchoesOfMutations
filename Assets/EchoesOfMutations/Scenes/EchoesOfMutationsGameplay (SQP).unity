@@ -4115,7 +4115,7 @@ MonoBehaviour:
     m_Bits: 64
   Interactable:
     serializedVersion: 2
-    m_Bits: 128
+    m_Bits: 136
   RayPrefab: {fileID: 669402000536526204, guid: a1e0d664694009e41b691b86a70afe1d, type: 3}
   characterCamera: {fileID: 1674319845}
   holdpoint: {fileID: 884375794}

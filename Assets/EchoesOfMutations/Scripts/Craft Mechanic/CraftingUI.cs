@@ -48,6 +48,7 @@ public class CraftingUI : MonoBehaviour
         if(craftingPanel != null)
         {
             craftingPanel.SetActive(false);
+            Cursor.visible = false;
         }
         ClearRecipeList();       
     }

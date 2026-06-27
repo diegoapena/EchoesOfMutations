@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class BaseCraftable : MonoBehaviour , IDamageable , IInteractable
+public class BaseCraftable : MonoBehaviour  , IInteractable
 {
     [SerializeField] private BaseItemsData itemData;
     [SerializeField] private bool isInInventory = false;
@@ -21,7 +21,7 @@ public class BaseCraftable : MonoBehaviour , IDamageable , IInteractable
     }
     public void RecieveDamage(float damage)
     {
-        damage = GameManager.Instance.normalEnemy.damageToObjects;
+        damage = GetComponent<BaseEnemy>().damageToObjects;
         durability -= damage;
     }
     

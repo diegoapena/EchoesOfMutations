@@ -18,6 +18,9 @@ public abstract class BaseEnemy : MonoBehaviour,IDamageable
     public float CurrentAttackCD;
     [FoldoutGroup("Attack Settings")]
     public float AttackInterval;
+    [FoldoutGroup("Attack Settings")]
+    public float damageToObjects;
+
     [FoldoutGroup("Health Settings")]
     public float health;
 
