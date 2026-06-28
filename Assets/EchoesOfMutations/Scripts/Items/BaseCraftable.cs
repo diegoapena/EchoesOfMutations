@@ -1,14 +1,14 @@
 using UnityEngine;
 
+
 public class BaseCraftable : MonoBehaviour , IDamageable , IInteractable
 {
     [SerializeField] private BaseItemsData itemData;
     [SerializeField] private bool isInInventory = false;
+    [SerializeField] private Vector3 originalScale;   
     public float durability;
-    private Vector3 equipPosition;
-    [SerializeField] private Vector3 originalScale;
+    private Vector3 equipPosition;    
     private Vector3 equipRotation;
-
     void Start()
     {
         
@@ -21,8 +21,7 @@ public class BaseCraftable : MonoBehaviour , IDamageable , IInteractable
     }
     
     public void RecieveDamage(float damage)
-    {
-        //damage = GameManager.Instance.normalEnemy.damageToObjects;
+    {     
         durability -= damage;
     }
     
@@ -49,15 +48,15 @@ public class BaseCraftable : MonoBehaviour , IDamageable , IInteractable
     {
         gameObject.SetActive(false);
         isInInventory = false;
-    }
-    
+    }   
     
     public void OnPlaceItem(Vector3 position)
     {
         transform.SetParent(null);
         transform.position = position;
-        transform.position = position;
         transform.localScale = originalScale;
         gameObject.SetActive(true);
-    }
+    }   
+
+    public BaseItemsData ItemData => itemData;
 }

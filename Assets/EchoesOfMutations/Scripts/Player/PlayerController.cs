@@ -5,6 +5,7 @@ using UnityEngine.InputSystem;
 using Sirenix.OdinInspector;
 using Unity.VisualScripting;
 using Unity.Cinemachine;
+using System.Collections;
 
 public class PlayerController : MonoBehaviour
 {
@@ -12,38 +13,47 @@ public class PlayerController : MonoBehaviour
     private CharacterController controller;
     [FoldoutGroup("References")]
     public InputSystem_Actions inputs;
-
+    [FoldoutGroup("References")]
+    public CinemachineCamera characterCamera;
     [FoldoutGroup("Movement Settings")]
     public float moveSpeed = 10f;
     [FoldoutGroup("Movement Settings")]
     [SerializeField] private Vector2 moveInput;
+    [FoldoutGroup("Movement Settings/Dash")]
+    [SerializeField] private bool isSprinting = false;
+    [FoldoutGroup("Movement Settings/Dash")]
+    [SerializeField] private float baseMoveSpeed;
     [FoldoutGroup("Jump")]
     public float verticalVelocity = 0f;
     [FoldoutGroup("Jump")]
     public float JumpForce = 5f;
 
-    [SerializeField] private float distance = 2f;
-    private bool isSprinting = false;
-    private float baseMoveSpeed;
+    public bool enableToShoot = true;
 
-    [FoldoutGroup("Interact")]
-    public static  Action OnInteractEvent;
+
+    [SerializeField] private float distance = 2f;
+    
+    //-> Actions
+    public static event Action OnInteractEvent;
     public static event Action<int> OnSlotSelected;
     public static event Action<float> OnSlotScroll;
     public static event Action OnInventory;
     public static event Action OnRemoveItem;
     public static event Action<CraftingStation> OnCraftingOpen;
     public static event Action OnTurnFlashlight;
-
-    [SerializeField] private Transform gunMuzzle;   
+    public event Action OnRealoadGun;
+    [FoldoutGroup("Layers")]
     [SerializeField] private LayerMask enemyMask;
+    [FoldoutGroup("Layers")]
     [SerializeField] private LayerMask Interactable;
+
+    [FoldoutGroup("References/Objects")]
+    [SerializeField] private Transform gunMuzzle;
+    [FoldoutGroup("References/Objects")]
     [SerializeField] private LineRenderer RayPrefab;
-    
-
-
-    public CinemachineCamera characterCamera;
+    [FoldoutGroup("References/Objects")]
     public Transform holdpoint;
+
     private Rigidbody grabbedObject;
 
     private void Awake()
@@ -61,7 +71,6 @@ public class PlayerController : MonoBehaviour
         inputs.Enable();
         inputs.Player.Move.performed += ctx => moveInput = ctx.ReadValue<Vector2>();
         inputs.Player.Move.canceled += ctx => moveInput = Vector2.zero;
-
         inputs.Player.Jump.performed += Jump_performed;
 
         inputs.Player.Sprint.performed += OnSprint;
@@ -81,6 +90,8 @@ public class PlayerController : MonoBehaviour
 
         inputs.Player.Remove.performed += SpawnObj;
 
+        OnRealoadGun += GunReload;
+
         inputs.Player.Slot1.performed += ctx => OnSlotSelected?.Invoke(0);
         inputs.Player.Slot2.performed += ctx => OnSlotSelected?.Invoke(1);
         inputs.Player.Slot3.performed += ctx => OnSlotSelected?.Invoke(2);
@@ -93,7 +104,6 @@ public class PlayerController : MonoBehaviour
     }
 
    
-
     private void OnDisable()
     {      
         inputs.Player.Move.performed -= ctx => moveInput = ctx.ReadValue<Vector2>();
@@ -117,6 +127,7 @@ public class PlayerController : MonoBehaviour
 
         inputs.Player.Remove.performed -= SpawnObj;
 
+        OnRealoadGun -= GunReload;
         inputs.Player.Slot1.performed -= ctx => OnSlotSelected?.Invoke(0);
         inputs.Player.Slot2.performed -= ctx => OnSlotSelected?.Invoke(1);
         inputs.Player.Slot3.performed -= ctx => OnSlotSelected?.Invoke(2);
@@ -129,9 +140,6 @@ public class PlayerController : MonoBehaviour
         inputs.Disable();
 
     }
-
-
-
     void Start()
     {
 
@@ -140,12 +148,12 @@ public class PlayerController : MonoBehaviour
 
     void Update()
     {
-        Movement();       
+        Movement();
+        GunReload();
+        BulletsCount();
     }
-
     public void Movement()
-    {  
-      
+    {        
         float currentSpeed = isSprinting ? baseMoveSpeed * 2 : baseMoveSpeed;
 
         Vector3 moveDir = (transform.forward * moveInput.y + transform.right * moveInput.x) * currentSpeed;
@@ -191,9 +199,7 @@ public class PlayerController : MonoBehaviour
 
 
         if (!Physics.Raycast(ray, out RaycastHit itemhit, distance, Interactable ))
-            return;
-
-        //if(!Physics.Raycast(ray , out RaycastHit craftitem , distance , Barricades ))
+            return;      
         
         CraftingStation station = itemhit.collider.GetComponent<CraftingStation>();
         if (station != null) 
@@ -216,8 +222,7 @@ public class PlayerController : MonoBehaviour
             interactable.Interact();
         }  
     }
-    private void OnScroll(InputAction.CallbackContext context) => OnSlotScroll?.Invoke(context.ReadValue<Vector2>().y);
-    
+    private void OnScroll(InputAction.CallbackContext context) => OnSlotScroll?.Invoke(context.ReadValue<Vector2>().y);   
     private void GrabObject(InputAction.CallbackContext ctx)
     {     
         Ray ray = new Ray(characterCamera.transform.position, characterCamera.transform.forward);
@@ -237,9 +242,7 @@ public class PlayerController : MonoBehaviour
                     grabbedObject.transform.localRotation = Quaternion.identity; 
                 }
             }
-        }
-
-        
+        }        
     }
     private void ReleaseObject(InputAction.CallbackContext ctx)
     {
@@ -256,41 +259,66 @@ public class PlayerController : MonoBehaviour
     }   
     private void OnAttack(InputAction.CallbackContext context)
     {
-      
-
-        if(Physics.SphereCast(gunMuzzle.position, 5f, gunMuzzle.transform.forward, out RaycastHit hit, 100f, enemyMask))
+        if (enableToShoot)
         {
-            if (hit.collider.gameObject == null) return;
-            Debug.Log("Enemy hit" + hit.collider.name);
-            LineRenderer ray = Instantiate(RayPrefab, transform.position, Quaternion.identity);
-            ray.gameObject.transform.position = gunMuzzle.position;
-            ray.positionCount = 2;
-            ray.SetPosition(0, gunMuzzle.position);
-            ray.SetPosition(1, hit.point);
-            Quaternion rot = Quaternion.LookRotation(hit.normal);
+            if (Physics.SphereCast(gunMuzzle.position, 5f, gunMuzzle.transform.forward, out RaycastHit hit, 100f, enemyMask))
+            {
+                if (hit.collider.gameObject == null) return;
 
-            GameObject obj = hit.collider.gameObject;
-            obj.GetComponent<BaseEnemy>().RecieveDamage(3);
-            Destroy(ray, 2f);
+                if (hit.collider.gameObject)
+                {
+                    GameManager.Instance.gun.maxbulletsCapacity--;
+                    GameManager.Instance.gun.bulletsCount++;
+                }
+                Debug.Log("Enemy hit" + hit.collider.name);
+                LineRenderer ray = Instantiate(RayPrefab, transform.position, Quaternion.identity);
+                ray.gameObject.transform.position = gunMuzzle.position;
+                ray.positionCount = 2;
+                ray.SetPosition(0, gunMuzzle.position);
+                ray.SetPosition(1, hit.point);
+                Quaternion rot = Quaternion.LookRotation(hit.normal);
+                GameObject obj = hit.collider.gameObject;
+                obj.GetComponent<BaseEnemy>().RecieveDamage(3);
+                Destroy(ray, 2f);
+            }
+            else
+            {
+                Debug.Log("Shot miss");
+            }
         }
-        else
-        {
-            Debug.Log("Shot miss");
+        
+    } 
+    public void GunReload()
+    {       
+        if (GameManager.Instance.gun.maxbulletsCapacity <= 0)
+        {           
+            GameManager.Instance.gun.maxbulletsCapacity = 0;
+            enableToShoot = false;
+            StartCoroutine(nameof(ReloadEffect));           
         }
     }
-    
+    public void BulletsCount()
+    {
+        if(GameManager.Instance.gun.bulletsCount >= 5)
+        {
+            GameManager.Instance.gun.bulletsCount = 5;
+        }
+    }
+
+    private IEnumerator ReloadEffect()
+    {
+        yield return new WaitForSeconds(GameManager.Instance.gun.reloadTime);
+        enableToShoot = true;
+        GameManager.Instance.gun.maxbulletsCapacity = 5;        
+    }
+
     private void OnDrawGizmos()
     {
-        Gizmos.color = Color.red;
-
-        // Punto de inicio del rayo (posición del objeto)
+        Gizmos.color = Color.red;      
         Vector3 start = transform.position;
-
-        // Dirección del rayo (hacia adelante desde el objeto)
         Vector3 direction = transform.forward.normalized;
+        Gizmos.DrawRay(start, direction * 2f); 
 
-        // Dibujar el rayo desde la posición del objeto hacia adelante
-        Gizmos.DrawRay(start, direction * 2f); // El 5f es la longitud del rayo
 
         Gizmos.color = Color.green;
         Gizmos.DrawLine(characterCamera.transform.position, characterCamera.transform.position + characterCamera.transform.forward * 2f);

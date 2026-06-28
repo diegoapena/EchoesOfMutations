@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: 4131177383008902960}
   - component: {fileID: 2525779955337601217}
   - component: {fileID: 7264419713101989360}
+  - component: {fileID: 3204512326202033216}
   m_Layer: 7
   m_Name: Flashlight
   m_TagString: Untagged
@@ -224,4 +225,32 @@ MonoBehaviour:
   itemData: {fileID: 11400000, guid: 7f0d61d01d3c2f44bbffabb97570a842, type: 2}
   isInInventory: 0
   originalScale: {x: 0.31, y: 0.2094984, z: 0.5973}
+  rb: {fileID: 0}
   isOn: 0
+--- !u!54 &3204512326202033216
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4200572297708774818}
+  serializedVersion: 5
+  m_Mass: 1
+  m_LinearDamping: 0
+  m_AngularDamping: 0.05
+  m_CenterOfMass: {x: 0, y: 0, z: 0}
+  m_InertiaTensor: {x: 1, y: 1, z: 1}
+  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ImplicitCom: 1
+  m_ImplicitTensor: 1
+  m_UseGravity: 0
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0

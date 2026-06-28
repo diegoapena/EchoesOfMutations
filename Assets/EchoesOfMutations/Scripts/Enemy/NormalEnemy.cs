@@ -67,6 +67,6 @@ public class NormalEnemy : BaseEnemy
     public void OnDrawGizmos()
     {
         Gizmos.color = Color.yellow;
-        Gizmos.DrawWireSphere(transform.position, 1f);
+        Gizmos.DrawWireSphere(transform.position, 1.3f);
     }
 }

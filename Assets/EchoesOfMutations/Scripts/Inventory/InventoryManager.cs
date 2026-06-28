@@ -178,10 +178,12 @@ public class InventoryManager : MonoBehaviour
         }
         if (found == null) return false;
         if(found == currentNode)
-        {
+        {           
             if(currentEquipped != null)
             {
                 currentEquipped.OnUnEquipped();
+                currentEquipped.OnPlaceItem(GameManager.Instance.playerManager.playerMechanics.ItemContainer.position);
+
                 currentEquipped = null;
             }
             if(currentEquippedCraftable != null)
@@ -255,9 +257,7 @@ public class InventoryManager : MonoBehaviour
         if (currentEquipped != null) 
         {
             currentEquipped.OnUnEquipped();
-            currentEquipped = null;
-
-            
+            currentEquipped = null;           
         }
         if (currentEquippedCraftable != null)
         {
@@ -275,6 +275,7 @@ public class InventoryManager : MonoBehaviour
         {
             currentEquippedCraftable = craftitem;
             currentEquippedCraftable.OnEquip(GameManager.Instance.playerManager.playerMechanics.ItemContainer);
+            Debug.Log("Equipped :" + craftitem.ItemData.ItemName);
         }
     }
     public IInteractable GetSelectedItem()

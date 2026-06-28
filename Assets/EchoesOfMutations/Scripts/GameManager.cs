@@ -35,12 +35,18 @@ public class GameManager : MonoBehaviour
     public Collition collition;
 
     [FoldoutGroup("UI")]
+    public MainMenu mainMenu;
+    [FoldoutGroup("UI/CraftUI")]
     public RecipeSlotUI recipeSlotUI;
-    [FoldoutGroup("UI")]
+    [FoldoutGroup("UI/CraftUI")]
     public CraftingUI craftingUI;
-    [FoldoutGroup("UI")]
+    [FoldoutGroup("UI/CraftUI")]
     public CraftingStation craftingStation;
-    
+    [FoldoutGroup("UI/StatsUI")]
+    public StatsUI statsUI;
+
+
+
     private void Awake()
     {
         if (Instance == null)

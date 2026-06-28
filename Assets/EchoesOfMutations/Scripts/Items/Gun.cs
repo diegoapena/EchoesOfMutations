@@ -1,26 +1,27 @@
 using System;
+using System.Collections;
 using UnityEngine;
 
 public class Gun : BaseInteractableObj
 {
-    public bool IsInInventory = false;
-
+    public int maxbulletsCapacity;   
+    public int bulletsCount;
+    public float reloadTime = 6.5f;   
+    
     private void Awake()
     {
-        
+        rb = GetComponent<Rigidbody>();
     }
-
-    
-
     void Start()
     {
         
     }
-
-    
+ 
     void Update()
     {
         
     }
-   
+
+    
+     
 }

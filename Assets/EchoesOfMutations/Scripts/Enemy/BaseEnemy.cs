@@ -23,7 +23,6 @@ public abstract class BaseEnemy : MonoBehaviour,IDamageable
 
     [FoldoutGroup("Health Settings")]
     public float health;
-
     public static event Action OnDeath;
     public Barricade CurrentBarricade;
     public List<Barricade> barricades;
@@ -77,7 +76,7 @@ public abstract class BaseEnemy : MonoBehaviour,IDamageable
         
         if (isAttacking)
         {
-            if(Physics.SphereCast(transform.position, 1f, transform.forward, out RaycastHit hit, 0.7f, Barricades))
+            if(Physics.SphereCast(transform.position, 1.3f, transform.forward, out RaycastHit hit, 1.5f, Barricades))
             {
                 GameObject obj = hit.collider.gameObject;
                 //CurrentBarricade.RecieveDamage(damageToObjects);
@@ -123,7 +122,6 @@ public abstract class BaseEnemy : MonoBehaviour,IDamageable
         }
         if (GameManager.Instance.playerManager != null && GetComponent<NavMeshAgent>().enabled == true)
         {               
-
             OnDeath?.Invoke();              
             agent.SetDestination(GameManager.Instance.playerManager.transform.position);
             agent.stoppingDistance = 1.5f;
@@ -155,8 +153,8 @@ public abstract class BaseEnemy : MonoBehaviour,IDamageable
         {
             agent.SetDestination(CurrentBarricade.transform.position);
             agent.stoppingDistance = 2f;
-        }
-        else
+        }      
+        if(CurrentBarricade == null)
         {
             Target();
         }

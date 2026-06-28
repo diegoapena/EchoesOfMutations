@@ -4,18 +4,16 @@ using UnityEngine.InputSystem;
 
 public class FlashLight : BaseInteractableObj, IInteractable
 {  
-    [SerializeField] private bool isOn = false; 
-    
+    [SerializeField] private bool isOn = false;  
     private Light flashlightLight;
 
     
 
     private void Awake()
-    {
-       
+    {       
         flashlightLight = GetComponent<Light>();
-        flashlightLight.enabled = false; 
-      
+        flashlightLight.enabled = false;
+        rb = GetComponent<Rigidbody>();
     }
 
     private void OnEnable()

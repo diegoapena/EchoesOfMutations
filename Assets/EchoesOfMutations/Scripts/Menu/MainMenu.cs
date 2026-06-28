@@ -7,6 +7,8 @@ using UnityEngine.SceneManagement;
 // No tiene una relaci�n directa con otros scripts, pero controla el flujo inicial del juego.
 public class MainMenu : MonoBehaviour
 {
+    
+    /*
     public void Jugar()
     {
         SceneManager.LoadScene("PrincipalCinematic");
@@ -20,6 +22,7 @@ public class MainMenu : MonoBehaviour
     {
         SceneManager.LoadScene("");
     }
+    */
 }
 
     
