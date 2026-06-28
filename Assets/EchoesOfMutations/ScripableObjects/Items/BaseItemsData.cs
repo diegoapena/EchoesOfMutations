@@ -14,7 +14,7 @@ public class BaseItemsData : ScriptableObject
     [FoldoutGroup("Settings")]
     [SerializeField]private int maxStack = 1;
     [FoldoutGroup("Settings"), PreviewField(150)]
-    public Sprite itemIcon;
+    public Sprite ItemIcon;
     [FoldoutGroup("Settings"), TextArea(2,10)]
     [SerializeField] private string itemDescription;
     [SerializeField] private ItemsTypes itemType;

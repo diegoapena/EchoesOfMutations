@@ -16,6 +16,6 @@ MonoBehaviour:
   itemName: Shotgun
   isStackable: 0
   maxStack: 99
-  itemIcon: {fileID: 0}
+  ItemIcon: {fileID: -15609025, guid: b1b2b7208cc23c34291de960505bd96d, type: 3}
   itemDescription: Help you complete the game
   itemType: 1

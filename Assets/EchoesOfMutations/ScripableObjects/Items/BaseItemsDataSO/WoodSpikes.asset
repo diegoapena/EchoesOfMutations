@@ -16,6 +16,6 @@ MonoBehaviour:
   itemName: Wood spikes
   isStackable: 1
   maxStack: 99
-  itemIcon: {fileID: 0}
+  ItemIcon: {fileID: 553028652, guid: 6167ac4d00921a041a4f2b5fa89ef7a8, type: 3}
   itemDescription: 
   itemType: 2

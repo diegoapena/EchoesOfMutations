@@ -16,6 +16,6 @@ MonoBehaviour:
   itemName: Flashlight
   isStackable: 0
   maxStack: 1
-  itemIcon: {fileID: 0}
+  ItemIcon: {fileID: -1091888055, guid: 96f6ac19207819f4785ea0fca2ef8589, type: 3}
   itemDescription: 
   itemType: 1
