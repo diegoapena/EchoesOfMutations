@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: BearTrampRecipe
   m_EditorClassIdentifier: Assembly-CSharp::ItemRecipe
   itemName: Bear Tramp
-  resultPrefab: {fileID: 0}
+  resultPrefab: {fileID: 7693173529027314041, guid: b02a2a5e3c11d174f88088f295f0b836, type: 3}
   ingredients:
   - material: {fileID: 11400000, guid: a91876542211e8c4c9d22d343a8aeec0, type: 2}
     amount: 5

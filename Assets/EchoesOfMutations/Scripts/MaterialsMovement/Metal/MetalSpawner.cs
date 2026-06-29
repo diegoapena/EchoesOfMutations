@@ -12,7 +12,6 @@ public class MetalSpawner : MonoBehaviour
 
         if (other.CompareTag("MetalBox"))
         {
-
             Rigidbody rb = other.GetComponent<Rigidbody>();
             if (rb != null)
             {

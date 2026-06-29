@@ -27,7 +27,9 @@ public class InventoryManager : MonoBehaviour
     [FoldoutGroup("Craftable Settings")]
     public int CurrentWood;
     [FoldoutGroup("Craftable Settings")]
-    public int CurrentMetal;    
+    public int CurrentMetal;
+    [FoldoutGroup("Craftable Settings")]
+    public int CurrentScrap;
     private void Awake()
     {      
         if(Instance == null)
@@ -82,6 +84,12 @@ public class InventoryManager : MonoBehaviour
         {
             CurrentMetal += amount;
         }
+
+        else if (material.MaterialName == "Scrap")
+        {
+            CurrentScrap += amount;
+        }
+
         if (materials.ContainsKey(material))
         {
             materials[material] += amount;
@@ -119,6 +127,10 @@ public class InventoryManager : MonoBehaviour
             else if(ingredient.material.MaterialName == "Metal")
             {
                 CurrentMetal -= ingredient.amount;
+            }
+            else if (ingredient.material.MaterialName == "Scrap")
+            {
+                CurrentScrap -= ingredient.amount;
             }
         }   
         

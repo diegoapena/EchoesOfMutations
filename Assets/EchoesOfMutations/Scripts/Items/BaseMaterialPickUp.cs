@@ -6,7 +6,7 @@ public class BaseMaterialPickUp : MonoBehaviour, IInteractable
     public int amount = 1;
 
     [SerializeField] private float speed = 3f;
-    [SerializeField] private float duration = 5f;
+    [SerializeField] private float duration = 5f;   
     private float elapsedTime = 0f;
     void Start()
     {
@@ -33,10 +33,12 @@ public class BaseMaterialPickUp : MonoBehaviour, IInteractable
     }
     public void Transition()
     {
+ 
         if (elapsedTime < duration)
         {
             transform.Translate(Vector3.right * speed * Time.deltaTime);
             elapsedTime += Time.deltaTime;
         }
+        
     }
 }

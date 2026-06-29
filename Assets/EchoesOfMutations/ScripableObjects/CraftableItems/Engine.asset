@@ -10,10 +10,12 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 46cfa3359554dc14f92944490c5edb2f, type: 3}
-  m_Name: WoodSpikesRecipe
+  m_Name: Engine
   m_EditorClassIdentifier: Assembly-CSharp::ItemRecipe
-  itemName: Wood spikes
-  resultPrefab: {fileID: 3082052177716819960, guid: 11260eeae46ba904abd4e9728d19ce77, type: 3}
+  itemName: Engine
+  resultPrefab: {fileID: 6580984728299829361, guid: 14194ae0331847b44b69408d658333ad, type: 3}
   ingredients:
-  - material: {fileID: 11400000, guid: 5b9d523b3b066394e88e3d0f8cbab318, type: 2}
-    amount: 10
+  - material: {fileID: 11400000, guid: 8429518b5e2ed864a861af9a65862203, type: 2}
+    amount: 30
+  - material: {fileID: 11400000, guid: a91876542211e8c4c9d22d343a8aeec0, type: 2}
+    amount: 35
