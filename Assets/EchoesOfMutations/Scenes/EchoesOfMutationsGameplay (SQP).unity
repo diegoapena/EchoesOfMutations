@@ -4095,6 +4095,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerMechanics
   ItemContainer: {fileID: 2054401248}
+  PlayerLife: 100
 --- !u!114 &339050184
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -12231,30 +12232,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 4131177383008902960, guid: ddb501d4ed573fb4d9666fedc90a3b54, type: 3}
-      propertyPath: m_Range
-      value: 39.24417
-      objectReference: {fileID: 0}
-    - target: {fileID: 4131177383008902960, guid: ddb501d4ed573fb4d9666fedc90a3b54, type: 3}
-      propertyPath: m_Color.b
-      value: 0.8033998
-      objectReference: {fileID: 0}
-    - target: {fileID: 4131177383008902960, guid: ddb501d4ed573fb4d9666fedc90a3b54, type: 3}
-      propertyPath: m_Color.g
-      value: 0.9179494
-      objectReference: {fileID: 0}
-    - target: {fileID: 4131177383008902960, guid: ddb501d4ed573fb4d9666fedc90a3b54, type: 3}
-      propertyPath: m_Color.r
-      value: 0.9622642
-      objectReference: {fileID: 0}
-    - target: {fileID: 4131177383008902960, guid: ddb501d4ed573fb4d9666fedc90a3b54, type: 3}
-      propertyPath: m_SpotAngle
-      value: 56.89438
-      objectReference: {fileID: 0}
-    - target: {fileID: 4131177383008902960, guid: ddb501d4ed573fb4d9666fedc90a3b54, type: 3}
-      propertyPath: m_InnerSpotAngle
-      value: 31.421684
-      objectReference: {fileID: 0}
     - target: {fileID: 4200572297708774818, guid: ddb501d4ed573fb4d9666fedc90a3b54, type: 3}
       propertyPath: m_Name
       value: Flashlight
@@ -13489,7 +13466,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 999480969797672808, guid: d70e272cce0949344a555b0272f00013, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 77.11
+      value: 77.371
       objectReference: {fileID: 0}
     - target: {fileID: 999480969797672808, guid: d70e272cce0949344a555b0272f00013, type: 3}
       propertyPath: m_LocalPosition.y
@@ -13497,7 +13474,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 999480969797672808, guid: d70e272cce0949344a555b0272f00013, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -361.63
+      value: -367.187
       objectReference: {fileID: 0}
     - target: {fileID: 999480969797672808, guid: d70e272cce0949344a555b0272f00013, type: 3}
       propertyPath: m_LocalRotation.w
@@ -13530,22 +13507,6 @@ PrefabInstance:
     - target: {fileID: 1971714654317476139, guid: d70e272cce0949344a555b0272f00013, type: 3}
       propertyPath: m_Name
       value: Gun
-      objectReference: {fileID: 0}
-    - target: {fileID: 6822456778411120434, guid: d70e272cce0949344a555b0272f00013, type: 3}
-      propertyPath: m_IsTrigger
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6883530973307241619, guid: d70e272cce0949344a555b0272f00013, type: 3}
-      propertyPath: m_UseGravity
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8854836153516165218, guid: d70e272cce0949344a555b0272f00013, type: 3}
-      propertyPath: bulletsCount
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8854836153516165218, guid: d70e272cce0949344a555b0272f00013, type: 3}
-      propertyPath: maxbulletsCapacity
-      value: 5
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -22288,7 +22249,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1658934648
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -28808,7 +28769,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8154538035895659853, guid: ac7f0655bd8b32445b61cf8bac8b2bec, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 20.83
+      value: 23.13
       objectReference: {fileID: 0}
     - target: {fileID: 8154538035895659853, guid: ac7f0655bd8b32445b61cf8bac8b2bec, type: 3}
       propertyPath: m_LocalPosition.y
@@ -28816,7 +28777,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8154538035895659853, guid: ac7f0655bd8b32445b61cf8bac8b2bec, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -339.25
+      value: -339.081
       objectReference: {fileID: 0}
     - target: {fileID: 8154538035895659853, guid: ac7f0655bd8b32445b61cf8bac8b2bec, type: 3}
       propertyPath: m_LocalRotation.w

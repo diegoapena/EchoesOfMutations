@@ -323,5 +323,4 @@ public class PlayerController : MonoBehaviour
         Gizmos.color = Color.green;
         Gizmos.DrawLine(characterCamera.transform.position, characterCamera.transform.position + characterCamera.transform.forward * 2f);
     }
-
 }

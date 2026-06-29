@@ -20,13 +20,16 @@ public abstract class BaseEnemy : MonoBehaviour,IDamageable
     public float AttackInterval;
     [FoldoutGroup("Attack Settings")]
     public float damageToObjects;
-
+    [FoldoutGroup("Attack Settings")]
+    public float damageToPlayer;
     [FoldoutGroup("Health Settings")]
     public float health;
     public static event Action OnDeath;
     public Barricade CurrentBarricade;
     public List<Barricade> barricades;
+
     public LayerMask Barricades;
+    public LayerMask playerLayer;
     private void Awake()
     {    
     }
@@ -72,47 +75,30 @@ public abstract class BaseEnemy : MonoBehaviour,IDamageable
     */
 
     public void Attack()
-    {
-        
+    {        
         if (isAttacking)
         {
             if(Physics.SphereCast(transform.position, 1.3f, transform.forward, out RaycastHit hit, 1.5f, Barricades))
             {
-                GameObject obj = hit.collider.gameObject;
-                //CurrentBarricade.RecieveDamage(damageToObjects);
+                GameObject obj = hit.collider.gameObject;               
                 AttackObj(CurrentBarricade.gameObject);
                 isAttacking = false;
                 Debug.Log(hit.collider.name);
             }
+
+            
         }
         else
         {
             StartCoroutine(nameof(EnableAttack));
         }
-            /* 
-             if (Physics.SphereCast(transform.position, 1f, transform.forward, out RaycastHit hit, 0.5f, Barricades))
-             {
-                 if (hit.collider.gameObject)
-                 {
-                     StartCoroutine(nameof(EnableAttack));
-                 }
-                 //isAttacking = true;
 
-                 Debug.Log(hit.collider.name);
-
-
-                 GameObject obj = hit.collider.gameObject;
-                 if (hit.collider.gameObject)
-                 {
-
-                 }
-                 CurrentBarricade.RecieveDamage(2);
-
-
-                 if (hit.collider.gameObject == null) return;
-
-             }
-             */     
+        Collider[] hits = Physics.OverlapSphere(transform.position, 1.3f, playerLayer);
+        foreach (Collider col in hits)
+        {
+            col.GetComponent<IDamageable>()?.RecieveDamage(damageToPlayer);           
+            Debug.Log(col.name);
+        }
     }
     public void Target()
     {
@@ -191,6 +177,5 @@ public abstract class BaseEnemy : MonoBehaviour,IDamageable
     public void ClearBarricades()
     {
         barricades.RemoveAll( x => x == null);
-    }
-    
+    }    
 }

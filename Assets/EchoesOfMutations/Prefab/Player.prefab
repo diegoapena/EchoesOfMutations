@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2395972265547344217}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: IntemContainer
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -43,7 +43,7 @@ GameObject:
   - component: {fileID: 3608417295033989956}
   - component: {fileID: 1376478447259712946}
   - component: {fileID: 8519387740534250971}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Cube
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -156,7 +156,7 @@ GameObject:
   - component: {fileID: 5227898547689134980}
   - component: {fileID: 3025914087438430091}
   - component: {fileID: 3738133487561491506}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: FrontCamera
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -266,7 +266,7 @@ GameObject:
   - component: {fileID: 4229285413848986913}
   - component: {fileID: 6555008934547130739}
   - component: {fileID: 8674775751049969734}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Player
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -397,20 +397,23 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 183cfd2ba3442e94cab1b459cd6f80d7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerController
+  characterCamera: {fileID: 5227898547689134980}
   moveSpeed: 6
   moveInput: {x: 0, y: 0}
+  isSprinting: 0
+  baseMoveSpeed: 0
   verticalVelocity: 0
   JumpForce: 5
+  enableToShoot: 1
   distance: 4
-  gunMuzzle: {fileID: 0}
   enemyMask:
     serializedVersion: 2
     m_Bits: 64
   Interactable:
     serializedVersion: 2
     m_Bits: 136
+  gunMuzzle: {fileID: 0}
   RayPrefab: {fileID: 669402000536526204, guid: a1e0d664694009e41b691b86a70afe1d, type: 3}
-  characterCamera: {fileID: 5227898547689134980}
   holdpoint: {fileID: 0}
 --- !u!114 &4229285413848986913
 MonoBehaviour:
@@ -425,6 +428,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerMechanics
   ItemContainer: {fileID: 2395972265547344217}
+  PlayerLife: 100
 --- !u!114 &6555008934547130739
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -440,6 +444,7 @@ MonoBehaviour:
   MaxSlotsQuantity: 9
   CurrentWood: 0
   CurrentMetal: 0
+  CurrentScrap: 0
 --- !u!143 &8674775751049969734
 CharacterController:
   m_ObjectHideFlags: 0
@@ -474,7 +479,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 399455857854320431}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: CameraAnchor
   m_TagString: Untagged
   m_Icon: {fileID: 0}

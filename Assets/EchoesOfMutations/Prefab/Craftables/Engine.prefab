@@ -12,7 +12,8 @@ GameObject:
   - component: {fileID: 7840176175834455081}
   - component: {fileID: 8558425781212227195}
   - component: {fileID: 5676990817561068150}
-  m_Layer: 0
+  - component: {fileID: -8135676632822670502}
+  m_Layer: 9
   m_Name: Engine
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -112,3 +113,19 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &-8135676632822670502
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6580984728299829361}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0dd31a47b22599f44a49b92c5a86ef3d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Engine
+  itemData: {fileID: 0}
+  isInInventory: 0
+  originalScale: {x: 0, y: 0, z: 0}
+  durability: 0

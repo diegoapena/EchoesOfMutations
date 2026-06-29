@@ -4,10 +4,8 @@ using Unity.VisualScripting;
 using UnityEngine;
 
 public class Barricade : BaseCraftable 
-{
-    
+{    
     public event Action<int> OnHit;
-
     void Start()
     {
         
@@ -25,7 +23,5 @@ public class Barricade : BaseCraftable
         {      
             Destroy(gameObject);
         }
-    }
-
-    
+    }    
 }

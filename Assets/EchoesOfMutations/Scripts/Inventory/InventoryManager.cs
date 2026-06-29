@@ -140,14 +140,6 @@ public class InventoryManager : MonoBehaviour
 
     
     public int GetAmount(BaseMaterialData material) => materials.TryGetValue(material, out int count) ? count : 0;   
-    /*
-    public void ClearInventory()
-    {
-        materials.Clear();
-        CurrentMetal = 0;
-        CurrentWood = 0;
-    }
-    */
     #endregion
 
     #region Inventory Methods

@@ -134,13 +134,17 @@ MonoBehaviour:
   isAttacking: 0
   CurrentAttackCD: 0
   AttackInterval: 3
+  damageToObjects: 2
+  damageToPlayer: 2
   health: 9
   CurrentBarricade: {fileID: 0}
   barricades: []
   Barricades:
     serializedVersion: 2
     m_Bits: 8
-  damageToObjects: 2
+  playerLayer:
+    serializedVersion: 2
+    m_Bits: 1024
 --- !u!195 &887266884488123716
 NavMeshAgent:
   m_ObjectHideFlags: 0

@@ -57,15 +57,7 @@ public class StrongEnemy : BaseEnemy
                 agent.stoppingDistance = 2;
             }
         }
-    }
-    private void OnTriggerExit(Collider other)
-    {
-        if (other.CompareTag("Barricade"))
-        {
-            barricades.Remove(other.gameObject.GetComponent<Barricade>());
-        }
-    }
-
+    }   
     private void DeadEnemy()
     {
         if (health <= 0)
@@ -86,6 +78,9 @@ public class StrongEnemy : BaseEnemy
     {
         Gizmos.color = Color.yellow;
         Gizmos.DrawWireSphere(transform.position, 2f);
+
+        Gizmos.color = Color.blueViolet;
+        Gizmos.DrawWireSphere(transform.position, 2.5f);
     }
 
 }
