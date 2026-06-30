@@ -328,6 +328,55 @@ Mesh:
       - serializedVersion: 1
         m_IndexStart: 0
         m_IndexCount: 0
+--- !u!1 &277885343
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 277885345}
+  - component: {fileID: 277885344}
+  m_Layer: 0
+  m_Name: WavePool
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &277885344
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 277885343}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6181c0de68b61054fb2c2c8dd6c8e2c1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::WavePool
+  poolEntries:
+  - enemyType: 2
+    initialSize: 10
+  - enemyType: 3
+    initialSize: 10
+--- !u!4 &277885345
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 277885343}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 5.61608, y: 0, z: -0.83229}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1658934649}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &294052911 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 5417854489116423610, guid: d70e272cce0949344a555b0272f00013, type: 3}
@@ -2175,7 +2224,8 @@ Transform:
   m_LocalPosition: {x: 0, y: -0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 277885345}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1661214278
@@ -2398,12 +2448,15 @@ MonoBehaviour:
   animationManager: {fileID: 0}
   invetoryManager: {fileID: 1198928646}
   waveManager: {fileID: 1658934648}
+  wavePool: {fileID: 277885344}
   hitscan: {fileID: 2324793995639953435, guid: a1e0d664694009e41b691b86a70afe1d, type: 3}
+  databasewave: {fileID: 11400000, guid: 7025827ba1c19de4b8a9eb097235bdcd, type: 2}
   flashLight: {fileID: 7264419713101989360, guid: ddb501d4ed573fb4d9666fedc90a3b54, type: 3}
   barricade: {fileID: 4591493071442823826, guid: 97f7de3df2e0f8a47b474a4a4b4e8767, type: 3}
   gun: {fileID: 8854836153516165218, guid: d70e272cce0949344a555b0272f00013, type: 3}
   normalEnemy: {fileID: 8491033088549683761, guid: 17bbfeab4bfa6be46803b6a577471f0a, type: 3}
   strongEnemy: {fileID: 943130243385836701, guid: be096eb449c1e704ea9c23e486b83030, type: 3}
+  carfinalCamera: {fileID: 0}
   car: {fileID: 0}
   mutantCinematic: {fileID: 0}
   collition: {fileID: 0}

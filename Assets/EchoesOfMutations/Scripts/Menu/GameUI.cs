@@ -4,7 +4,7 @@ using UnityEngine.SceneManagement;
 using UnityEngine.InputSystem;
 using System;
 
-public class UIS2_Manager : MonoBehaviour
+public class GameUI : MonoBehaviour
 {
     [FoldoutGroup("Pause")]
     public GameObject panelPauseUI; 

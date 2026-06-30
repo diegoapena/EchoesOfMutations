@@ -13,8 +13,7 @@ MonoBehaviour:
   m_Name: Wave(1)
   m_EditorClassIdentifier: Assembly-CSharp::BaseWaveData
   enemies:
-  - enemyPrefab: {fileID: 4996332201873764090, guid: 17bbfeab4bfa6be46803b6a577471f0a, type: 3}
+  - enemyType: 2
     amount: 5
   timeUntilNextWave: 15
-  enemyCount: 0
-  waveNumber: 0
+  waveNumber: 1

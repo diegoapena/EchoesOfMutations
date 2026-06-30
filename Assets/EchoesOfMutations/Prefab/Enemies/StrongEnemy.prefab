@@ -161,6 +161,7 @@ MonoBehaviour:
   health: 18
   CurrentBarricade: {fileID: 0}
   barricades: []
+  enemyType: 3
   Barricades:
     serializedVersion: 2
     m_Bits: 8

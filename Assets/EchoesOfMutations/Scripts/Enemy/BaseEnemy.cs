@@ -28,6 +28,8 @@ public abstract class BaseEnemy : MonoBehaviour,IDamageable
     public Barricade CurrentBarricade;
     public List<Barricade> barricades;
 
+    public EnemiesTypes enemyType;
+
     public LayerMask Barricades;
     public LayerMask playerLayer;
     private void Awake()

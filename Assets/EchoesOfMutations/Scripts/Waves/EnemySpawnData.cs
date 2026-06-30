@@ -3,9 +3,9 @@ using UnityEngine;
 [System .Serializable]
 public class EnemySpawnData
 {
-    [SerializeField] private GameObject enemyPrefab;
+    [SerializeField] private EnemiesTypes enemyType;
     [SerializeField] private int amount = 1;
 
-    public GameObject EnemyPrefab => enemyPrefab;
+    public EnemiesTypes EnemyType => enemyType;
     public int Amount => amount;
 }

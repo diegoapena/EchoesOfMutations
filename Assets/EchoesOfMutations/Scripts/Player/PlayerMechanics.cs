@@ -15,11 +15,11 @@ public class PlayerMechanics : MonoBehaviour , IDamageable
     }
     private void OnEnable()
     {
-        OnPlayerDead += Dead;
+        
     }   
     private void OnDisable()
     {
-        OnPlayerDead -= Dead;
+        
     }
     void Update()
     {
@@ -30,10 +30,10 @@ public class PlayerMechanics : MonoBehaviour , IDamageable
         PlayerLife -= damage;
     }    
     public void Dead()
-    {
-        OnPlayerDead?.Invoke();
+    {       
         if (PlayerLife <= 0)
         {          
+            
             Debug.Log("You're dead! X_X");         
             Destroy(gameObject);
         }

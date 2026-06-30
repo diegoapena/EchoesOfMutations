@@ -7,7 +7,7 @@ public class RoamState : IState
     private EnemyController enemyController;
 
 
-    private float waitTimer;//->
+    private float waitTimer;
 
 
     public RoamState(StateMachine stateMachine, EnemyController enemyController)
@@ -85,6 +85,5 @@ public class RoamState : IState
             }
         }
         return false;
-
     }
 }

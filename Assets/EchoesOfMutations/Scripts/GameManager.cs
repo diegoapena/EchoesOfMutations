@@ -14,8 +14,12 @@ public class GameManager : MonoBehaviour
     [FoldoutGroup("References")]
     public WaveManager waveManager;
     [FoldoutGroup("References")]
+    public WavePool wavePool;
+    [FoldoutGroup("References")]
     public HitScan hitscan;
 
+    [FoldoutGroup("Data Bases")]
+    public DataBaseWave databasewave;
 
     [FoldoutGroup("References/Items")]
     public FlashLight flashLight;
@@ -38,7 +42,7 @@ public class GameManager : MonoBehaviour
     public Collition collition;
 
     [FoldoutGroup("UI")]
-    public MainMenu mainMenu;
+    public UIManager mainMenu;
     [FoldoutGroup("UI/CraftUI")]
     public RecipeSlotUI recipeSlotUI;
     [FoldoutGroup("UI/CraftUI")]

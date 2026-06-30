@@ -20,24 +20,27 @@ public class WaveManager : MonoBehaviour
     public UnityEvent<float> OnWaveCountDown;
     public UnityEvent OnAllWavesCompleted;
 
-    private MyQueue<GameObject> spawnQueue = new();
-    private List<GameObject> aliveEnemies = new();
+    private MyQueue<EnemiesTypes> spawnQueue = new();
+    private List<BaseEnemy> aliveEnemies = new();
     private int currentWaveIndex = -1;
     private bool isSpawning = false;
 
+    private void OnEnable()
+    {
+        WavePool.OnEnemyDeath += HandleEnemyDeath;
+    }
+    private void OnDisable()
+    {
+        WavePool.OnEnemyDeath -= HandleEnemyDeath;
+    }
 
-    
+
     void Start()
     {
         StartCoroutine(BeginWaveSystem());
     }
 
-   
-
-    private void OnDisable()
-    {
-        
-    }
+    
     void Update()
     {
         
@@ -96,7 +99,7 @@ public class WaveManager : MonoBehaviour
         {
             for (int i = 0; i < spawnData.Amount; i++) 
             { 
-                spawnQueue.Enqueue(spawnData.EnemyPrefab);         
+                spawnQueue.Enqueue(spawnData.EnemyType);         
             }
         }
     }
@@ -105,8 +108,8 @@ public class WaveManager : MonoBehaviour
         isSpawning = true;
         while (spawnQueue.Count > 0) 
         { 
-            GameObject prefabToSpwan = spawnQueue.Dequeue();
-            SpawnEnemy(prefabToSpwan);
+            EnemiesTypes typeToSpawn = spawnQueue.Dequeue();
+            SpawnEnemy(typeToSpawn);
             yield return new WaitForSeconds(timeBetweenSpawns);
         
         }
@@ -132,17 +135,16 @@ public class WaveManager : MonoBehaviour
         OnWaveCountDown?.Invoke(0f);
     }
 
-    private void SpawnEnemy(GameObject prefab)
+    private void SpawnEnemy(EnemiesTypes enemyType)
     {
-        if (prefab == null || spawnPoints == null || spawnPoints.Length == 0) return;
+        if (GameManager.Instance.wavePool == null || spawnPoints == null || spawnPoints.Length == 0) return;
 
         Transform point = spawnPoints[Random.Range(0,spawnPoints.Length)];
-        GameObject enemyInstance = Instantiate(prefab , point.position , point.rotation);
+        BaseEnemy enemyInstance = GameManager.Instance.wavePool.SpawnEnemy(enemyType , point.position , point.rotation);
         aliveEnemies.Add(enemyInstance);
     }
-    private void HandleEnemyDeath(GameObject enemy)
-    {       
-        
+    private void HandleEnemyDeath(BaseEnemy enemy)
+    {              
         aliveEnemies.Remove(enemy);
     }
     private bool AllEnemiesDead()

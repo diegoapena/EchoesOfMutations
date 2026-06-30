@@ -271,12 +271,15 @@ MonoBehaviour:
   animationManager: {fileID: 339050187}
   invetoryManager: {fileID: 339050188}
   waveManager: {fileID: 1658934648}
+  wavePool: {fileID: 1658934650}
   hitscan: {fileID: 2324793995639953435, guid: a1e0d664694009e41b691b86a70afe1d, type: 3}
+  databasewave: {fileID: 11400000, guid: 7025827ba1c19de4b8a9eb097235bdcd, type: 2}
   flashLight: {fileID: 1898942704}
   barricade: {fileID: 4591493071442823826, guid: 97f7de3df2e0f8a47b474a4a4b4e8767, type: 3}
   gun: {fileID: 8854836153516165218, guid: d70e272cce0949344a555b0272f00013, type: 3}
   normalEnemy: {fileID: 8491033088549683761, guid: 17bbfeab4bfa6be46803b6a577471f0a, type: 3}
   strongEnemy: {fileID: 943130243385836701, guid: be096eb449c1e704ea9c23e486b83030, type: 3}
+  carfinalCamera: {fileID: 0}
   car: {fileID: 0}
   mutantCinematic: {fileID: 0}
   collition: {fileID: 0}
@@ -623,7 +626,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 873398496187567865, guid: ec069ff7f8451004b9aa465c682730fa, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 15.78
+      value: 7.059
       objectReference: {fileID: 0}
     - target: {fileID: 873398496187567865, guid: ec069ff7f8451004b9aa465c682730fa, type: 3}
       propertyPath: m_LocalPosition.y
@@ -631,7 +634,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 873398496187567865, guid: ec069ff7f8451004b9aa465c682730fa, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 23.57
+      value: 25.655
       objectReference: {fileID: 0}
     - target: {fileID: 873398496187567865, guid: ec069ff7f8451004b9aa465c682730fa, type: 3}
       propertyPath: m_LocalRotation.w
@@ -2974,7 +2977,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &306328981
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -22243,13 +22246,14 @@ GameObject:
   m_Component:
   - component: {fileID: 1658934649}
   - component: {fileID: 1658934648}
+  - component: {fileID: 1658934650}
   m_Layer: 0
   m_Name: WaveManager
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &1658934648
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -22303,6 +22307,23 @@ Transform:
   - {fileID: 1794245543}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1658934650
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1658934647}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6181c0de68b61054fb2c2c8dd6c8e2c1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::WavePool
+  poolEntries:
+  - enemyType: 2
+    initialSize: 10
+  - enemyType: 3
+    initialSize: 10
 --- !u!1001 &1659206133
 PrefabInstance:
   m_ObjectHideFlags: 0

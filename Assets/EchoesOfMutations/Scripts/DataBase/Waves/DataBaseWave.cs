@@ -4,17 +4,17 @@ using System.Collections.Generic;
 [CreateAssetMenu(fileName = "DataBaseWave", menuName = "EchoesOfMutations/DataBaseWave")]
 public class DataBaseWave : SerializedScriptableObject
 {
-    public Dictionary<int , BaseWaveData> waveDataBase = new();
+    public Dictionary<EnemiesTypes , BaseEnemy> EnemyDatabase = new();
     
-    public BaseWaveData GetWave(int waveNumber)
+    public BaseEnemy GetPrefab(EnemiesTypes enemyType)
     {
-        if(waveDataBase.TryGetValue(waveNumber , out BaseWaveData waveData))
+        if(EnemyDatabase.TryGetValue(enemyType , out BaseEnemy enemyPrefab))
         {
-            return waveData;
+            return enemyPrefab;
         }
         else
         {
-            throw new System.Exception("The WaveData trying to get  doesn't exist");
+            throw new System.Exception("The BaseEnemy trying to get  doesn't exist");
         }
     }
 }

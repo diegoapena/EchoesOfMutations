@@ -35,6 +35,10 @@ public class MyQueue <T>
         T value = head.Value;
         head = head.Next;
 
+        if(head == null)
+        {
+            tail = null;
+        }
         count--;
         return value;
     }

@@ -1,14 +1,14 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class UIS1_Manager : MonoBehaviour
+public class OptionsUI : MonoBehaviour
 {
-    public GameObject OptionsUI;
+    public GameObject Options;
     private bool isPaused = false;
   
     public void ExitToOptions_Menu()
     {
-        OptionsUI.SetActive(false);
+        Options.SetActive(false);
         Time.timeScale = 1f;
         isPaused = false;
     }
@@ -16,7 +16,7 @@ public class UIS1_Manager : MonoBehaviour
 
     public void GoToOptions_Menu()
     {
-        OptionsUI.SetActive(true);
+        Options.SetActive(true);
         Time.timeScale = 0f;
         isPaused = true;
     }

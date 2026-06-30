@@ -525,7 +525,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Unity.Cinemachine::Unity.Cinemachine.CinemachineCamera
   Priority:
-    Enabled: 0
+    Enabled: 1
     m_Value: 0
   OutputChannel: 1
   StandbyUpdate: 2
@@ -128242,12 +128242,15 @@ MonoBehaviour:
   gun: {fileID: 0}
   normalEnemy: {fileID: 0}
   strongEnemy: {fileID: 0}
+  carfinalCamera: {fileID: 0}
   car: {fileID: 1392457663}
   mutantCinematic: {fileID: 483097799}
   collition: {fileID: 1796579907}
+  mainMenu: {fileID: 0}
   recipeSlotUI: {fileID: 0}
   craftingUI: {fileID: 0}
   craftingStation: {fileID: 0}
+  statsUI: {fileID: 0}
 --- !u!4 &934408612
 Transform:
   m_ObjectHideFlags: 0
