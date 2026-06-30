@@ -15,7 +15,8 @@ MonoBehaviour:
   id: 299
   enemyName: raccon mutant
   damageQuantity: 2
-  enemyPrefab: {fileID: 0}
-  enemyIcon: {fileID: 0}
+  amount: 1
+  enemyPrefab: {fileID: 8777671801978156052, guid: e751e2813b5813140aa263312643d9a5, type: 3}
+  enemyIcon: {fileID: -890657008, guid: a5bb9c2508d334c4b86e95f0eae34fe2, type: 3}
   enemyDescription: Deals a small damage to the player , It  only 1 shot to defeat
     him. This enemy can climb onto rooftop and make it's way into the Factory

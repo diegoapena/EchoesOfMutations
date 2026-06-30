@@ -17,7 +17,7 @@ MonoBehaviour:
   damageQuantity: 4
   amount: 1
   enemyPrefab: {fileID: 4996332201873764090, guid: 17bbfeab4bfa6be46803b6a577471f0a, type: 3}
-  enemyIcon: {fileID: 0}
+  enemyIcon: {fileID: 415937961, guid: 0d9be975db575e94782b8f57ae302d4f, type: 3}
   enemyDescription: A standard enemy with no special attacks or movements abilities
     , It has normal durability and  takes 3 shots to knockdown. This enemy can break
     window barricades.

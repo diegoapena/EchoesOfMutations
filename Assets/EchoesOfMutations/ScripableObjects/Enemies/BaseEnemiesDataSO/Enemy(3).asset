@@ -15,7 +15,8 @@ MonoBehaviour:
   id: 1029
   enemyName: Bear mutant
   damageQuantity: 9
-  enemyPrefab: {fileID: 0}
-  enemyIcon: {fileID: 0}
+  amount: 1
+  enemyPrefab: {fileID: 5822580175207822333, guid: be096eb449c1e704ea9c23e486b83030, type: 3}
+  enemyIcon: {fileID: -1444438807, guid: 6d2fd7ee2c2d9d2478cc14c140a2cb35, type: 3}
   enemyDescription: An huge and powerful enemy with high durability being able to
     resisting 6 shots . This enemy can break window barricades with a single hit.

@@ -13,8 +13,9 @@ MonoBehaviour:
   m_Name: FinalBoss
   m_EditorClassIdentifier: Assembly-CSharp::BaseEnemiesData
   id: 1234
-  enemyName: 
+  enemyName: Leader of the pack
   damageQuantity: 20
-  enemyPrefab: {fileID: 0}
-  enemyIcon: {fileID: 0}
+  amount: 1
+  enemyPrefab: {fileID: 4776926903203257708, guid: 02ac7ae76db0f384cb5833efcd8482b3, type: 3}
+  enemyIcon: {fileID: -867944380, guid: d0887e6dae8c18649910c18dc2f7ab0e, type: 3}
   enemyDescription: 
