@@ -13,7 +13,8 @@ GameObject:
   - component: {fileID: 272627875809408384}
   - component: {fileID: 7551028570825567500}
   - component: {fileID: 5751635557388903736}
-  m_Layer: 0
+  - component: {fileID: -6530127843630882715}
+  m_Layer: 6
   m_Name: SmallEnemy
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -123,9 +124,9 @@ NavMeshAgent:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8777671801978156052}
   m_Enabled: 1
-  m_AgentTypeID: 0
+  m_AgentTypeID: 1479372276
   m_Radius: 0.5
-  m_Speed: 3.5
+  m_Speed: 4.5
   m_Acceleration: 8
   avoidancePriority: 50
   m_AngularSpeed: 120
@@ -137,3 +138,32 @@ NavMeshAgent:
   m_BaseOffset: 1
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
+--- !u!114 &-6530127843630882715
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8777671801978156052}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 50b2d530d718c9e4a9fd6ee85119669f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::SmallEnemy
+  enemyData: {fileID: 11400000, guid: 250c25f85f47af546ae178170d137615, type: 2}
+  agent: {fileID: 0}
+  isAttacking: 0
+  CurrentAttackCD: 0
+  AttackInterval: 1.5
+  damageToObjects: 1
+  damageToPlayer: 1
+  health: 2
+  CurrentBarricade: {fileID: 0}
+  barricades: []
+  enemyType: 1
+  Barricades:
+    serializedVersion: 2
+    m_Bits: 8
+  playerLayer:
+    serializedVersion: 2
+    m_Bits: 1024
