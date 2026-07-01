@@ -26,6 +26,12 @@ public class GameManager : MonoBehaviour
     [FoldoutGroup("References/Items")]
     public Barricade barricade;
     [FoldoutGroup("References/Items")]
+    public WoodSpikes woodSpikes;
+    [FoldoutGroup("References/Items")]
+    public BearTramp bearTramp;
+    [FoldoutGroup("References/Items")]
+    public Engine engine;
+    [FoldoutGroup("References/Items")]
     public Gun gun;
 
     [FoldoutGroup("References/BaseEnemy")]

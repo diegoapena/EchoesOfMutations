@@ -311,20 +311,23 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 183cfd2ba3442e94cab1b459cd6f80d7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerController
+  characterCamera: {fileID: 7782111676943193862}
   moveSpeed: 4
   moveInput: {x: 0, y: 0}
+  isSprinting: 0
+  baseMoveSpeed: 0
   verticalVelocity: 0
   JumpForce: 5
+  enableToShoot: 1
   distance: 4
-  gunMuzzle: {fileID: 0}
   enemyMask:
     serializedVersion: 2
     m_Bits: 64
   Interactable:
     serializedVersion: 2
     m_Bits: 128
+  gunMuzzle: {fileID: 0}
   RayPrefab: {fileID: 669402000536526204, guid: a1e0d664694009e41b691b86a70afe1d, type: 3}
-  characterCamera: {fileID: 7782111676943193862}
   holdpoint: {fileID: 9108060320117375755}
 --- !u!114 &7410424798098126631
 MonoBehaviour:
@@ -355,6 +358,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerMechanics
   ItemContainer: {fileID: 158350864325010907}
+  PlayerLife: 100
 --- !u!143 &7029587673144333543
 CharacterController:
   m_ObjectHideFlags: 0
@@ -415,8 +419,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::InventoryManager
   MaxSlotsQuantity: 9
+  SpawnPos: {x: 23.17, y: 1.769, z: -338.921}
   CurrentWood: 0
   CurrentMetal: 0
+  CurrentScrap: 0
 --- !u!4 &5716660996532891879 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 5695661049177342205, guid: 1d4d19d6c98d5e34582728b47e1f6cfe, type: 3}

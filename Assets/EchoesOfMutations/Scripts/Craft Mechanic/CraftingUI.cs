@@ -1,3 +1,5 @@
+using Sirenix.OdinInspector;
+using TMPro;
 using UnityEngine;
 public class CraftingUI : MonoBehaviour
 {
@@ -8,9 +10,12 @@ public class CraftingUI : MonoBehaviour
 
     private Vector3 stationPosition;
 
-    
-
-
+    [FoldoutGroup("Craft Text References")]
+    public TextMeshProUGUI CurrentMaterialTxt_1;
+    [FoldoutGroup("Craft Text References")]
+    public TextMeshProUGUI CurrentMaterialTxt_2;
+    [FoldoutGroup("Craft Text References")]
+    public TextMeshProUGUI CurrentMaterialTxt_3;
     private void Awake()
     {
        
@@ -33,7 +38,7 @@ public class CraftingUI : MonoBehaviour
     
     void Update()
     {
-        
+        UpdateMaterials();
     }
     
     public void Show(ItemRecipe[] recipes, Vector3 spawnPosition)
@@ -101,6 +106,12 @@ public class CraftingUI : MonoBehaviour
         {
             Debug.Log("Not enough materials for : " + recipe.ItemName);
         }
+    }
+    public void UpdateMaterials()
+    {
+        CurrentMaterialTxt_1.text = " Current Wood: " + InventoryManager.Instance.CurrentWood;
+        CurrentMaterialTxt_2 .text = " Current Metal: " + InventoryManager.Instance.CurrentMetal;
+        CurrentMaterialTxt_3.text = " Current Scrap: " + InventoryManager.Instance.CurrentScrap;
     }
 
 

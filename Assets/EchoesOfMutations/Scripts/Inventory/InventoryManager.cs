@@ -25,6 +25,8 @@ public class InventoryManager : MonoBehaviour
     [FoldoutGroup("Craftable Settings")]
     private Dictionary<BaseMaterialData, int> materials = new();
     [FoldoutGroup("Craftable Settings")]
+    public Vector3 SpawnPos;
+    [FoldoutGroup("Craftable Settings")]
     public int CurrentWood;
     [FoldoutGroup("Craftable Settings")]
     public int CurrentMetal;
@@ -112,6 +114,7 @@ public class InventoryManager : MonoBehaviour
     
     public bool Craft(ItemRecipe recipe , Vector3 spawnPosition)
     {
+        spawnPosition = SpawnPos;
         if (!CanCraft(recipe)) 
         {         
             return false;
@@ -134,7 +137,7 @@ public class InventoryManager : MonoBehaviour
             }
         }   
         
-        Instantiate(recipe.resultPrefab, spawnPosition, Quaternion.identity);
+        Instantiate(recipe.resultPrefab, SpawnPos, Quaternion.identity);
         return true;       
     }
 
