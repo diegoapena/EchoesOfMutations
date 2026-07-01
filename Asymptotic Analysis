@@ -1,0 +1,229 @@
+
+1)
+private IEnumerator WaveCountdown(float duration)
+{
+    // +1 por asignación
+    float remaining = duration;
+
+    // +1 inicialización de la condición
+    // +(N+1) comparaciones del while
+    while (remaining > 0f)
+    {
+        // +1 llamada al evento
+        OnWaveCountDown?.Invoke(remaining);
+
+        // +2 (resta y asignación)
+        remaining -= Time.deltaTime;
+
+        // +1 suspensión de la corrutina
+        yield return null;
+    }
+
+    // +1 llamada final al evento
+    OnWaveCountDown?.Invoke(0f);
+}
+
+T(N) = 1 + 1 + (N + 1) + N + 2N + N  + 1
+T(N) = 5N + 4
+
+O(N) = N
+
+
+2)
+public bool CanCraft(ItemRecipe recipe)
+{
+    // +1 inicialización del foreach
+    // +(N+1) comparaciones
+    foreach (var ingredient in recipe.Ingredients)
+    {
+        // +1 TryGetValue
+        // +1 comparación (count < ingredient.amount)
+        if (!materials.TryGetValue(ingredient.material, out int count) ||
+            count < ingredient.amount)
+        {
+            // +1 return
+            return false;
+        }
+    }
+
+    // +1 return
+    return true;
+}
+
+T(N) = 1 + (N+1) + N + N +1
+T(N) = 3N + 3
+
+O(N) = N
+
+
+3)
+public bool Craft(ItemRecipe recipe, Vector3 spawnPosition)
+{
+    // +1 asignación
+    spawnPosition = SpawnPos;
+
+    // +1 llamada a CanCraft
+    if (!CanCraft(recipe))
+    {
+        // +1 return
+        return false;
+    }
+
+    // +1 inicialización del foreach
+    // +(N+1) comparaciones
+    foreach (var ingredient in recipe.Ingredients)
+    {
+        // +2 (acceso al Dictionary y resta/asignación)
+        materials[ingredient.material] -= ingredient.amount;
+
+        // +1 comparación
+        if (ingredient.material.MaterialName == "Wood")
+        {
+            // +2 (resta y asignación)
+            CurrentWood -= ingredient.amount;
+        }
+        // +1 comparación
+        else if (ingredient.material.MaterialName == "Metal")
+        {
+            // +2 (resta y asignación)
+            CurrentMetal -= ingredient.amount;
+        }
+        // +1 comparación
+        else if (ingredient.material.MaterialName == "Scrap")
+        {
+            // +2 (resta y asignación)
+            CurrentScrap -= ingredient.amount;
+        }
+    }
+
+    // +1 Instantiate
+    Instantiate(recipe.resultPrefab, SpawnPos, Quaternion.identity);
+
+    // +1 return
+    return true;
+}
+
+T(N) = 1 + 1 + 1 +  (N+1) + 2N + 3N + 2N + 1 + 1
+T(N) = 8N + 6
+
+O(N) = N
+
+
+4)
+private bool RemoveItem(IInteractable item)
+{
+    // +1 comparación
+    if (item == null) return false;
+
+    // +1 comparación
+    if (inventoryData.Count == 0) return false;
+
+    // +1 asignación
+    Node<IInteractable> found = null;
+
+    // +1 asignación
+    Node<IInteractable> node = inventoryData.head;
+
+    // +1 inicialización
+    // +(N+1) comparaciones
+    // +N incrementos
+    for (int i = 0; i < inventoryData.Count && node != null; i++)
+    {
+        // +1 comparación
+        if (node.Value == item)
+        {
+            // +1 asignación
+            found = node;
+
+            // +1 break
+            break;
+        }
+
+        // +1 asignación
+        node = node.Next;
+    }
+
+    // +1 comparación
+    if (found == null) return false;
+
+    // +1 comparación
+    if (found == currentNode)
+    {
+        // Operaciones constantes O(1)
+    }
+
+    // +1 asignación
+    Node<IInteractable> newCurrent = null;
+
+    // +1 comparación
+    if (inventoryData.Count > 1)
+    {
+        // +1 asignación
+        newCurrent = (...);
+    }
+
+    // +1 RemoveNode
+    inventoryData.RemoveNode(found);
+
+    // +1 asignación
+    currentNode = newCurrent;
+
+    // +1 asignación
+    selectedSlot = ...;
+
+    // +1 Invoke
+    OnInventoryChanged?.Invoke(inventoryData);
+
+    // +1 comparación
+    if (selectedSlot >= 0)
+
+    // +1 Invoke
+    OnEquippedItem?.Invoke(selectedSlot);
+
+    // +1 return
+    return true;
+}
+
+T(N)=1 + 1 + 1 + 1 + 1 + (N+1) + N + N + N + 1 + 1 + 1 + 1 + 1 + 1 + 1 + 1 + 1 + 1 + 1
+T(N) = 4N + 16  
+
+O(N) = N
+
+5)
+public void FindBarricade()
+{
+    // +1 llamada al método
+    ClearBarricades();
+
+    // +2 comparaciones
+    if (CurrentBarricade == null && barricades.Count > 0)
+    {
+        // +2 (acceso al índice y asignación)
+        Barricade nearestBarricade = barricades[0];
+
+        // +1 asignación
+        Vector3 pos = transform.position;
+
+        // +1 inicialización del foreach
+        // +(N+1) comparaciones
+        foreach (Barricade barricade in barricades)
+        {
+            // +2 llamadas a Distance
+            // +1 comparación
+            if (Vector3.Distance(pos, barricade.transform.position) <
+                Vector3.Distance(pvos, nearestBarricade.transform.position))
+            {
+                // +1 asignación
+                nearestBarricade = barricade;
+            }
+
+            // +1 asignación
+            CurrentBarricade = nearestBarricade;
+        }
+    }
+}
+
+T(N)= 1 + 2 + 2 + 1 + 1 + (N+1) + 2N + N + N + N
+T(N) = 6N + 8
+
+O(N) = N
