@@ -9,8 +9,7 @@ public class Gun : BaseInteractableObj
     public float reloadTime = 6.5f;   
     
     private void Awake()
-    {
-        rb = GetComponent<Rigidbody>();
+    {       
     }
     void Start()
     {

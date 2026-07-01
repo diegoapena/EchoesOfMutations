@@ -211,8 +211,7 @@ public class InventoryManager : MonoBehaviour
         OnInventoryChanged?.Invoke(inventoryData);
         if (selectedSlot >= 0)
             OnEquippedItem?.Invoke(selectedSlot);
-        return true;
-         
+        return true;        
     }
     private void SelectSlot(int index)
     {
