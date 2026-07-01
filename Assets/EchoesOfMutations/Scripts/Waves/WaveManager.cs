@@ -45,32 +45,6 @@ public class WaveManager : MonoBehaviour
     {
         
     }
-    /*
-    [Button]
-    public void WaveEnqueue(BaseWaveData waveData)
-    {
-        waveQueue.Enqueue(waveData);
-        currentWaveIndex = waveData.WaveNumber;
-        Debug.Log("Wave # : " + waveData.WaveNumber + " has started");
-    }
-    [Button]
-    public void WaveDequeue()
-    {
-        Debug.Log("Wave # : " + waveQueue.Dequeue().WaveNumber + " has finished");
-    }
-    [Button]
-    public void WavePeek()
-    {
-        Debug.Log("Wave Peeked: " + waveQueue.Peek().WaveNumber + " " + "Enemies Remaining: " + waveQueue.Peek().EnemyCount);
-    }
-
-    [Button]
-    public void WaveClear()
-    {
-        waveQueue.Clear();
-        Debug.Log("Wave Queue Cleared");
-    }
-    */
     private IEnumerator BeginWaveSystem()
     {
         yield return new WaitForSeconds(timeBeforeFirstWave);
