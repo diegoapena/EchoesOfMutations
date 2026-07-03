@@ -10,6 +10,7 @@ public class Gun : BaseInteractableObj
     
     private void Awake()
     {       
+        rb = GetComponent<Rigidbody>();
     }
     void Start()
     {
