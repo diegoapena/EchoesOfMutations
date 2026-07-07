@@ -5,7 +5,7 @@ public class WoodSpikes : BaseCraftable
     public float damage = 1f;
     void Start()
     {
-        
+        rb = GetComponent<Rigidbody>();
     }
 
     
