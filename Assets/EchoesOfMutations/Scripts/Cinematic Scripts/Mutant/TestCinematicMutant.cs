@@ -21,7 +21,6 @@ public class TestCinematicMutant : MonoBehaviour
         OptionsUI.SetActive(false);
         CarCamera.Priority = 1;
         AnimacionDummy.Play("IdleDummy");
-
     }
 
     
@@ -35,11 +34,10 @@ public class TestCinematicMutant : MonoBehaviour
     }
     
     public void MoveMutant()
-    {       
-       
+    {              
         Vector3 moveDir = Vector3.right * MutantSpeed * Time.deltaTime;
         transform.position -= moveDir;
-        StartCoroutine(WaitAndActivatePanel());
+        StartCoroutine(nameof(WaitAndActivatePanel));
     }
 
     private IEnumerator WaitAndActivatePanel()

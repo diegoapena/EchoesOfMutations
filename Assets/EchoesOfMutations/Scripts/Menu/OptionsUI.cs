@@ -16,7 +16,7 @@ public class OptionsUI : MonoBehaviour
 
     public void GoToOptions_Menu()
     {
-        Options.SetActive(true);
+        Options.SetActive(true);    
         Time.timeScale = 0f;
         isPaused = true;
     }

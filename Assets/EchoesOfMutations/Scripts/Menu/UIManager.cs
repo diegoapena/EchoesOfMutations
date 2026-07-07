@@ -12,16 +12,13 @@ public class UIManager : MonoBehaviour
         if (Instance == null)
         {
             Instance = this;
-            DontDestroyOnLoad(gameObject);
-        }
-        else 
-        { 
-            Destroy(gameObject);       
-        }
+            DontDestroyOnLoad(gameObject);           
+        }      
     }
     public void Jugar()
     {
-        SceneManager.LoadScene("PrincipalCinematic");
+        SceneManager.LoadScene("PrincipalCinematic");     
+        gameObject.SetActive(false);
     }
     public void Exit()
     {

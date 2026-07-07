@@ -63,5 +63,6 @@ public class GameUI : MonoBehaviour
     public void GotoMenu()
     {
         SceneManager.LoadScene("EMMenu");
+        UIManager.Instance.gameObject.SetActive(true);
     }
 }

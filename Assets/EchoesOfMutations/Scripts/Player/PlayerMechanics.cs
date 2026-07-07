@@ -8,19 +8,7 @@ public class PlayerMechanics : MonoBehaviour , IDamageable
 
     public event Action OnPlayerDead;
     private GameObject currentItem;
-
-    private void Awake()
-    {
-        
-    }
-    private void OnEnable()
-    {
-        
-    }   
-    private void OnDisable()
-    {
-        
-    }
+    
     void Update()
     {
 
@@ -33,7 +21,7 @@ public class PlayerMechanics : MonoBehaviour , IDamageable
     {       
         if (PlayerLife <= 0)
         {          
-            
+            OnPlayerDead?.Invoke();
             Debug.Log("You're dead! X_X");         
             Destroy(gameObject);
         }
