@@ -44,37 +44,6 @@ public abstract class BaseEnemy : MonoBehaviour,IDamageable
     {
       
     }
-    /*
-    public void FindBarricades()
-    {
-        if (CurrentBarricade != null) return;
-        Collider[] colls = Physics.OverlapSphere(transform.position, 4, Barricades);
-
-        Barricade nearestBarricade = null;
-
-        Vector3 pos = transform.position;
-
-        foreach (var col in colls)
-        {
-            
-            if (Vector3.Distance(pos, col.transform.position) <= Vector3.Distance(pos, nearestBarricade.transform.position))
-            {
-                nearestBarricade = col.GetComponent<Barricade>();
-                Debug.Log(col.gameObject.name);
-                               
-                
-                
-            }
-            else
-            {
-                //barricades.Remove(col.gameObject.GetComponent<Barricade>());
-            }
-        }
-        
-        isAttacking = true;
-    }
-
-    */
 
     public void Attack()
     {        

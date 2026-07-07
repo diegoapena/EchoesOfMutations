@@ -16948,25 +16948,31 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 68038f01101fd2b4da2e3199a02808a4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::GameManager
-  playerManager: {fileID: 0}
-  animationManager: {fileID: 0}
-  invetoryManager: {fileID: 0}
-  waveManager: {fileID: 0}
-  hitscan: {fileID: 0}
-  flashLight: {fileID: 0}
-  barricade: {fileID: 0}
-  gun: {fileID: 0}
-  normalEnemy: {fileID: 0}
-  strongEnemy: {fileID: 0}
+  playerManager: {fileID: 7410424798098126631, guid: 04502f5f313168743aab125b3f3ae47d, type: 3}
+  animationManager: {fileID: 5116548406485064633, guid: 04502f5f313168743aab125b3f3ae47d, type: 3}
+  invetoryManager: {fileID: 6149810972280733343, guid: 04502f5f313168743aab125b3f3ae47d, type: 3}
+  waveManager: {fileID: 5149680166614545309, guid: 22a5d3d81486fbc448596cd9ce1c6cc6, type: 3}
+  wavePool: {fileID: 5182445716739693902, guid: 22a5d3d81486fbc448596cd9ce1c6cc6, type: 3}
+  hitscan: {fileID: 2324793995639953435, guid: a1e0d664694009e41b691b86a70afe1d, type: 3}
+  databasewave: {fileID: 11400000, guid: 7025827ba1c19de4b8a9eb097235bdcd, type: 2}
+  flashLight: {fileID: 7264419713101989360, guid: ddb501d4ed573fb4d9666fedc90a3b54, type: 3}
+  barricade: {fileID: 4591493071442823826, guid: 97f7de3df2e0f8a47b474a4a4b4e8767, type: 3}
+  woodSpikes: {fileID: -4953940837904312225, guid: 11260eeae46ba904abd4e9728d19ce77, type: 3}
+  bearTramp: {fileID: 6437784466800713367, guid: b02a2a5e3c11d174f88088f295f0b836, type: 3}
+  engine: {fileID: -8135676632822670502, guid: 14194ae0331847b44b69408d658333ad, type: 3}
+  gun: {fileID: 8854836153516165218, guid: d70e272cce0949344a555b0272f00013, type: 3}
+  smallEnemy: {fileID: -6530127843630882715, guid: e751e2813b5813140aa263312643d9a5, type: 3}
+  normalEnemy: {fileID: 8491033088549683761, guid: 17bbfeab4bfa6be46803b6a577471f0a, type: 3}
+  strongEnemy: {fileID: 943130243385836701, guid: be096eb449c1e704ea9c23e486b83030, type: 3}
   carfinalCamera: {fileID: 0}
   car: {fileID: 1392457663}
   mutantCinematic: {fileID: 483097799}
   collition: {fileID: 1796579907}
   mainMenu: {fileID: 0}
-  recipeSlotUI: {fileID: 0}
-  craftingUI: {fileID: 0}
-  craftingStation: {fileID: 0}
-  statsUI: {fileID: 0}
+  recipeSlotUI: {fileID: 2664792512945646338, guid: 5971e63fdef118140bb55b7e072f193f, type: 3}
+  craftingUI: {fileID: 6800594021694007336, guid: b11a33179817eaa45837e9d361de54d7, type: 3}
+  craftingStation: {fileID: 2582853526752585167, guid: ac7f0655bd8b32445b61cf8bac8b2bec, type: 3}
+  statsUI: {fileID: 3933351872827903, guid: b514fa70d854ddd48b4b81ecf1a03d70, type: 3}
 --- !u!4 &934408612
 Transform:
   m_ObjectHideFlags: 0

@@ -65,7 +65,7 @@ public class TestCinematicMutant : MonoBehaviour
 
         yield return new WaitForSeconds(5f);
         OptionsUI.SetActive(true);
-        SceneManager.LoadScene("EchoesOfMutationsGameplay (SQP)");
+        SceneManager.LoadScene("EchoesOfMutationsGameplay");
     }
     
 

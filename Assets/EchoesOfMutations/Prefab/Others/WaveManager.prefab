@@ -277,6 +277,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::WavePool
   poolEntries:
+  - enemyType: 1
+    initialSize: 10
   - enemyType: 2
     initialSize: 10
   - enemyType: 3
