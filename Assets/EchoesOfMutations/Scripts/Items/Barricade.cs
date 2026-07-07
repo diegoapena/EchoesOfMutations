@@ -8,15 +8,15 @@ public class Barricade : BaseCraftable
     public event Action<int> OnHit;
     void Start()
     {
-        
+        rb = GetComponent<Rigidbody>();
     }
 
     
     void Update()
     {
-        OnDestroy();
+        DestroyObj();
     }
-    public void OnDestroy()
+    public void DestroyObj()
     {
         if (gameObject == null) return;
         if(durability<= 0)

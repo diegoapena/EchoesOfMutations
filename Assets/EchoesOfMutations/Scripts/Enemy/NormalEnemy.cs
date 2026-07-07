@@ -44,6 +44,10 @@ public class NormalEnemy : BaseEnemy
         {
             GameManager.Instance.bearTramp.MakeDamage(gameObject);
         }
+        else if (other.CompareTag("WoodSpikes"))
+        {
+            GameManager.Instance.woodSpikes.MakeDamage(gameObject);
+        }
     }
     private void OnTriggerStay(Collider other)
     {

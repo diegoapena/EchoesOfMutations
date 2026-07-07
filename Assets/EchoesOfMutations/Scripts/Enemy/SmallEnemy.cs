@@ -45,6 +45,10 @@ public class SmallEnemy : BaseEnemy
         {
             GameManager.Instance.bearTramp.MakeDamage(gameObject);
         }
+        else if (other.CompareTag("WoodSpikes"))
+        {
+            GameManager.Instance.woodSpikes.MakeDamage(gameObject);
+        }
     }
 
     private void OnTriggerStay(Collider other)
@@ -55,7 +59,7 @@ public class SmallEnemy : BaseEnemy
             if (CurrentBarricade != null)
             {
                 agent.SetDestination(CurrentBarricade.transform.position);
-                agent.stoppingDistance = 2;
+                agent.stoppingDistance = 2f;
             }
         }
     }

@@ -3,8 +3,7 @@ using UnityEngine;
 public class BearTramp : BaseCraftable
 {
     public float damage = 10f;
-    [SerializeField] private float stunDuration = 2f;
-    [SerializeField] private Rigidbody rb;
+    [SerializeField] private float stunDuration = 2f;  
 
     private void Awake()
     {
@@ -46,6 +45,13 @@ public class BearTramp : BaseCraftable
         }
     }
 
+    private void OnTriggerEnter(Collider other)
+    {
+        if(other.CompareTag("Enemy"))
+        {
+            Destroy(gameObject , 1f);
+        }
+    }
 }
 
 

@@ -207,7 +207,7 @@ Transform:
   m_GameObject: {fileID: 296148240}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -4.5961003, y: 1.3698009, z: -3.2445998}
+  m_LocalPosition: {x: -9.0661, y: 1.3698009, z: -4.8946}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -528,6 +528,71 @@ Mesh:
       - serializedVersion: 1
         m_IndexStart: 0
         m_IndexCount: 0
+--- !u!1001 &568611119
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: -4953940837904312225, guid: 11260eeae46ba904abd4e9728d19ce77, type: 3}
+      propertyPath: durability
+      value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 523687669328071129, guid: 11260eeae46ba904abd4e9728d19ce77, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -9.043785
+      objectReference: {fileID: 0}
+    - target: {fileID: 523687669328071129, guid: 11260eeae46ba904abd4e9728d19ce77, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.96
+      objectReference: {fileID: 0}
+    - target: {fileID: 523687669328071129, guid: 11260eeae46ba904abd4e9728d19ce77, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -2.7736638
+      objectReference: {fileID: 0}
+    - target: {fileID: 523687669328071129, guid: 11260eeae46ba904abd4e9728d19ce77, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 523687669328071129, guid: 11260eeae46ba904abd4e9728d19ce77, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 523687669328071129, guid: 11260eeae46ba904abd4e9728d19ce77, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 523687669328071129, guid: 11260eeae46ba904abd4e9728d19ce77, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 523687669328071129, guid: 11260eeae46ba904abd4e9728d19ce77, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 523687669328071129, guid: 11260eeae46ba904abd4e9728d19ce77, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 523687669328071129, guid: 11260eeae46ba904abd4e9728d19ce77, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3082052177716819960, guid: 11260eeae46ba904abd4e9728d19ce77, type: 3}
+      propertyPath: m_Name
+      value: WoodSpikes
+      objectReference: {fileID: 0}
+    - target: {fileID: 3082052177716819960, guid: 11260eeae46ba904abd4e9728d19ce77, type: 3}
+      propertyPath: m_TagString
+      value: WoodSpikes
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 11260eeae46ba904abd4e9728d19ce77, type: 3}
 --- !u!1 &580185694
 GameObject:
   m_ObjectHideFlags: 0
@@ -1965,7 +2030,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8816475528842848093, guid: 818b0e22b28bcc84499d001b47c87c58, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -4.59
+      value: -9.06
       objectReference: {fileID: 0}
     - target: {fileID: 8816475528842848093, guid: 818b0e22b28bcc84499d001b47c87c58, type: 3}
       propertyPath: m_LocalPosition.y
@@ -1973,7 +2038,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8816475528842848093, guid: 818b0e22b28bcc84499d001b47c87c58, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -3.57
+      value: -5.22
       objectReference: {fileID: 0}
     - target: {fileID: 8816475528842848093, guid: 818b0e22b28bcc84499d001b47c87c58, type: 3}
       propertyPath: m_LocalRotation.w
@@ -2521,7 +2586,7 @@ MonoBehaviour:
   databasewave: {fileID: 0}
   flashLight: {fileID: 0}
   barricade: {fileID: 4762996200443985000}
-  woodSpikes: {fileID: 0}
+  woodSpikes: {fileID: -4953940837904312225, guid: 11260eeae46ba904abd4e9728d19ce77, type: 3}
   bearTramp: {fileID: 6437784466800713367, guid: b02a2a5e3c11d174f88088f295f0b836, type: 3}
   engine: {fileID: 0}
   gun: {fileID: 8854836153516165218, guid: d70e272cce0949344a555b0272f00013, type: 3}
@@ -2846,3 +2911,4 @@ SceneRoots:
   - {fileID: 2009558834}
   - {fileID: 6876388882301799065}
   - {fileID: 1289972515}
+  - {fileID: 568611119}

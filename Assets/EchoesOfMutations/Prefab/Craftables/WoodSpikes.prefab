@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: -2119320896987848671}
   m_Layer: 9
   m_Name: WoodSpikes
-  m_TagString: Untagged
+  m_TagString: WoodSpikes
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -129,7 +129,9 @@ MonoBehaviour:
   itemData: {fileID: 11400000, guid: 117c3cbffb52b5e42a10ee45863db50d, type: 2}
   isInInventory: 0
   originalScale: {x: 2.345214, y: 1.48056, z: 0.8494871}
-  durability: 0
+  rb: {fileID: 0}
+  durability: 15
+  damage: 1
 --- !u!54 &-2119320896987848671
 Rigidbody:
   m_ObjectHideFlags: 0

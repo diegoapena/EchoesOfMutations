@@ -5,13 +5,13 @@ public class BaseCraftable : MonoBehaviour , IDamageable , IInteractable
 {
     [SerializeField] private BaseItemsData itemData;
     [SerializeField] protected bool isInInventory = false;
-    [SerializeField] private Vector3 originalScale;   
+    [SerializeField] private Vector3 originalScale;
+    [SerializeField] protected Rigidbody rb;
     public float durability;
     private Vector3 equipPosition;    
     private Vector3 equipRotation;
     void Start()
-    {
-        
+    {       
     }
 
     
@@ -36,6 +36,7 @@ public class BaseCraftable : MonoBehaviour , IDamageable , IInteractable
     public void OnEquip(Transform equipPoint)
     {
         equipPoint = GameManager.Instance.playerManager.playerMechanics.ItemContainer;
+        rb.isKinematic = true;
         isInInventory = true;
         transform.SetParent(equipPoint);
         transform.localPosition = equipPosition;

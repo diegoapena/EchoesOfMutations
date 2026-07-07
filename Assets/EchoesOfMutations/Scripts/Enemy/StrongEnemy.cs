@@ -47,17 +47,20 @@ public class StrongEnemy : BaseEnemy
         {
             GameManager.Instance.bearTramp.MakeDamage(gameObject);
         }
+        else if (other.CompareTag("WoodSpikes"))
+        {
+            GameManager.Instance.woodSpikes.MakeDamage(gameObject);
+        }
     }
    
     private void OnTriggerStay(Collider other)
     {
         if (other.CompareTag("Barricade"))
-        {
-            
+        {         
             if (CurrentBarricade != null)
             {
                 agent.SetDestination(CurrentBarricade.transform.position);
-                agent.stoppingDistance = 2;
+                agent.stoppingDistance = 2f;
             }
         }
     }   

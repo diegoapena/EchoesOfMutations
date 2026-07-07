@@ -162,7 +162,7 @@ public abstract class BaseEnemy : MonoBehaviour,IDamageable
     }
     public void DamageObject(GameObject target)
     {
-        if (target.TryGetComponent<IDamageable>(out IDamageable damageable))
+        if (target.TryGetComponent(out IDamageable damageable))
         {
             damageable.RecieveDamage(damageToObjects);
         }
@@ -172,8 +172,7 @@ public abstract class BaseEnemy : MonoBehaviour,IDamageable
         DamageObject(target);
     }
     public void RecieveDamage(float damage)
-    {
-        damage = GameManager.Instance.hitscan.DamageHit;
+    {      
         health-=damage;
     }
     public void ClearBarricades()
