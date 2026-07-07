@@ -419,7 +419,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::InventoryManager
   MaxSlotsQuantity: 9
-  SpawnPos: {x: 23.17, y: 1.769, z: -338.921}
+  SpawnPos: {x: 20.97776, y: 1.997644, z: -338.9498}
   CurrentWood: 0
   CurrentMetal: 0
   CurrentScrap: 0

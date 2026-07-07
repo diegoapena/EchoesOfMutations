@@ -15,6 +15,7 @@ TagManager:
   - BearTramp
   - Enemy
   - WoodSpikes
+  - Scrap
   layers:
   - Default
   - TransparentFX
