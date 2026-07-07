@@ -36,14 +36,16 @@ public class StrongEnemy : BaseEnemy
     {
         if (other.CompareTag("Barricade"))
         {
-            if(CurrentBarricade == null)
+            FindBarricade();
+            if (CurrentBarricade == null)
             {
                 CurrentBarricade = other.gameObject.GetComponent<Barricade>();
                 barricades.Add(other.gameObject.GetComponent<Barricade>());
             }
-      
-            FindBarricade();
-
+        }
+        else if (other.CompareTag("BearTramp"))
+        {
+            GameManager.Instance.bearTramp.MakeDamage(gameObject);
         }
     }
    
@@ -51,6 +53,7 @@ public class StrongEnemy : BaseEnemy
     {
         if (other.CompareTag("Barricade"))
         {
+            
             if (CurrentBarricade != null)
             {
                 agent.SetDestination(CurrentBarricade.transform.position);

@@ -4,7 +4,7 @@ using UnityEngine;
 public class BaseCraftable : MonoBehaviour , IDamageable , IInteractable
 {
     [SerializeField] private BaseItemsData itemData;
-    [SerializeField] private bool isInInventory = false;
+    [SerializeField] protected bool isInInventory = false;
     [SerializeField] private Vector3 originalScale;   
     public float durability;
     private Vector3 equipPosition;    

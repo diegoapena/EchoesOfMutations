@@ -12,6 +12,7 @@ TagManager:
   - WoodBox
   - MetalBox
   - ScrapBox
+  - BearTramp
   layers:
   - Default
   - TransparentFX

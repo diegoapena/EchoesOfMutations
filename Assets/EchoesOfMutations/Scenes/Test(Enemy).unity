@@ -2073,6 +2073,67 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 17bbfeab4bfa6be46803b6a577471f0a, type: 3}
+--- !u!1001 &1289972515
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 4852561265265595623, guid: b02a2a5e3c11d174f88088f295f0b836, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -6.8704066
+      objectReference: {fileID: 0}
+    - target: {fileID: 4852561265265595623, guid: b02a2a5e3c11d174f88088f295f0b836, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.17
+      objectReference: {fileID: 0}
+    - target: {fileID: 4852561265265595623, guid: b02a2a5e3c11d174f88088f295f0b836, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -0.5464171
+      objectReference: {fileID: 0}
+    - target: {fileID: 4852561265265595623, guid: b02a2a5e3c11d174f88088f295f0b836, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4852561265265595623, guid: b02a2a5e3c11d174f88088f295f0b836, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4852561265265595623, guid: b02a2a5e3c11d174f88088f295f0b836, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4852561265265595623, guid: b02a2a5e3c11d174f88088f295f0b836, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4852561265265595623, guid: b02a2a5e3c11d174f88088f295f0b836, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4852561265265595623, guid: b02a2a5e3c11d174f88088f295f0b836, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4852561265265595623, guid: b02a2a5e3c11d174f88088f295f0b836, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7693173529027314041, guid: b02a2a5e3c11d174f88088f295f0b836, type: 3}
+      propertyPath: m_Name
+      value: BearTramp
+      objectReference: {fileID: 0}
+    - target: {fileID: 7693173529027314041, guid: b02a2a5e3c11d174f88088f295f0b836, type: 3}
+      propertyPath: m_TagString
+      value: BearTramp
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: b02a2a5e3c11d174f88088f295f0b836, type: 3}
 --- !u!1 &1533948278
 GameObject:
   m_ObjectHideFlags: 0
@@ -2461,9 +2522,10 @@ MonoBehaviour:
   flashLight: {fileID: 0}
   barricade: {fileID: 4762996200443985000}
   woodSpikes: {fileID: 0}
-  bearTramp: {fileID: 0}
+  bearTramp: {fileID: 6437784466800713367, guid: b02a2a5e3c11d174f88088f295f0b836, type: 3}
   engine: {fileID: 0}
   gun: {fileID: 8854836153516165218, guid: d70e272cce0949344a555b0272f00013, type: 3}
+  smallEnemy: {fileID: -6530127843630882715, guid: e751e2813b5813140aa263312643d9a5, type: 3}
   normalEnemy: {fileID: 8491033088549683761, guid: 17bbfeab4bfa6be46803b6a577471f0a, type: 3}
   strongEnemy: {fileID: 943130243385836701, guid: be096eb449c1e704ea9c23e486b83030, type: 3}
   carfinalCamera: {fileID: 0}
@@ -2716,7 +2778,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 6825470707204765629, guid: e751e2813b5813140aa263312643d9a5, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -9.115
+      value: -10.74
       objectReference: {fileID: 0}
     - target: {fileID: 6825470707204765629, guid: e751e2813b5813140aa263312643d9a5, type: 3}
       propertyPath: m_LocalPosition.y
@@ -2783,3 +2845,4 @@ SceneRoots:
   - {fileID: 966701009}
   - {fileID: 2009558834}
   - {fileID: 6876388882301799065}
+  - {fileID: 1289972515}

@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 7551028570825567500}
   - component: {fileID: 5751635557388903736}
   - component: {fileID: -6530127843630882715}
+  - component: {fileID: -7350726597726391302}
   m_Layer: 6
   m_Name: SmallEnemy
   m_TagString: Untagged
@@ -167,3 +168,24 @@ MonoBehaviour:
   playerLayer:
     serializedVersion: 2
     m_Bits: 1024
+--- !u!135 &-7350726597726391302
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8777671801978156052}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Radius: 4
+  m_Center: {x: 0, y: 0, z: 0}

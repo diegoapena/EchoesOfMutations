@@ -37,14 +37,23 @@ public class NormalEnemy : BaseEnemy
         if (other.CompareTag("Barricade"))
         {
             CurrentBarricade = other.gameObject.GetComponent<Barricade>();
-            barricades.Add(other.gameObject.GetComponent<Barricade>());                             
+            barricades.Add(other.gameObject.GetComponent<Barricade>());
+            FindBarricade();
+        }
+        else if (other.CompareTag("BearTramp"))
+        {
+            GameManager.Instance.bearTramp.MakeDamage(gameObject);
         }
     }
     private void OnTriggerStay(Collider other)
     {
         if (other.CompareTag("Barricade"))
-        {
-            FindBarricade();         
+        {          
+            if (CurrentBarricade != null)
+            {
+                agent.SetDestination(CurrentBarricade.transform.position);
+                agent.stoppingDistance = 2f;
+            }
         }       
     }
     

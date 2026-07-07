@@ -35,6 +35,8 @@ public class GameManager : MonoBehaviour
     public Gun gun;
 
     [FoldoutGroup("References/BaseEnemy")]
+    public SmallEnemy smallEnemy;
+    [FoldoutGroup("References/BaseEnemy")]
     public NormalEnemy normalEnemy;
     [FoldoutGroup("References/BaseEnemy")]
     public StrongEnemy strongEnemy;

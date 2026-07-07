@@ -277,8 +277,10 @@ public class PlayerController : MonoBehaviour
                 ray.SetPosition(0, gunMuzzle.position);
                 ray.SetPosition(1, hit.point);
                 Quaternion rot = Quaternion.LookRotation(hit.normal);
+
                 GameObject obj = hit.collider.gameObject;
-                obj.GetComponent<BaseEnemy>().RecieveDamage(3);
+                //obj.GetComponent<BaseEnemy>().RecieveDamage(3);
+                GameManager.Instance.hitscan.MakeDamage(obj);
                 Destroy(ray, 2f);
             }
             else

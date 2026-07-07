@@ -14,5 +14,15 @@ public class HitScan : MonoBehaviour
     {
         
     }
-   
+    public void DamageToEnemy(GameObject target)
+    {
+        if (target.TryGetComponent(out IDamageable damageable))
+        {
+            damageable.RecieveDamage(DamageHit);
+        }
+    }
+    public void MakeDamage(GameObject target)
+    {
+        DamageToEnemy(target);
+    }
 }
